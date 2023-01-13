@@ -1,6 +1,5 @@
 package Modele.DAO;
 
-import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
