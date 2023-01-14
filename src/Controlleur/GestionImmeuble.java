@@ -33,6 +33,7 @@ public class GestionImmeuble implements ActionListener {
 				break;
 			case "Charger":
 				this.displayAll();
+				this.enableButtons(true);
 				break;
 			case "Ajouter":
 				FEN_Ajout_Immeuble new_fen = new FEN_Ajout_Immeuble();
@@ -70,8 +71,9 @@ public class GestionImmeuble implements ActionListener {
 		String num_bat = (String) ai.getTable_Immeuble().getValueAt(index, 3);
 		String cp = (String) ai.getTable_Immeuble().getValueAt(index, 4);
 		String ville = (String) ai.getTable_Immeuble().getValueAt(index, 5);
-		String acces_com = (String) ai.getTable_Immeuble().getValueAt(index, 6);
-		int copro = (int) ai.getTable_Immeuble().getValueAt(index, 7);
+		String acces_com = (String) ai.getTable_Immeuble().getValueAt(index, 7);
+		String cpr = (String) ai.getTable_Immeuble().getValueAt(index, 6);
+		int copro = Integer.valueOf(cpr);
 
 		return new Immeuble(id_immeuble, adresse, pde_constr, num_bat, cp, ville, acces_com, copro);
 
@@ -89,7 +91,7 @@ public class GestionImmeuble implements ActionListener {
 		lesImmeubles.setValueAt(value.getCp(), index, 4);
 		lesImmeubles.setValueAt(value.getVille(), index, 5);
 		lesImmeubles.setValueAt(value.getAccess_com(), index, 7);
-		lesImmeubles.setValueAt(value.getCopro(), index, 6);
+		lesImmeubles.setValueAt(String.valueOf(value.getCopro()), index, 6);
 	}
 
 	public void viderTable(JTable table) {

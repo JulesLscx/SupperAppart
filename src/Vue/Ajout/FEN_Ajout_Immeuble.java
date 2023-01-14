@@ -1,9 +1,6 @@
 package Vue.Ajout;
 
-import java.awt.EventQueue;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -26,8 +23,10 @@ public class FEN_Ajout_Immeuble extends JInternalFrame {
 	private JLabel lbl_CP;
 	private JTextField text_Copro;
 	private JLabel lbl_Adresse;
-	private JComboBox comboBox_ID_Immeuble;
+	private JTextField text_ID_Immeuble;
 	private JTextField text_Adresse;
+	private Immeuble toEdit;
+	private JTextField text_Num_batiment;
 
 	public FEN_Ajout_Immeuble(Immeuble toEdit) {
 		init();
@@ -36,21 +35,10 @@ public class FEN_Ajout_Immeuble extends JInternalFrame {
 		this.text_Pde_Constr.setText(toEdit.getPde_constr());
 		this.text_CP.setText(toEdit.getCp());
 		this.text_Copro.setText(Integer.toString(toEdit.getCopro()));
-		this.comboBox_ID_Immeuble.setToolTipText(toEdit.getId_immeuble());
+		this.text_ID_Immeuble.setText(toEdit.getId_immeuble());
+		this.text_Num_batiment.setText(toEdit.getNum_bat());
 		this.text_Adresse.setText(toEdit.getAdresse());
-	}
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FEN_Ajout_Immeuble frame = new FEN_Ajout_Immeuble();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		this.toEdit = toEdit;
 	}
 
 	/**
@@ -129,17 +117,77 @@ public class FEN_Ajout_Immeuble extends JInternalFrame {
 		lbl_Adresse.setBounds(330, 20, 190, 13);
 		getContentPane().add(lbl_Adresse);
 
-		comboBox_ID_Immeuble = new JComboBox();
-		comboBox_ID_Immeuble.setBounds(35, 34, 121, 19);
-		getContentPane().add(comboBox_ID_Immeuble);
+		text_ID_Immeuble = new JTextField();
+		text_ID_Immeuble.setBounds(35, 34, 121, 19);
+		getContentPane().add(text_ID_Immeuble);
 
 		text_Adresse = new JTextField();
 		text_Adresse.setColumns(10);
 		text_Adresse.setBounds(330, 34, 190, 19);
 		getContentPane().add(text_Adresse);
 
-		JComboBox comboBox_Num_batiment = new JComboBox();
-		comboBox_Num_batiment.setBounds(35, 76, 121, 19);
-		getContentPane().add(comboBox_Num_batiment);
+		text_Num_batiment = new JTextField();
+		text_Num_batiment.setBounds(35, 76, 121, 19);
+		getContentPane().add(text_Num_batiment);
+
+		this.controlleur = new GestionAjoutImmeuble(this);
+		btn_Annuler.addActionListener(controlleur);
+		btn_Valider.addActionListener(controlleur);
+	}
+
+	public boolean isImmeubleSet() {
+		return this.toEdit != null;
+	}
+
+	public GestionAjoutImmeuble getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getText_Access_Com() {
+		return text_Access_Com;
+	}
+
+	public JTextField getText_Ville() {
+		return text_Ville;
+	}
+
+	public JTextField getText_Pde_Constr() {
+		return text_Pde_Constr;
+	}
+
+	public JLabel getLbl_Copro() {
+		return lbl_Copro;
+	}
+
+	public JTextField getText_CP() {
+		return text_CP;
+	}
+
+	public JLabel getLbl_CP() {
+		return lbl_CP;
+	}
+
+	public JTextField getText_Copro() {
+		return text_Copro;
+	}
+
+	public JLabel getLbl_Adresse() {
+		return lbl_Adresse;
+	}
+
+	public JTextField getText_ID_Immeuble() {
+		return text_ID_Immeuble;
+	}
+
+	public JTextField getText_Adresse() {
+		return text_Adresse;
+	}
+
+	public Immeuble getToEdit() {
+		return toEdit;
+	}
+
+	public JTextField getText_Num_batiment() {
+		return text_Num_batiment;
 	}
 }

@@ -17,19 +17,42 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
 
     @Override
     public void create(Immeuble tupple) throws SQLException {
-        // TODO Auto-generated method stub
-
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection()
+                .prepareCall("call INSERTIMMEUBLE(?,?,?,?,?,?,?,?)");
+        prSt.setNString(1, tupple.getId_immeuble());
+        prSt.setNString(2, tupple.getAdresse());
+        prSt.setNString(3, tupple.getPde_constr());
+        prSt.setNString(4, tupple.getNum_bat());
+        prSt.setNString(5, tupple.getCp());
+        prSt.setNString(6, tupple.getVille());
+        prSt.setInt(7, tupple.getCopro());
+        prSt.setNString(8, tupple.getAccess_com());
+        prSt.execute();
     }
 
     @Override
     public void update(Immeuble tupple) throws SQLException {
-        // TODO Auto-generated method stub
+        String req = "Update Immeuble set adresse = ?, pde_constr = ?, num_bat = ?, cp = ?, ville = ?, copro = ?, access_com = ?  where id_immeuble = ?";
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(req);
+
+        prSt.setNString(1, tupple.getAdresse());
+        prSt.setNString(2, tupple.getPde_constr());
+        prSt.setNString(3, tupple.getNum_bat());
+        prSt.setNString(4, tupple.getCp());
+        prSt.setNString(5, tupple.getVille());
+        prSt.setInt(6, tupple.getCopro());
+        prSt.setNString(7, tupple.getAccess_com());
+        prSt.setNString(8, tupple.getId_immeuble());
+        prSt.execute();
 
     }
 
     @Override
     public void delete(Immeuble tupple) throws SQLException {
-        // TODO Auto-generated method stub
+        PreparedStatement st = CictOracleDataSource.getLaConnection()
+                .prepareStatement("DELETE FROM IMMEUBLE WHERE ID_IMMEUBLE = ?");
+        st.setString(1, tupple.getId_immeuble());
+        st.executeUpdate();
 
     }
 

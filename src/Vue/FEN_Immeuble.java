@@ -1,6 +1,5 @@
 package Vue;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -157,8 +156,8 @@ public class FEN_Immeuble extends JInternalFrame {
 		btnSupprimer.addActionListener(controlleur);
 
 		this.gestionTable = new GestionTableImmeuble(table_AssuranceImmeuble, controlleur);
-		this.table_AssuranceImmeuble.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.table_AssuranceImmeuble.getSelectionModel().addListSelectionListener(gestionTable);
+		this.table_Immeuble.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.table_Immeuble.getSelectionModel().addListSelectionListener(gestionTable);
 
 	}
 
