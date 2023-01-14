@@ -1,19 +1,19 @@
 package Controlleur;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import Modele.Caution;
 import Modele.DAO.DaoCaution;
+import Modele.DAO.DaoImmeuble;
 
 public class Test {
     public static void main(String[] args) {
         try {
-            Connection co = CictOracleDataSource.creerAcces("HR", "iutinfo");
-            DaoCaution dao = new DaoCaution();
-            Caution c = new Caution("null", "null", "null", "null", "null", "0123456789", "null");
-            // dao.create(c);
-            dao.delete(c);
+            CictOracleDataSource.creerAcces("hr", "iutinfo");
+            DaoImmeuble dao = new DaoImmeuble();
+            System.out.println(dao.findAll());
         } catch (SQLException e) {
             e.printStackTrace();
         }

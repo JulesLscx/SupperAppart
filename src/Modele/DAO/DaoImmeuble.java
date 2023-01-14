@@ -1,14 +1,19 @@
 package Modele.DAO;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
 
+import Controlleur.CictOracleDataSource;
 import Modele.Immeuble;
 import Modele.DAO.Requete.Requete;
 
 public class DaoImmeuble extends DaoModele<Immeuble> {
+
+    public DaoImmeuble() {
+    }
 
     @Override
     public void create(Immeuble tupple) throws SQLException {
@@ -30,8 +35,8 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
 
     @Override
     public Collection<Immeuble> findAll() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement("select * from immeuble");
+        return super.select(prSt);
     }
 
     @Override
@@ -45,8 +50,8 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
         num_bat = curseur.getNString(4);
         cp = curseur.getNString(5);
         ville = curseur.getNString(6);
-        access_com = curseur.getNString(7);
-        copro = curseur.getInt(8);
+        access_com = curseur.getNString(8);
+        copro = curseur.getInt(7);
         result = new Immeuble(id_immeuble, adresse, pde_constr, num_bat, cp, ville, access_com, copro);
         return result;
     }
@@ -59,14 +64,19 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
 
     @Override
     public List<Immeuble> find(Requete<Immeuble> req, Immeuble donnee) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        PreparedStatement prSt = req.requete();
+        req.setParametres(prSt, donnee);
+        return super.select(prSt);
     }
 
     @Override
     public Immeuble findById(Requete<Immeuble> req, String... id) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        PreparedStatement prSt = req.requete();
+        req.setParametres(prSt, id);
+        prSt.execute();
+        ResultSet rs = prSt.getResultSet();
+        rs.next();
+        return creerInstance(rs);
     }
 
 }
