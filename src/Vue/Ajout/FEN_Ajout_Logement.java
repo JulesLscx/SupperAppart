@@ -1,5 +1,7 @@
 package Vue.Ajout;
 
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
@@ -7,7 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controlleur.Ajout.GestionAjoutLogement;
+import Modele.Immeuble;
 import Modele.Logement;
+import Modele.DAO.DaoImmeuble;
+import Vue.FEN_Erreurs;
 
 public class FEN_Ajout_Logement extends JInternalFrame {
 
@@ -19,16 +24,18 @@ public class FEN_Ajout_Logement extends JInternalFrame {
 	private JTextField text_Type_Habitation;
 	private JTextField text_NB_Pieces;
 	private JLabel lbl_Num_Logement;
-	private JComboBox comboBox_Num_Logement;
-	private JComboBox comboBox_ID_Immeuble;
+	private JTextField text_Num_Logement;
+	private JComboBox<String> comboBox_ID_Immeuble;
+	private Object logement;
 
 	public FEN_Ajout_Logement(Logement toEdit) {
 		init();
 		this.text_Surface.setText(Float.toString(toEdit.getSurface()));
 		this.text_Type_Habitation.setText(toEdit.getType_hab());
 		this.text_NB_Pieces.setText(Integer.toString(toEdit.getNbpiece()));
-		// this.comboBox_Num_Logement.setToolTipText(toEdit.getNum());
-		// this.comboBox_ID_Immeuble.setToolTipText(toEdit.getImmeuble().getId_immeuble());
+		this.text_Num_Logement.setText(toEdit.getNum());
+		this.logement = toEdit;
+		this.comboBox_ID_Immeuble.setSelectedItem(toEdit.getImmeuble().getId_immeuble());
 	}
 
 	/**
@@ -85,12 +92,53 @@ public class FEN_Ajout_Logement extends JInternalFrame {
 		lbl_Num_Logement.setBounds(330, 20, 190, 13);
 		getContentPane().add(lbl_Num_Logement);
 
-		comboBox_Num_Logement = new JComboBox();
-		comboBox_Num_Logement.setBounds(330, 34, 121, 19);
-		getContentPane().add(comboBox_Num_Logement);
+		text_Num_Logement = new JTextField();
+		text_Num_Logement.setBounds(330, 34, 121, 19);
+		getContentPane().add(text_Num_Logement);
 
-		comboBox_ID_Immeuble = new JComboBox();
+		comboBox_ID_Immeuble = new JComboBox<String>();
 		comboBox_ID_Immeuble.setBounds(35, 34, 121, 19);
 		getContentPane().add(comboBox_ID_Immeuble);
+
+		this.controlleur = new GestionAjoutLogement(this);
+		btn_Annuler.addActionListener(controlleur);
+		btn_Valider.addActionListener(controlleur);
+		this.controlleur.fillCombo();
+	}
+
+	public boolean isLogementSet() {
+		return this.logement != null;
+	}
+
+	public GestionAjoutLogement getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getText_Surface() {
+		return text_Surface;
+	}
+
+	public JTextField getText_Type_Habitation() {
+		return text_Type_Habitation;
+	}
+
+	public JTextField getText_NB_Pieces() {
+		return text_NB_Pieces;
+	}
+
+	public JLabel getLbl_Num_Logement() {
+		return lbl_Num_Logement;
+	}
+
+	public JTextField getText_Num_Logement() {
+		return text_Num_Logement;
+	}
+
+	public JComboBox<String> getComboBox_ID_Immeuble() {
+		return comboBox_ID_Immeuble;
+	}
+
+	public Object getLogement() {
+		return logement;
 	}
 }

@@ -1,4 +1,4 @@
-package Controlleur;
+package Vue;
 
 import java.awt.Container;
 

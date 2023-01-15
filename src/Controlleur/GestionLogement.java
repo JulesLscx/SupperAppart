@@ -14,6 +14,7 @@ import Modele.Logement;
 import Modele.DAO.DaoImmeuble;
 import Modele.DAO.DaoLogement;
 import Vue.FEN_Accueil;
+import Vue.FEN_Erreurs;
 import Vue.FEN_Logement;
 import Vue.Ajout.FEN_Ajout_Logement;
 
@@ -66,8 +67,9 @@ public class GestionLogement implements ActionListener {
 
 	public Logement lireLigneTable(int index) {
 		DaoImmeuble dao = new DaoImmeuble();
+		Immeuble i = null;
 		try {
-			Immeuble i = dao.findById(null, (String) ai.getTable_Logement().getValueAt(index, 4));
+			i = dao.findById(null, (String) ai.getTable_Logement().getValueAt(index, 4));
 		} catch (SQLException e) {
 			new FEN_Erreurs(e.getMessage(), ai);
 		}
@@ -76,7 +78,7 @@ public class GestionLogement implements ActionListener {
 		float surface = (float) ai.getTable_Logement().getValueAt(index, 2);
 		int nbPiece = (int) ai.getTable_Logement().getValueAt(index, 3);
 
-		return new Logement(num, type_hab, surface, index, null);
+		return new Logement(num, type_hab, surface, nbPiece, i);
 
 	}
 

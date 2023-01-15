@@ -16,7 +16,7 @@ public class DaoLogement extends DaoModele<Logement> {
     @Override
     public void create(Logement tupple) throws SQLException {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
-                .prepareCall("call INSERTLOGEMENT(?,?,?)");
+                .prepareCall("call INSERTLOGEMENT(?,?,?,?,?)");
         prSt.setNString(2, tupple.getType_hab());
         prSt.setFloat(3, tupple.getSurface());
         prSt.setInt(4, tupple.getNbpiece());
@@ -27,7 +27,7 @@ public class DaoLogement extends DaoModele<Logement> {
 
     @Override
     public void update(Logement tupple) throws SQLException {
-        String req = "Update Type_Fac set type_hab = ?, surface = ?, nbPiece = ?, id_immeuble = ? where num = ?";
+        String req = "Update Logement set type_hab = ?, surface = ?, nbPiece = ?, id_immeuble = ? where num = ?";
         PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(req);
         prSt.setNString(1, tupple.getType_hab());
         prSt.setFloat(2, tupple.getSurface());
