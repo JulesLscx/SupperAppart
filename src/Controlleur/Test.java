@@ -13,7 +13,7 @@ public class Test {
         try {
             CictOracleDataSource.creerAcces("hr", "iutinfo");
             DaoImmeuble dao = new DaoImmeuble();
-            System.out.println(dao.findAll());
+            System.out.println(dao.findById(null, "10B"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

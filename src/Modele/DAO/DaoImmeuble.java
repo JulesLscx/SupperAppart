@@ -97,6 +97,7 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
                 .prepareStatement("Select * from immeuble where id_immeuble = ?");
         prSt.setNString(1, id[0]);
+        prSt.execute();
         ResultSet rs = prSt.getResultSet();
         rs.next();
         return creerInstance(rs);
