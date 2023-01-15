@@ -94,9 +94,9 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
 
     @Override
     public Immeuble findById(Requete<Immeuble> req, String... id) throws SQLException {
-        PreparedStatement prSt = req.requete();
-        req.setParametres(prSt, id);
-        prSt.execute();
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection()
+                .prepareStatement("Select * from immeuble where id_immeuble = ?");
+        prSt.setNString(1, id[0]);
         ResultSet rs = prSt.getResultSet();
         rs.next();
         return creerInstance(rs);

@@ -3,6 +3,7 @@ package Modele.DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.List;
 
@@ -85,8 +86,12 @@ public class DaoCaution extends DaoModele<Caution> {
 
     @Override
     public Caution findById(Requete<Caution> req, String... id) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection()
+                .prepareStatement("Select * from caution where id_caution = ?");
+        prSt.setNString(1, id[0]);
+        ResultSet rs = prSt.getResultSet();
+        rs.next();
+        return creerInstance(rs);
     }
 
 }

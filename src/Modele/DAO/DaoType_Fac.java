@@ -14,24 +14,38 @@ public class DaoType_Fac extends DaoModele<Type_Fac> {
 
     @Override
     public void create(Type_Fac tupple) throws SQLException {
-
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection()
+                .prepareCall("call INSERTTYPEFACTURE(?,?,?)");
+        prSt.setNString(1, tupple.getTypeF());
+        prSt.setNString(2, tupple.getPeriodicite());
+        prSt.setNString(3, tupple.getUnite());
+        prSt.execute();
     }
 
     @Override
     public void update(Type_Fac tupple) throws SQLException {
-        // TODO Auto-generated method stub
+        String req = "Update Type_Fac set périodicité = ?, unité = ?  where typeF = ?";
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(req);
+
+        prSt.setNString(1, tupple.getPeriodicite());
+        prSt.setNString(2, tupple.getUnite());
+        prSt.setNString(3, tupple.getTypeF());
+        prSt.execute();
 
     }
 
     @Override
     public void delete(Type_Fac tupple) throws SQLException {
-        // TODO Auto-generated method stub
+        PreparedStatement st = CictOracleDataSource.getLaConnection()
+                .prepareStatement("DELETE FROM TYPE_FAC WHERE TYPEF = ?");
+        st.setString(1, tupple.getTypeF());
+        st.executeUpdate();
 
     }
 
     @Override
     public Collection<Type_Fac> findAll() throws SQLException {
-        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement("select * from type_fac");
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement("select * from TYPE_Fac");
         return super.select(prSt);
     }
 
@@ -54,14 +68,19 @@ public class DaoType_Fac extends DaoModele<Type_Fac> {
 
     @Override
     public List<Type_Fac> find(Requete<Type_Fac> req, Type_Fac donnee) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        PreparedStatement prSt = req.requete();
+        req.setParametres(prSt, donnee);
+        return super.select(prSt);
     }
 
     @Override
     public Type_Fac findById(Requete<Type_Fac> req, String... id) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection()
+                .prepareStatement("Select * from Type_fac where typeF = ?");
+        prSt.setNString(1, id[0]);
+        ResultSet rs = prSt.getResultSet();
+        rs.next();
+        return creerInstance(rs);
     }
 
 }
