@@ -14,29 +14,27 @@ public class FEN_Ajout_Locataire extends JInternalFrame {
 	/**
 	 * Launch the application.
 	 */
-	private JTextField idContrat, charges, duree, priseEffet, datePaiement, periodicite, loyer, dateRevision;
-	private JTextField finContrat, montantCaution, paiement, dateEDL;
 
 	private GestionAjoutLocataire controlleur;
 	private JTextField text_Nom;
-	private JTextField text_Genre;
+	private JComboBox<Character> text_Genre;
 	private JTextField text_Email;
 	private JTextField text_Prenom;
 	private JTextField text_Telephone;
 	private JLabel lblDatePaiement;
 	private JLabel lbl_Num_Logement;
-	private JComboBox comboBox_Num_Logement;
 	private JTextField text_Num_Locataire;
+	private Locataire locataire;
 
 	public FEN_Ajout_Locataire(Locataire toEdit) {
 		init();
 		this.text_Nom.setText(toEdit.getNom());
-		this.text_Genre.setText(String.valueOf(toEdit.getGenre()));
+		this.text_Genre.setSelectedItem(toEdit.getGenre());
 		this.text_Email.setText(toEdit.getEmail());
 		this.text_Prenom.setText(toEdit.getPrenom());
 		this.text_Telephone.setText(toEdit.getTel());
-		// this.comboBox_Num_Logement.setToolTipText(toEdit.getNum());
 		this.text_Num_Locataire.setText(toEdit.getnLocataire());
+		this.locataire = toEdit;
 	}
 
 	/**
@@ -67,8 +65,10 @@ public class FEN_Ajout_Locataire extends JInternalFrame {
 		lblLoyer.setBounds(35, 146, 190, 13);
 		getContentPane().add(lblLoyer);
 
-		text_Genre = new JTextField();
-		text_Genre.setColumns(10);
+		text_Genre = new JComboBox<Character>();
+		text_Genre.addItem('M');
+		text_Genre.addItem('F');
+		text_Genre.addItem('A');
 		text_Genre.setBounds(35, 160, 190, 19);
 		getContentPane().add(text_Genre);
 
@@ -111,14 +111,57 @@ public class FEN_Ajout_Locataire extends JInternalFrame {
 		lbl_Num_Logement.setBounds(330, 20, 190, 13);
 		getContentPane().add(lbl_Num_Logement);
 
-		comboBox_Num_Logement = new JComboBox();
-		comboBox_Num_Logement.setBounds(330, 34, 121, 19);
-		getContentPane().add(comboBox_Num_Logement);
-
 		text_Num_Locataire = new JTextField();
 		text_Num_Locataire.setColumns(10);
 		text_Num_Locataire.setBounds(35, 34, 190, 19);
 		getContentPane().add(text_Num_Locataire);
+
+		this.controlleur = new GestionAjoutLocataire(this);
+		btn_Annuler.addActionListener(controlleur);
+		btn_Valider.addActionListener(controlleur);
 	}
 
+	public boolean isLocataireSet() {
+		return this.locataire != null;
+	}
+
+	public GestionAjoutLocataire getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getText_Nom() {
+		return text_Nom;
+	}
+
+	public JComboBox<Character> getText_Genre() {
+		return text_Genre;
+	}
+
+	public JTextField getText_Email() {
+		return text_Email;
+	}
+
+	public JTextField getText_Prenom() {
+		return text_Prenom;
+	}
+
+	public JTextField getText_Telephone() {
+		return text_Telephone;
+	}
+
+	public JLabel getLblDatePaiement() {
+		return lblDatePaiement;
+	}
+
+	public JLabel getLbl_Num_Logement() {
+		return lbl_Num_Logement;
+	}
+
+	public JTextField getText_Num_Locataire() {
+		return text_Num_Locataire;
+	}
+
+	public Locataire getLocataire() {
+		return locataire;
+	}
 }

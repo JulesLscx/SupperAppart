@@ -12,7 +12,9 @@ import javax.swing.table.DefaultTableModel;
 import Modele.Locataire;
 import Modele.DAO.DaoLocataire;
 import Vue.FEN_Accueil;
+import Vue.FEN_Erreurs;
 import Vue.FEN_Locataire;
+import Vue.Ajout.FEN_Ajout_Locataire;
 
 public class GestionLocataire implements ActionListener {
 	private FEN_Locataire ai;
@@ -35,8 +37,33 @@ public class GestionLocataire implements ActionListener {
 				} else {
 					this.displayAll();
 				}
-
 				break;
+			case "Ajouter":
+				FEN_Ajout_Locataire new_fen = new FEN_Ajout_Locataire();
+				this.ai.getLayeredPane().add(new_fen);
+				new_fen.setVisible(true);
+				break;
+			case "Modifier":
+				FEN_Ajout_Locataire new_fen_edition = new FEN_Ajout_Locataire(
+						this.lireLigneTable(this.ai.getTable_Locataire().getSelectedRow()));
+				this.ai.getLayeredPane().add(new_fen_edition);
+				new_fen_edition.setVisible(true);
+				break;
+			case "Supprimer":
+				this.delete();
+				break;
+		}
+	}
+
+	private void delete() {
+		DaoLocataire dao = new DaoLocataire();
+		int index = this.ai.getTable_Locataire().getSelectedRow();
+		try {
+			dao.delete(this.lireLigneTable(index));
+			this.displayAll();
+		} catch (SQLException e) {
+			new FEN_Erreurs(e.getMessage(), this.ai.getContentPane());
+			e.printStackTrace();
 		}
 	}
 

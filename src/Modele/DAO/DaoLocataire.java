@@ -14,19 +14,37 @@ public class DaoLocataire extends DaoModele<Locataire> {
 
     @Override
     public void create(Locataire tupple) throws SQLException {
-        // TODO Auto-generated method stub
-
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection()
+                .prepareCall("call add_locataire(?,?,?,?,?)");
+        prSt.setNString(2, tupple.getNom());
+        prSt.setNString(3, tupple.getPrenom());
+        prSt.setNString(4, tupple.getEmail());
+        prSt.setNString(5, tupple.getTel());
+        prSt.setString(6, Character.toString(tupple.getGenre()));
+        prSt.setNString(1, tupple.getnLocataire());
+        prSt.execute();
     }
 
     @Override
     public void update(Locataire tupple) throws SQLException {
-        // TODO Auto-generated method stub
+        String req = "Update Locataire set Nom = ?, Prenom = ?, email = ?, tel = ?,genre = ? where nlocataire = ?";
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(req);
+        prSt.setNString(1, tupple.getNom());
+        prSt.setNString(2, tupple.getPrenom());
+        prSt.setNString(3, tupple.getEmail());
+        prSt.setNString(4, tupple.getTel());
+        prSt.setString(5, Character.toString(tupple.getGenre()));
+        prSt.setNString(6, tupple.getnLocataire());
+        prSt.execute();
 
     }
 
     @Override
     public void delete(Locataire tupple) throws SQLException {
-        // TODO Auto-generated method stub
+        PreparedStatement st = CictOracleDataSource.getLaConnection()
+                .prepareStatement("DELETE FROM Locatare WHERE NLocataire = ?");
+        st.setString(1, tupple.getnLocataire());
+        st.executeUpdate();
 
     }
 

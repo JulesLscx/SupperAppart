@@ -16,14 +16,18 @@ public class FEN_Locataire extends JInternalFrame {
 	private GestionLocataire controlleur;
 	private JTable table_Documents;
 	private JCheckBox filter;
+	private JButton btnCharger;
+	private JButton btnSpprimer;
+	private JButton btnModifier;
+	private JButton btn_ajouter;
 
 	public FEN_Locataire() {
 		setBounds(0, 0, 880, 504);
 		getContentPane().setLayout(null);
 
-		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(96, 426, 89, 23);
-		getContentPane().add(btnValider);
+		btn_ajouter = new JButton("Ajouter");
+		btn_ajouter.setBounds(96, 426, 89, 23);
+		getContentPane().add(btn_ajouter);
 
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setBounds(547, 426, 89, 23);
@@ -127,24 +131,35 @@ public class FEN_Locataire extends JInternalFrame {
 		lblContrat.setBounds(26, 177, 76, 13);
 		getContentPane().add(lblContrat);
 
-		JButton btnSpprimer = new JButton("Supprimer");
+		btnSpprimer = new JButton("Supprimer");
 		btnSpprimer.setBounds(402, 426, 89, 23);
 		getContentPane().add(btnSpprimer);
 
-		JButton btnModifier = new JButton("Modifier");
+		btnCharger = new JButton("Charger");
+		btnCharger.setBounds(500, 426, 89, 23);
+		getContentPane().add(btnCharger);
+
+		btnModifier = new JButton("Modifier");
 		btnModifier.setBounds(242, 426, 89, 23);
 		getContentPane().add(btnModifier);
 
-		filter = new JCheckBox("Modifier");
-		filter.setBounds(242, 376, 89, 23);
+		filter = new JCheckBox("Locataires Actuels");
+		filter.setBounds(242, 376, 300, 23);
 		getContentPane().add(filter);
 		this.controlleur = new GestionLocataire(this);
-		btnValider.addActionListener(controlleur);
+		btn_ajouter.addActionListener(controlleur);
+		btnCharger.addActionListener(controlleur);
+		btnModifier.addActionListener(controlleur);
+		btnSpprimer.addActionListener(controlleur);
 		btnAnnuler.addActionListener(controlleur);
 	}
 
 	public JTable getTable_Locataire() {
 		return this.table_Locataire;
+	}
+
+	public JButton[] getChangeableButtons() {
+		return new JButton[] { this.btnSpprimer, this.btnModifier };
 	}
 
 	public boolean isCheck() {
