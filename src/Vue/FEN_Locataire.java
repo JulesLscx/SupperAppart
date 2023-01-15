@@ -111,22 +111,6 @@ public class FEN_Locataire extends JInternalFrame {
 		lblAssurance.setBounds(654, 177, 76, 13);
 		getContentPane().add(lblAssurance);
 
-		JScrollPane spAssurance = new JScrollPane();
-		spAssurance.setEnabled(false);
-		spAssurance.setBounds(654, 196, 204, 52);
-		getContentPane().add(spAssurance);
-
-		table_Documents = new JTable();
-		table_Documents.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null },
-						{ null, null },
-				},
-				new String[] {
-						"Ann\u00E9e", "Certificat"
-				}));
-		spAssurance.setViewportView(table_Documents);
-
 		JLabel lblContrat = new JLabel("Contrat");
 		lblContrat.setBounds(26, 177, 76, 13);
 		getContentPane().add(lblContrat);
