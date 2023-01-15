@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 import javax.swing.JButton;
 
-import Controlleur.FEN_Erreurs;
 import Modele.Type_Fac;
 import Modele.DAO.DaoType_Fac;
+import Vue.FEN_Erreurs;
 import Vue.Ajout.FEN_Ajout_TypeFacture;
 
 public class GestionAjoutTypeFacture implements ActionListener {

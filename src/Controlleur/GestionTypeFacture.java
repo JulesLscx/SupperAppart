@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import Modele.Type_Fac;
 import Modele.DAO.DaoType_Fac;
 import Vue.FEN_Accueil;
+import Vue.FEN_Erreurs;
 import Vue.FEN_TypeFacture;
 import Vue.Ajout.FEN_Ajout_TypeFacture;
 

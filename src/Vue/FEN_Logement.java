@@ -77,26 +77,7 @@ public class FEN_Logement extends JInternalFrame {
 		table_Immeuble = new JTable();
 		table_Immeuble.setModel(new DefaultTableModel(
 				new Object[][] {
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null }
 				},
 				new String[] {
 						"Identifiant", "Adresse", "P\u00E9riode de construction", "Num\u00E9ro", "CP", "Ville",
@@ -160,7 +141,7 @@ public class FEN_Logement extends JInternalFrame {
 		btnAjouter.addActionListener(controlleur);
 		btnModifier.addActionListener(controlleur);
 
-		this.gestionTable = new GestionTableLogement(this.controlleur);
+		this.gestionTable = new GestionTableLogement(this.controlleur, table_Immeuble, table_Locataire);
 		this.getTable_Logement().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.getTable_Logement().getSelectionModel().addListSelectionListener(gestionTable);
 	}

@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 import javax.swing.JButton;
 
-import Controlleur.FEN_Erreurs;
 import Modele.Immeuble;
 import Modele.DAO.DaoImmeuble;
+import Vue.FEN_Erreurs;
 import Vue.Ajout.FEN_Ajout_Immeuble;
 
 public class GestionAjoutImmeuble implements ActionListener {

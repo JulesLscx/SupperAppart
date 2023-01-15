@@ -13,6 +13,7 @@ import Modele.Caution;
 import Modele.DAO.DaoCaution;
 import Vue.FEN_Accueil;
 import Vue.FEN_Caution;
+import Vue.FEN_Erreurs;
 import Vue.Ajout.FEN_Ajout_Caution;
 
 public class GestionCaution

@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 import javax.swing.JButton;
 
-import Controlleur.FEN_Erreurs;
 import Modele.Caution;
 import Modele.DAO.DaoCaution;
+import Vue.FEN_Erreurs;
 import Vue.Ajout.FEN_Ajout_Caution;
 
 public class GestionAjoutCaution implements ActionListener {

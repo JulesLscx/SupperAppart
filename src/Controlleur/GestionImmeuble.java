@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import Modele.Immeuble;
 import Modele.DAO.DaoImmeuble;
 import Vue.FEN_Accueil;
+import Vue.FEN_Erreurs;
 import Vue.FEN_Immeuble;
 import Vue.Ajout.FEN_Ajout_Immeuble;
 
