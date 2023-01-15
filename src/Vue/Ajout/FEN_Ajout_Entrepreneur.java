@@ -21,6 +21,7 @@ public class FEN_Ajout_Entrepreneur extends JInternalFrame {
 	private JTextField text_IBAN;
 	private JLabel lbl_N_SIREN;
 	private JTextField text_Nom;
+	private Entrepreneur entprnr;
 
 	public FEN_Ajout_Entrepreneur(Entrepreneur toEdit) {
 		init();
@@ -29,6 +30,7 @@ public class FEN_Ajout_Entrepreneur extends JInternalFrame {
 		this.text_N_SIREN.setText(toEdit.getnSiren());
 		this.text_IBAN.setText(toEdit.getIban());
 		this.text_Nom.setText(toEdit.getNom());
+		this.entprnr = toEdit;
 	}
 
 	/**
@@ -94,6 +96,45 @@ public class FEN_Ajout_Entrepreneur extends JInternalFrame {
 		text_Nom.setColumns(10);
 		text_Nom.setBounds(35, 34, 190, 19);
 		getContentPane().add(text_Nom);
+
+		this.controlleur = new GestionAjoutEntrepreneur(this);
+		btn_Annuler.addActionListener(controlleur);
+		btn_Valider.addActionListener(controlleur);
 	}
 
+	public boolean isEntrepreuneurSet() {
+		return this.entprnr != null;
+	}
+
+	public GestionAjoutEntrepreneur getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getText_Adresse() {
+		return text_Adresse;
+	}
+
+	public JTextField getText_Secteur_Activite() {
+		return text_Secteur_Activite;
+	}
+
+	public JTextField getText_N_SIREN() {
+		return text_N_SIREN;
+	}
+
+	public JTextField getText_IBAN() {
+		return text_IBAN;
+	}
+
+	public JLabel getLbl_N_SIREN() {
+		return lbl_N_SIREN;
+	}
+
+	public JTextField getText_Nom() {
+		return text_Nom;
+	}
+
+	public Entrepreneur getEntprnr() {
+		return entprnr;
+	}
 }

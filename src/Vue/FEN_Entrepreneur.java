@@ -1,90 +1,56 @@
 package Vue;
 
-import java.awt.EventQueue;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionEntrepreneur;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import Controlleur.Table.GestionTableEntrepreneur;
 
 public class FEN_Entrepreneur extends JInternalFrame {
-	private JTextField numeroSiren, adresse, nom, iBan, secteurActivite;
-	private JTable table_TypeFacture;
+	private JTable table_entrepreuneur;
 	private GestionEntrepreneur controlleur;
+	private JButton btn_modifier;
+	private JButton btn_supprimer;
+	private JButton btn_ajouter;
+	private JButton btn_charger;
+	private JButton annuler;
+	private GestionTableEntrepreneur gestionTable;
 
 	public FEN_Entrepreneur() {
 		setBounds(0, 0, 880, 473);
 		getContentPane().setLayout(null);
 
-		numeroSiren = new JTextField();
-		numeroSiren.setBounds(45, 112, 180, 32);
-		getContentPane().add(numeroSiren);
-		numeroSiren.setColumns(10);
+		btn_modifier = new JButton("Modifier");
+		btn_modifier.setBounds(267, 409, 89, 23);
+		getContentPane().add(btn_modifier);
 
-		adresse = new JTextField();
-		adresse.setBounds(315, 112, 180, 32);
-		getContentPane().add(adresse);
-		adresse.setColumns(10);
+		btn_ajouter = new JButton("Ajouter");
+		btn_ajouter.setBounds(367, 409, 89, 23);
+		getContentPane().add(btn_ajouter);
 
-		nom = new JTextField();
-		nom.setBounds(45, 243, 180, 32);
-		getContentPane().add(nom);
-		nom.setColumns(10);
+		btn_supprimer = new JButton("Supprimer");
+		btn_supprimer.setBounds(467, 409, 89, 23);
+		getContentPane().add(btn_supprimer);
 
-		iBan = new JTextField();
-		iBan.setBounds(315, 243, 180, 32);
-		getContentPane().add(iBan);
-		iBan.setColumns(10);
+		btn_charger = new JButton("Charger");
+		btn_charger.setBounds(567, 409, 89, 23);
+		getContentPane().add(btn_charger);
 
-		JLabel lblnumero = new JLabel("Num�ro: ");
-		lblnumero.setBounds(45, 92, 80, 20);
-		getContentPane().add(lblnumero);
-
-		JLabel lblAdresse = new JLabel("Adresse: ");
-		lblAdresse.setBounds(315, 92, 80, 20);
-		getContentPane().add(lblAdresse);
-
-		JLabel lblSurface = new JLabel("Surface: ");
-		lblSurface.setBounds(45, 224, 80, 20);
-		getContentPane().add(lblSurface);
-
-		JLabel lblNom = new JLabel("Nom: ");
-		lblNom.setBounds(315, 224, 80, 20);
-		getContentPane().add(lblNom);
-
-		JButton valider = new JButton("Valider");
-		valider.setBounds(567, 409, 89, 23);
-		getContentPane().add(valider);
-
-		JButton annuler = new JButton("Annuler");
+		annuler = new JButton("Annuler");
 		annuler.setBounds(698, 409, 89, 23);
 		getContentPane().add(annuler);
 
-		secteurActivite = new JTextField();
-		secteurActivite.setBounds(178, 357, 180, 32);
-		getContentPane().add(secteurActivite);
-		secteurActivite.setColumns(10);
-
-		JLabel lblsecteur = new JLabel("Secteur: ");
-		lblsecteur.setBounds(178, 338, 80, 20);
-		getContentPane().add(lblsecteur);
-
 		JScrollPane spFactureExistante = new JScrollPane();
 		spFactureExistante.setEnabled(false);
-		spFactureExistante.setBounds(514, 31, 340, 358);
+		spFactureExistante.setBounds(20, 20, 840, 300);
 		getContentPane().add(spFactureExistante);
 
-		table_TypeFacture = new JTable();
-		table_TypeFacture.setModel(new DefaultTableModel(
+		table_entrepreuneur = new JTable();
+		table_entrepreuneur.setModel(new DefaultTableModel(
 				new Object[][] {
 						{ null, null, null, null, null, },
 						{ null, null, null, null, null, },
@@ -115,11 +81,25 @@ public class FEN_Entrepreneur extends JInternalFrame {
 				new String[] {
 						"numeroSiren", "adresse", "nom", "iBan", "secteurActivite",
 				}));
-		spFactureExistante.setViewportView(table_TypeFacture);
+		spFactureExistante.setViewportView(table_entrepreuneur);
 		this.controlleur = new GestionEntrepreneur(this);
-		valider.addActionListener(controlleur);
+		btn_ajouter.addActionListener(controlleur);
 		annuler.addActionListener(controlleur);
+		btn_charger.addActionListener(controlleur);
+		btn_supprimer.addActionListener(controlleur);
+		btn_modifier.addActionListener(controlleur);
 
+		this.gestionTable = new GestionTableEntrepreneur(table_entrepreuneur, controlleur);
+		this.getTable_entrepreuneur().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.getTable_entrepreuneur().getSelectionModel().addListSelectionListener(gestionTable);
+	}
+
+	public JButton[] getChangeableButtons() {
+		return new JButton[] { this.btn_supprimer, this.btn_modifier };
+	}
+
+	public JTable getTable_entrepreuneur() {
+		return this.table_entrepreuneur;
 	}
 
 }
