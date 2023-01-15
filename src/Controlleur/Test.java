@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import Modele.Caution;
 import Modele.DAO.DaoCaution;
 import Modele.DAO.DaoImmeuble;
+import Modele.DAO.DaoLocataire;
 
 public class Test {
     public static void main(String[] args) {
         try {
             CictOracleDataSource.creerAcces("hr", "iutinfo");
-            DaoImmeuble dao = new DaoImmeuble();
-            System.out.println(dao.findById(null, "10B"));
+            DaoLocataire dao = new DaoLocataire();
+            System.out.println(dao.findByLogement("01"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

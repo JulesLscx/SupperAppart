@@ -1,14 +1,18 @@
 package Modele.DAO;
 
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import Controlleur.CictOracleDataSource;
 import Modele.Locataire;
 import Modele.DAO.Requete.Requete;
+import oracle.jdbc.OracleType;
+import oracle.jdbc.OracleTypes;
 
 public class DaoLocataire extends DaoModele<Locataire> {
 
@@ -89,6 +93,22 @@ public class DaoLocataire extends DaoModele<Locataire> {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
                 .prepareStatement("select * from locataire_courants");
         return super.select(prSt);
+    }
+
+    public Collection<Locataire> findByLogement(String num) throws SQLException {
+        String sql = "{? = call LOCATAIRE_LOGEMENT(?)}";
+        ResultSet rs;
+        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+        prSt.registerOutParameter(1, OracleTypes.CURSOR);
+        prSt.setString(2, num);
+        prSt.execute();
+        rs = (ResultSet) prSt.getObject(1);
+        Collection<Locataire> lesLocataires = new ArrayList<Locataire>();
+        while (rs.next()) {
+            lesLocataires.add(creerInstance(rs));
+        }
+
+        return lesLocataires;
     }
 
 }
