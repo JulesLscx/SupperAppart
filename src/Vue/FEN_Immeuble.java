@@ -7,6 +7,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 
 import Controlleur.GestionImmeuble;
 import Controlleur.Table.GestionTableImmeuble;
@@ -155,7 +156,7 @@ public class FEN_Immeuble extends JInternalFrame {
 		btnAjouter.addActionListener(controlleur);
 		btnSupprimer.addActionListener(controlleur);
 
-		this.gestionTable = new GestionTableImmeuble(table_AssuranceImmeuble, controlleur);
+		this.gestionTable = new GestionTableImmeuble(table_Logement, table_AssuranceImmeuble, controlleur);
 		this.table_Immeuble.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.table_Immeuble.getSelectionModel().addListSelectionListener(gestionTable);
 
@@ -167,5 +168,33 @@ public class FEN_Immeuble extends JInternalFrame {
 
 	public JButton[] getChangeableButtons() {
 		return new JButton[] { this.btnModifier, this.btnSupprimer };
+	}
+
+	public GestionImmeuble getControlleur() {
+		return controlleur;
+	}
+
+	public JTable getTable_AssuranceImmeuble() {
+		return table_AssuranceImmeuble;
+	}
+
+	public JTable getTable_Logement() {
+		return table_Logement;
+	}
+
+	public JButton getBtnCharger() {
+		return btnCharger;
+	}
+
+	public JButton getBtnSupprimer() {
+		return btnSupprimer;
+	}
+
+	public JButton getBtnModifier() {
+		return btnModifier;
+	}
+
+	public GestionTableImmeuble getGestionTable() {
+		return gestionTable;
 	}
 }

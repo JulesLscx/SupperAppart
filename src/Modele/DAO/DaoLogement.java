@@ -1,8 +1,10 @@
 package Modele.DAO;
 
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import Controlleur.CictOracleDataSource;
 import Modele.Immeuble;
 import Modele.Logement;
 import Modele.DAO.Requete.Requete;
+import oracle.jdbc.OracleTypes;
 
 public class DaoLogement extends DaoModele<Logement> {
 
@@ -88,6 +91,21 @@ public class DaoLogement extends DaoModele<Logement> {
         ResultSet rs = prSt.getResultSet();
         rs.next();
         return creerInstance(rs);
+    }
+
+    public Collection<Logement> findByImmeuble(String id_immeuble) throws SQLException {
+        String sql = "{? = call LOGEMENT_IMMEUBLE(?)}";
+        ResultSet rs;
+        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+        prSt.registerOutParameter(1, OracleTypes.CURSOR);
+        prSt.setString(2, id_immeuble);
+        prSt.execute();
+        rs = (ResultSet) prSt.getObject(1);
+        Collection<Logement> lesLogements = new ArrayList<Logement>();
+        while (rs.next()) {
+            lesLogements.add(creerInstance(rs));
+        }
+        return lesLogements;
     }
 
 }
