@@ -46,7 +46,7 @@ public class DaoLocataire extends DaoModele<Locataire> {
     @Override
     public void delete(Locataire tupple) throws SQLException {
         PreparedStatement st = CictOracleDataSource.getLaConnection()
-                .prepareStatement("DELETE FROM Locatare WHERE NLocataire = ?");
+                .prepareStatement("DELETE FROM Locataire WHERE NLocataire = ?");
         st.setString(1, tupple.getnLocataire());
         st.executeUpdate();
 
@@ -79,14 +79,19 @@ public class DaoLocataire extends DaoModele<Locataire> {
 
     @Override
     public List<Locataire> find(Requete<Locataire> req, Locataire donnee) throws SQLException {
-        // TODO Auto-generated method stub
+        // TODO
         return null;
     }
 
     @Override
     public Locataire findById(Requete<Locataire> req, String... id) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        PreparedStatement st = CictOracleDataSource.getLaConnection()
+                .prepareStatement("Select * FROM Locataire WHERE NLocataire = ?");
+        st.setString(1, id[0]);
+        st.execute();
+        ResultSet rs = st.getResultSet();
+        rs.next();
+        return creerInstance(rs);
     }
 
     public Collection<Locataire> findCurrentLoc() throws SQLException {
@@ -108,6 +113,19 @@ public class DaoLocataire extends DaoModele<Locataire> {
             lesLocataires.add(creerInstance(rs));
         }
 
+        return lesLocataires;
+    }
+
+    public List<Locataire> findByContrat(String id_contrat) throws SQLException {
+        List<Locataire> lesLocataires = new ArrayList<Locataire>();
+        String sql = "Select nLocataire from signer where id_contrat = ?";
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(sql);
+        prSt.setNString(1, id_contrat);
+        prSt.execute();
+        ResultSet rs = prSt.getResultSet();
+        while (rs.next()) {
+            lesLocataires.add(this.findById(null, rs.getNString(1)));
+        }
         return lesLocataires;
     }
 

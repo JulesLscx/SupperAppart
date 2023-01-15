@@ -1,6 +1,7 @@
 package Modele;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Contrat {
     /**
@@ -8,7 +9,7 @@ public class Contrat {
      * Id_Contrat VARCHAR2(50), Prise_Effet DATE NOT NULL, Durée INT NOT NULL,
      * Charges DECIMAL(8, 2) NOT NULL, Loyer DECIMAL(8, 2) NOT NULL, Date_Revision
      * DATE, Périodicité VARCHAR2(50), Date_Paiement DATE, Paiement VARCHAR2(50),
-     * Date_EDL DATE, EDL BFILE, Montant_Caution DECIMAL(8, 2), Fin_Contrat DATE,
+     * Date_EDL DATE, Montant_Caution DECIMAL(8, 2), Fin_Contrat DATE,
      * Num VARCHAR2(50) NOT NULL, N_SIREN VARCHAR2(9), Id_Caution VARCHAR2(50),
      * PRIMARY KEY(Id_Contrat), FOREIGN KEY(Num) REFERENCES Logement(Num), FOREIGN
      * KEY(N_SIREN) REFERENCES Entrepreneur(N_SIREN), FOREIGN KEY(Id_Caution)
@@ -33,6 +34,7 @@ public class Contrat {
     private Logement num;
     private Entrepreneur n_siren;
     private Caution id_caution;
+    private List<Locataire> signer;
 
     public Contrat(String id_contrat, Date prise_effet, int duree, float charges, float loyer, Date date_revision,
             String periodicite, Date date_paiement, String paiement, Date date_edl, float montant_caution,
@@ -46,7 +48,12 @@ public class Contrat {
         if (duree <= 0)
             throw new IllegalArgumentException("La duree doit etre strictement supérieur à 0");
         if (charges < 0)
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException(
+                    "Le montant des charges mensuels doit obligatoirement etre renseigné et supérieur à 0");
+        if (loyer < 0)
+            throw new IllegalArgumentException(
+                    "Le montant du loyer mensuel doit obligatoirement etre renseigné et supérieur à 0");
+
         this.id_contrat = id_contrat;
         this.prise_effet = prise_effet;
         this.duree = duree;
@@ -62,6 +69,14 @@ public class Contrat {
         this.num = num;
         this.n_siren = n_siren;
         this.id_caution = id_caution;
+    }
+
+    public List<Locataire> getSigner() {
+        return signer;
+    }
+
+    public void setSigner(List<Locataire> signer) {
+        this.signer = signer;
     }
 
     public String getId_contrat() {

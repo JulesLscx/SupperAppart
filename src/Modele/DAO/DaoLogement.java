@@ -88,6 +88,7 @@ public class DaoLogement extends DaoModele<Logement> {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
                 .prepareStatement("Select * from Logement where num = ?");
         prSt.setNString(1, id[0]);
+        prSt.execute();
         ResultSet rs = prSt.getResultSet();
         rs.next();
         return creerInstance(rs);

@@ -89,6 +89,7 @@ public class DaoCaution extends DaoModele<Caution> {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
                 .prepareStatement("Select * from caution where id_caution = ?");
         prSt.setNString(1, id[0]);
+        prSt.execute();
         ResultSet rs = prSt.getResultSet();
         rs.next();
         return creerInstance(rs);
