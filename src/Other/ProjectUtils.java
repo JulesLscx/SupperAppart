@@ -9,7 +9,7 @@ import oracle.jdbc.OracleTypes;
 
 public class ProjectUtils {
     public static Date conversionDate(String date) {
-        if (date == null || !date.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")) {
+        if (date == null) {
             return null;
         }
         Date dateContrat = null;

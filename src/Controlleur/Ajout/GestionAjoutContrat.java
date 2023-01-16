@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 import Modele.Caution;
 import Modele.Contrat;
@@ -64,7 +65,7 @@ public class GestionAjoutContrat implements ActionListener {
 		Date date_revision = ProjectUtils.conversionDate(this.ac.getText_Date_Revision().getText());
 		String periodicite = this.ac.getText_Periodicite().getText();
 		Date date_paiement = ProjectUtils.conversionDate(this.ac.getText_Date_Paiement().getText());
-		String paiement = this.ac.getText_Paiement().getText();
+		float paiement = Float.valueOf(this.ac.getText_Paiement().getText());
 		Date date_edl = ProjectUtils.conversionDate(this.ac.getText_Date_EDL().getText());
 		float montant_caution = Float.valueOf(this.ac.getText_Montant_Caution().getText());
 		Date fin_contrat = ProjectUtils.conversionDate(this.ac.getText_Fin_Contrat().getText());
@@ -142,7 +143,7 @@ public class GestionAjoutContrat implements ActionListener {
 		Date date_revision = ProjectUtils.conversionDate(this.ac.getText_Date_Revision().getText());
 		String periodicite = this.ac.getText_Periodicite().getText();
 		Date date_paiement = ProjectUtils.conversionDate(this.ac.getText_Date_Paiement().getText());
-		String paiement = this.ac.getText_Paiement().getText();
+		float paiement = Float.valueOf(this.ac.getText_Paiement().getText());
 		Date date_edl = ProjectUtils.conversionDate(this.ac.getText_Date_EDL().getText());
 		float montant_caution = Float.valueOf(this.ac.getText_Montant_Caution().getText());
 		Date fin_contrat = ProjectUtils.conversionDate(this.ac.getText_Fin_Contrat().getText());
@@ -198,5 +199,12 @@ public class GestionAjoutContrat implements ActionListener {
 			return;
 		}
 
+	}
+
+	public void ecrireDate(JTextField field, Date laDate) {
+		String tmp = laDate.toString();
+		String[] letemps = tmp.split("-", 3);
+		String result = letemps[2] + "/" + letemps[1] + "/" + letemps[0];
+		field.setText(result);
 	}
 }

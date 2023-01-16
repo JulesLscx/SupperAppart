@@ -8,6 +8,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionContrat;
+import Controlleur.Table.GestionTableContrat;
 
 public class FEN_Contrat extends JInternalFrame {
 	private JTable table_Contrat;
@@ -19,6 +20,7 @@ public class FEN_Contrat extends JInternalFrame {
 	private JButton btnAjouter;
 	private JButton btnSupprimer;
 	private JButton btn_charger;
+	private GestionTableContrat gestionTable;
 
 	public FEN_Contrat() {
 		setBounds(0, 0, 1150, 650);
@@ -35,32 +37,33 @@ public class FEN_Contrat extends JInternalFrame {
 
 		table_Contrat = new JTable();
 		table_Contrat.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, "", null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"N\u00B0 Contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision", "P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant caution", "Fin contrat", "Logement", "Entrepreuneur", "Caution"
-			}
-		));
+				new Object[][] {
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, "", null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+				},
+				new String[] {
+						"N\u00B0 Contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision",
+						"P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant caution",
+						"Fin contrat", "Logement", "Entrepreuneur", "Caution"
+				}));
 		table_Contrat.getColumnModel().getColumn(0).setPreferredWidth(65);
 		table_Contrat.getColumnModel().getColumn(1).setPreferredWidth(70);
 		table_Contrat.getColumnModel().getColumn(2).setPreferredWidth(65);
@@ -106,12 +109,12 @@ public class FEN_Contrat extends JInternalFrame {
 		table_Locataire = new JTable();
 		table_Locataire.setModel(new DefaultTableModel(
 				new Object[][] {
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
 				},
 				new String[] {
-						"N° locataire", "Nom", "Pr\u00E9nom", "T\u00E9l\u00E9phone"
+						"N° locataire", "Nom", "Pr\u00E9nom", "T\u00E9l\u00E9phone", "VEVE"
 				}));
 		table_Locataire.getColumnModel().getColumn(0).setPreferredWidth(99);
 		table_Locataire.getColumnModel().getColumn(1).setPreferredWidth(55);
@@ -151,6 +154,8 @@ public class FEN_Contrat extends JInternalFrame {
 		btnModifier.addActionListener(controlleur);
 		btn_charger.addActionListener(controlleur);
 
+		this.gestionTable = new GestionTableContrat(controlleur);
+		this.getTable_Contrat().getSelectionModel().addListSelectionListener(gestionTable);
 	}
 
 	public JTable getTable_Contrat() {

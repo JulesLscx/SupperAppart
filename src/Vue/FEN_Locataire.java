@@ -13,6 +13,11 @@ import Controlleur.GestionLocataire;
 public class FEN_Locataire extends JInternalFrame {
 	private JTable table_Locataire;
 	private JTable table_Contrat;
+
+	public JTable getTable_Contrat() {
+		return table_Contrat;
+	}
+
 	private GestionLocataire controlleur;
 	private JTable table_Documents;
 	private JCheckBox filter;
