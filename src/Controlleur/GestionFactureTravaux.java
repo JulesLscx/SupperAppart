@@ -36,7 +36,7 @@ public class GestionFactureTravaux implements ActionListener {
 				this.displayAll();
 				break;
 			case "Ajouter":
-				FEN_Ajout_FactureTravauxImmeuble new_fen = new FEN_Ajout_FactureTravauxImmeuble();
+				FEN_Ajout_FactureTravauxLogement new_fen = new FEN_Ajout_FactureTravauxLogement();
 				this.ai.getLayeredPane().add(new_fen);
 				new_fen.setVisible(true);
 				break;

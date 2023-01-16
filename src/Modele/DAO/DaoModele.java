@@ -26,6 +26,7 @@ public abstract class DaoModele<T> implements DaoT<T> {
             result.add(value);
         }
         prSt.close();
+        curseur.close();
         return result;
     }
 

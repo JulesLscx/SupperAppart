@@ -1,6 +1,8 @@
 package Vue.Ajout;
 
 import java.awt.EventQueue;
+import java.sql.SQLException;
+import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,7 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controlleur.Ajout.GestionAjoutFactureTravauxLogement;
+import Modele.Entrepreneur;
 import Modele.Facture_Travaux_Logement;
+import Modele.Logement;
+import Modele.DAO.DaoEntrepreuneur;
+import Modele.DAO.DaoLogement;
+import Vue.FEN_Erreurs;
 
 public class FEN_Ajout_FactureTravauxLogement extends JInternalFrame {
 
@@ -29,9 +36,10 @@ public class FEN_Ajout_FactureTravauxLogement extends JInternalFrame {
 	private JLabel lbl_Entrepreneur;
 	private JTextField text_Nature;
 	private JLabel lbl_Nature;
-	private JComboBox comboBox_Entrepreneur;
-	private JComboBox comboBox_ID_Logement;
+	private JComboBox<String> comboBox_Entrepreneur;
+	private JComboBox<String> comboBox_ID_Logement;
 	private JTextField text_Num_Fac;
+	private Facture_Travaux_Logement fac;
 
 	public FEN_Ajout_FactureTravauxLogement(Facture_Travaux_Logement toEdit) {
 		init();
@@ -42,9 +50,11 @@ public class FEN_Ajout_FactureTravauxLogement extends JInternalFrame {
 		this.text_Montant_Indeductible.setText(Float.toString(toEdit.getMontant_indeductible()));
 		this.text_Date_Paiements.setText(toEdit.getDate_de_paiement().toString());
 		this.text_Nature.setText(toEdit.getNature());
-		// this.comboBox_Entrepreneur.setToolTipText(toEdit.getEntrepreneur());
-		// this.comboBox_ID_Logement.setToolTipText(toEdit.getLogement());
+		this.comboBox_Entrepreneur.setSelectedItem(toEdit.getEntrepreneur().getnSiren());
+		this.comboBox_ID_Logement.setSelectedItem(toEdit.getLogement().getNum());
 		this.text_Num_Fac.setText(toEdit.getNum_fac());
+		this.text_Num_Fac.setEditable(false);
+		this.fac = toEdit;
 	}
 
 	/**
@@ -141,11 +151,11 @@ public class FEN_Ajout_FactureTravauxLogement extends JInternalFrame {
 		lbl_Nature.setBounds(330, 20, 190, 13);
 		getContentPane().add(lbl_Nature);
 
-		comboBox_Entrepreneur = new JComboBox();
+		comboBox_Entrepreneur = new JComboBox<String>();
 		comboBox_Entrepreneur.setBounds(330, 202, 121, 19);
 		getContentPane().add(comboBox_Entrepreneur);
 
-		comboBox_ID_Logement = new JComboBox();
+		comboBox_ID_Logement = new JComboBox<String>();
 		comboBox_ID_Logement.setBounds(35, 202, 121, 19);
 		getContentPane().add(comboBox_ID_Logement);
 
@@ -153,6 +163,105 @@ public class FEN_Ajout_FactureTravauxLogement extends JInternalFrame {
 		text_Num_Fac.setColumns(10);
 		text_Num_Fac.setBounds(35, 34, 190, 19);
 		getContentPane().add(text_Num_Fac);
+		this.controlleur = new GestionAjoutFactureTravauxLogement(this);
+		btn_Annuler.addActionListener(controlleur);
+		btn_Valider.addActionListener(controlleur);
+		this.fillEntrepreneur();
+		this.fillLogement();
+	}
+
+	private void fillEntrepreneur() {
+		DaoEntrepreuneur dao = new DaoEntrepreuneur();
+		Collection<Entrepreneur> lesEnt = null;
+		try {
+			lesEnt = dao.findAll();
+		} catch (SQLException e1) {
+			new FEN_Erreurs(e1.getMessage(), this);
+		}
+		for (Entrepreneur e : lesEnt) {
+			this.comboBox_Entrepreneur.addItem(e.getnSiren());
+		}
+	}
+
+	private void fillLogement() {
+		DaoLogement dao = new DaoLogement();
+		Collection<Logement> lesEnt = null;
+		try {
+			lesEnt = dao.findAll();
+		} catch (SQLException e1) {
+			new FEN_Erreurs(e1.getMessage(), this);
+		}
+		for (Logement i : lesEnt) {
+			this.comboBox_ID_Logement.addItem(i.getNum());
+		}
+	}
+
+	public boolean isFacSet() {
+		return this.fac != null;
+	}
+
+	public GestionAjoutFactureTravauxLogement getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getText_Num_Cheque() {
+		return text_Num_Cheque;
+	}
+
+	public JTextField getText_Reduction() {
+		return text_Reduction;
+	}
+
+	public JTextField getText_Prix() {
+		return text_Prix;
+	}
+
+	public JTextField getText_Ordre_Cheque() {
+		return text_Ordre_Cheque;
+	}
+
+	public JLabel getLbl_Date_Paiements() {
+		return lbl_Date_Paiements;
+	}
+
+	public JTextField getText_Montant_Indeductible() {
+		return text_Montant_Indeductible;
+	}
+
+	public JLabel getLbl_Montant_Indeductible() {
+		return lbl_Montant_Indeductible;
+	}
+
+	public JTextField getText_Date_Paiements() {
+		return text_Date_Paiements;
+	}
+
+	public JLabel getLbl_Entrepreneur() {
+		return lbl_Entrepreneur;
+	}
+
+	public JTextField getText_Nature() {
+		return text_Nature;
+	}
+
+	public JLabel getLbl_Nature() {
+		return lbl_Nature;
+	}
+
+	public JComboBox<String> getComboBox_Entrepreneur() {
+		return comboBox_Entrepreneur;
+	}
+
+	public JComboBox<String> getComboBox_ID_Logement() {
+		return comboBox_ID_Logement;
+	}
+
+	public JTextField getText_Num_Fac() {
+		return text_Num_Fac;
+	}
+
+	public Facture_Travaux_Logement getFac() {
+		return fac;
 	}
 
 }

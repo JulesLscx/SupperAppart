@@ -20,7 +20,7 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
     @Override
     public void create(Facture_Travaux_Logement tupple) throws SQLException {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
-                .prepareCall("call INSERTFACTURETRAVAUX(?,?,?,?,?,?,?)");
+                .prepareCall("call INSERTFACTURETRAVAUX(?,?,?,?,?,?,?,?,?,?)");
         prSt.setNString(1, tupple.getNum_fac());
         prSt.setNString(2, tupple.getNature());
         prSt.setFloat(3, tupple.getPrix());
