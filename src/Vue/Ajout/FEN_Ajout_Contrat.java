@@ -83,11 +83,11 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		setBounds(100, 100, 611, 414);
 		getContentPane().setLayout(null);
 
-		JLabel lbl_Duree = new JLabel("Duree :");
+		JLabel lbl_Duree = new JLabel("Duree : *");
 		lbl_Duree.setBounds(330, 62, 190, 13);
 		getContentPane().add(lbl_Duree);
 
-		JLabel lbl_ID_Contrat = new JLabel("Identifiant contrat : ");
+		JLabel lbl_ID_Contrat = new JLabel("Identifiant contrat : * ");
 		lbl_ID_Contrat.setBounds(35, 20, 190, 13);
 		getContentPane().add(lbl_ID_Contrat);
 
@@ -96,7 +96,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		text_Prise_effet.setBounds(35, 76, 190, 19);
 		getContentPane().add(text_Prise_effet);
 
-		JLabel lbl_Loyer = new JLabel("Loyer :");
+		JLabel lbl_Loyer = new JLabel("Loyer : *");
 		lbl_Loyer.setBounds(35, 146, 190, 13);
 		getContentPane().add(lbl_Loyer);
 
@@ -105,7 +105,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		text_Loyer.setBounds(35, 160, 190, 19);
 		getContentPane().add(text_Loyer);
 
-		JLabel lbl_Periodicite = new JLabel("Periodicite :");
+		JLabel lbl_Periodicite = new JLabel("Periodicite : *");
 		lbl_Periodicite.setBounds(35, 188, 190, 13);
 		getContentPane().add(lbl_Periodicite);
 
@@ -114,11 +114,11 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		text_Paiement.setBounds(35, 118, 190, 19);
 		getContentPane().add(text_Paiement);
 
-		JLabel lbl_Paiement = new JLabel("Paiement :");
+		JLabel lbl_Paiement = new JLabel("Paiement : *");
 		lbl_Paiement.setBounds(35, 104, 190, 13);
 		getContentPane().add(lbl_Paiement);
 
-		JLabel lbl_Montant_Caution = new JLabel("Montant caution :");
+		JLabel lbl_Montant_Caution = new JLabel("Montant caution : *");
 		lbl_Montant_Caution.setBounds(330, 230, 190, 13);
 		getContentPane().add(lbl_Montant_Caution);
 
@@ -127,7 +127,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		text_Periodicite.setBounds(35, 202, 190, 19);
 		getContentPane().add(text_Periodicite);
 
-		JLabel lbl_Prise_Effet = new JLabel("Prise effet :");
+		JLabel lbl_Prise_Effet = new JLabel("Prise effet : *");
 		lbl_Prise_Effet.setBounds(35, 62, 190, 13);
 		getContentPane().add(lbl_Prise_Effet);
 
@@ -136,7 +136,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		text_Duree.setBounds(330, 76, 190, 19);
 		getContentPane().add(text_Duree);
 
-		lbl_Charges = new JLabel("Charges :");
+		lbl_Charges = new JLabel("Charges : *");
 		lbl_Charges.setBounds(330, 146, 190, 13);
 		getContentPane().add(lbl_Charges);
 
@@ -149,7 +149,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		text_Date_Paiement.setBounds(330, 118, 190, 19);
 		getContentPane().add(text_Date_Paiement);
 
-		lbl_Date_Paiement = new JLabel("Date paiement :");
+		lbl_Date_Paiement = new JLabel("Date paiement : *");
 		lbl_Date_Paiement.setBounds(330, 104, 190, 13);
 		getContentPane().add(lbl_Date_Paiement);
 
