@@ -48,6 +48,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 	private JLabel lbl_Fin_Contrat;
 	private JComboBox<String> comboBox_ID_Caution;
 	private JTextField text_ID_Contrat;
+	private Contrat contrat;
 
 	public FEN_Ajout_Contrat(Contrat toEdit) {
 		init();
@@ -68,6 +69,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		this.comboBox_Num_Logement.setSelectedItem(toEdit.getNum().getNum());
 		this.comboBox_Num_Siren.setSelectedItem(toEdit.getN_siren().getnSiren());
 		this.comboBox_ID_Caution.setSelectedItem(toEdit.getId_caution().getId_Caution());
+		this.contrat = toEdit;
 	}
 
 	/**
@@ -358,5 +360,9 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 
 	public JTextField getText_ID_Contrat() {
 		return text_ID_Contrat;
+	}
+
+	public boolean isContratSet() {
+		return this.contrat != null;
 	}
 }

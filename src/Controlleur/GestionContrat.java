@@ -41,10 +41,10 @@ public class GestionContrat implements ActionListener {
 				new_fen.setVisible(true);
 				break;
 			case "Modifier":
-				// FEN_Ajout_Contrat new_fen_edition = new FEN_Ajout_Contrat(
-				// this.lireLigneTable(this.ai.getTable_Contrat().getSelectedRow()));
-				// this.ai.getLayeredPane().add(new_fen_edition);
-				// new_fen_edition.setVisible(true);
+				FEN_Ajout_Contrat new_fen_edition = new FEN_Ajout_Contrat(
+						this.lireLigneTable(this.ai.getTable_Contrat().getSelectedRow()));
+				this.ai.getLayeredPane().add(new_fen_edition);
+				new_fen_edition.setVisible(true);
 				break;
 			case "Supprimer":
 				this.delete();
