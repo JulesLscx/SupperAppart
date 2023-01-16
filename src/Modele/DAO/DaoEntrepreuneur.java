@@ -80,9 +80,12 @@ public class DaoEntrepreuneur extends DaoModele<Entrepreneur> {
 
     @Override
     public Entrepreneur findById(Requete<Entrepreneur> req, String... id) throws SQLException {
-        PreparedStatement ps = req.requete();
-        req.setParametres(ps, id);
+        PreparedStatement ps = CictOracleDataSource.getLaConnection()
+                .prepareStatement("select * from entrepreneur where n_siren = ?");
+        ps.setNString(1, id[0]);
+        ps.execute();
         ResultSet rs = ps.getResultSet();
+        rs.next();
         return creerInstance(rs);
     }
 }

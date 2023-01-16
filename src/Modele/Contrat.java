@@ -27,7 +27,7 @@ public class Contrat {
     private Date date_revision;
     private String periodicite;
     private Date date_paiement;
-    private String paiement;
+    private float paiement;
     private Date date_edl;
     private float montant_caution;
     private Date fin_contrat;
@@ -37,7 +37,7 @@ public class Contrat {
     private List<Locataire> signer;
 
     public Contrat(String id_contrat, Date prise_effet, int duree, float charges, float loyer, Date date_revision,
-            String periodicite, Date date_paiement, String paiement, Date date_edl, float montant_caution,
+            String periodicite, Date date_paiement, float paiement, Date date_edl, float montant_caution,
             Date fin_contrat, Logement num, Entrepreneur n_siren, Caution id_caution) {
         if (num == null)
             throw new IllegalArgumentException("Le logement est obligatoire pour le contrat");
@@ -143,11 +143,11 @@ public class Contrat {
         this.date_paiement = date_paiement;
     }
 
-    public String getPaiement() {
+    public float getPaiement() {
         return paiement;
     }
 
-    public void setPaiement(String paiement) {
+    public void setPaiement(float paiement) {
         this.paiement = paiement;
     }
 

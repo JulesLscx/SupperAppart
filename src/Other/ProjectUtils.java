@@ -8,16 +8,21 @@ import Controlleur.CictOracleDataSource;
 import oracle.jdbc.OracleTypes;
 
 public class ProjectUtils {
-    public static Date conversionDate(String date) throws SQLException {
+    public static Date conversionDate(String date) {
         if (date == null || !date.matches("\\d\\d/\\d\\d/\\d\\d\\d\\d")) {
             return null;
         }
-        String sql = "{? = call CONVERSIONDATE(?)}";
-        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
-        prSt.registerOutParameter(1, OracleTypes.DATE);
-        prSt.setString(2, date);
-        prSt.execute();
-        Date dateContrat = prSt.getDate(1);
+        Date dateContrat = null;
+        try {
+            String sql = "{? = call CONVERSIONDATE(?)}";
+            CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+            prSt.registerOutParameter(1, OracleTypes.DATE);
+            prSt.setString(2, date);
+            prSt.execute();
+            dateContrat = prSt.getDate(1);
+        } catch (SQLException e) {
+        }
+
         return dateContrat;
     }
 }

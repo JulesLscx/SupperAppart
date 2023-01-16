@@ -39,13 +39,33 @@ public class DaoContrat extends DaoModele<Contrat> {
         prSt.setInt(3, tupple.getDuree());
         prSt.setFloat(4, tupple.getCharges());
         prSt.setFloat(5, tupple.getLoyer());
-        prSt.setDate(6, tupple.getDate_revision());
-        prSt.setNString(7, tupple.getPeriodicite());
-        prSt.setDate(8, tupple.getDate_paiement());
-        prSt.setNString(9, tupple.getPaiement());
-        prSt.setDate(10, tupple.getDate_edl());
+        if (tupple.getDate_revision() != null) {
+            prSt.setDate(6, tupple.getDate_revision());
+        } else {
+            prSt.setNull(6, OracleTypes.DATE);
+        }
+        if (tupple.getPeriodicite() != null) {
+            prSt.setNString(7, tupple.getPeriodicite());
+        } else {
+            prSt.setNull(7, OracleTypes.VARCHAR);
+        }
+        if (tupple.getDate_paiement() != null) {
+            prSt.setDate(8, tupple.getDate_paiement());
+        } else {
+            prSt.setNull(8, OracleTypes.DATE);
+        }
+        prSt.setFloat(9, tupple.getPaiement());
+        if (tupple.getDate_edl() != null) {
+            prSt.setDate(10, tupple.getDate_edl());
+        } else {
+            prSt.setNull(10, OracleTypes.DATE);
+        }
         prSt.setFloat(11, tupple.getMontant_caution());
-        prSt.setDate(12, tupple.getFin_contrat());
+        if (tupple.getFin_contrat() != null) {
+            prSt.setDate(12, tupple.getFin_contrat());
+        } else {
+            prSt.setNull(12, OracleTypes.DATE);
+        }
         prSt.setNString(13, tupple.getNum().getNum());
         if (tupple.getN_siren() == null) {
             prSt.setNull(14, OracleTypes.VARCHAR);
@@ -81,7 +101,7 @@ public class DaoContrat extends DaoModele<Contrat> {
         prSt.setDate(6, tupple.getDate_revision());
         prSt.setNString(7, tupple.getPeriodicite());
         prSt.setDate(8, tupple.getDate_paiement());
-        prSt.setNString(9, tupple.getPaiement());
+        prSt.setFloat(9, tupple.getPaiement());
         prSt.setDate(10, tupple.getDate_edl());
         prSt.setFloat(11, tupple.getMontant_caution());
         prSt.setDate(12, tupple.getFin_contrat());
@@ -125,7 +145,7 @@ public class DaoContrat extends DaoModele<Contrat> {
         Date date_revision = curseur.getDate(6);
         String periodicite = curseur.getNString(7);
         Date date_paiement = curseur.getDate(8);
-        String paiement = curseur.getNString(9);
+        float paiement = curseur.getFloat(9);
         Date date_edl = curseur.getDate(10);
         float montant_caution = curseur.getFloat(11);
         Date fin_contrat = curseur.getDate(12);
