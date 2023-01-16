@@ -154,7 +154,7 @@ public class FEN_Contrat extends JInternalFrame {
 		btnModifier.addActionListener(controlleur);
 		btn_charger.addActionListener(controlleur);
 
-		this.gestionTable = new GestionTableContrat(controlleur);
+		this.gestionTable = new GestionTableContrat(controlleur, table_Caution, table_Locataire);
 		this.getTable_Contrat().getSelectionModel().addListSelectionListener(gestionTable);
 	}
 

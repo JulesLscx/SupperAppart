@@ -77,11 +77,11 @@ public class FEN_Accueil extends JFrame {
 		mnFactures.addActionListener(controlleur);
 		menuBar.add(mnFactures);
 
-		JMenuItem mntmFacture_Immeuble = new JMenuItem("Facture Immeuble");
+		JMenuItem mntmFacture_Immeuble = new JMenuItem("Facture Travaux Immeuble");
 		mntmFacture_Immeuble.addActionListener(controlleur);
 		mnFactures.add(mntmFacture_Immeuble);
 
-		JMenuItem mntmFacture_Travaux = new JMenuItem("Facture Travaux");
+		JMenuItem mntmFacture_Travaux = new JMenuItem("Facture Travaux Logement");
 		mntmFacture_Travaux.addActionListener(controlleur);
 		mnFactures.add(mntmFacture_Travaux);
 

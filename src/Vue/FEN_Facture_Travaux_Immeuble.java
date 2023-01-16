@@ -11,6 +11,11 @@ import Controlleur.GestionTravauxImmeuble;
 
 public class FEN_Facture_Travaux_Immeuble extends JInternalFrame {
 	private JTable table_TravauxImmeuble;
+
+	public JTable getTable_TravauxImmeuble() {
+		return table_TravauxImmeuble;
+	}
+
 	private GestionTravauxImmeuble controlleur;
 	private JTable table_Entrepreneur;
 	private JButton btnSupprimer;
@@ -21,9 +26,9 @@ public class FEN_Facture_Travaux_Immeuble extends JInternalFrame {
 		setBounds(0, 0, 968, 473);
 		getContentPane().setLayout(null);
 
-		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(129, 409, 119, 23);
-		getContentPane().add(btnValider);
+		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.setBounds(129, 409, 119, 23);
+		getContentPane().add(btnAjouter);
 
 		JButton annuler = new JButton("Annuler");
 		annuler.setBounds(659, 409, 119, 23);
@@ -96,16 +101,20 @@ public class FEN_Facture_Travaux_Immeuble extends JInternalFrame {
 		getContentPane().add(btnSupprimer);
 
 		btnCharger = new JButton("Charger");
-		btnCharger.setBounds(490, 410, 119, 23);
+		btnCharger.setBounds(590, 410, 119, 23);
 		getContentPane().add(btnCharger);
 
 		JLabel lblEntrepreneur = new JLabel("Entrepreneur");
 		lblEntrepreneur.setBounds(22, 245, 95, 13);
 		getContentPane().add(lblEntrepreneur);
 		this.controlleur = new GestionTravauxImmeuble(this);
-		btnValider.addActionListener(controlleur);
+		btnAjouter.addActionListener(controlleur);
 		annuler.addActionListener(controlleur);
 		btnModifier.addActionListener(controlleur);
 		btnSupprimer.addActionListener(controlleur);
+	}
+
+	public JButton[] getChangeableButtons() {
+		return new JButton[] { btnModifier, btnSupprimer };
 	}
 }

@@ -153,7 +153,7 @@ public class GestionPrincipale implements ActionListener {
 					re.setVisible(true);
 				}
 				break;
-			case "Facture Travaux":
+			case "Facture Travaux Logement":
 				if (!this.pr.getOuverte()) {
 					this.pr.switchOuverte();
 					FEN_Facture_Travaux_Logement tr = new FEN_Facture_Travaux_Logement();
@@ -162,7 +162,7 @@ public class GestionPrincipale implements ActionListener {
 					tr.setVisible(true);
 				}
 				break;
-			case "Travaux Immeuble":
+			case "Facture Travaux Immeuble":
 				if (!this.pr.getOuverte()) {
 					this.pr.switchOuverte();
 					FEN_Facture_Travaux_Immeuble tri = new FEN_Facture_Travaux_Immeuble();
