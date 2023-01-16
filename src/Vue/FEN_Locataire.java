@@ -21,7 +21,6 @@ public class FEN_Locataire extends JInternalFrame {
 	}
 
 	private GestionLocataire controlleur;
-	private JTable table_Documents;
 	private JCheckBox filter;
 	private JButton btnCharger;
 	private JButton btnSpprimer;
@@ -82,32 +81,33 @@ public class FEN_Locataire extends JInternalFrame {
 
 		table_Contrat = new JTable();
 		table_Contrat.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"N\u00B0 contrat", "Prise effet", "Dur\u00E9e", "Charges", "Loyer", "Date r\u00E9vision", "P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant caution", "Fin contrat", "Logement"
-			}
-		));
+				new Object[][] {
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
+				},
+				new String[] {
+						"N\u00B0 contrat", "Prise effet", "Dur\u00E9e", "Charges", "Loyer", "Date r\u00E9vision",
+						"P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant caution",
+						"Fin contrat", "Logement"
+				}));
 		table_Contrat.getColumnModel().getColumn(0).setPreferredWidth(65);
 		table_Contrat.getColumnModel().getColumn(1).setPreferredWidth(65);
 		table_Contrat.getColumnModel().getColumn(2).setPreferredWidth(65);

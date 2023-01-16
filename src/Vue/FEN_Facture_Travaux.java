@@ -16,24 +16,7 @@ public class FEN_Facture_Travaux extends JInternalFrame {
 	private JTable table_Entrepreneur;
 	private GestionFactureTravaux controlleur;
 
-	/**
-	 * Launch the application.
-	 * public static void main(String[] args) {
-	 * EventQueue.invokeLater(new Runnable() {
-	 * public void run() {
-	 * try {
-	 * Facture frame = new Facture();
-	 * frame.setVisible(true);
-	 * } catch (Exception e) {
-	 * e.printStackTrace();
-	 * }
-	 * }
-	 * });
-	 * }
-	 * 
-	 * /**
-	 * Create the frame.
-	 */
+
 	public FEN_Facture_Travaux() {
 		setBounds(0, 0, 880, 473);
 		getContentPane().setLayout(null);
