@@ -1,6 +1,6 @@
 package Vue.Ajout;
 
-import java.awt.EventQueue;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,7 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controlleur.Ajout.GestionAjoutContrat;
+import Modele.Caution;
 import Modele.Contrat;
+import Modele.Entrepreneur;
+import Modele.Logement;
+import Modele.DAO.DaoCaution;
+import Modele.DAO.DaoEntrepreuneur;
+import Modele.DAO.DaoLogement;
+import Vue.FEN_Erreurs;
 
 public class FEN_Ajout_Contrat extends JInternalFrame {
 
@@ -36,10 +43,10 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 	private JLabel lbl_Num_Logement;
 	private JTextField text_Date_Revision;
 	private JLabel lbl_ID_Caution;
-	private JComboBox comboBox_Num_Logement;
-	private JComboBox comboBox_Num_Siren;
+	private JComboBox<String> comboBox_Num_Logement;
+	private JComboBox<String> comboBox_Num_Siren;
 	private JLabel lbl_Fin_Contrat;
-	private JComboBox comboBox_ID_Caution;
+	private JComboBox<String> comboBox_ID_Caution;
 	private JTextField text_ID_Contrat;
 
 	public FEN_Ajout_Contrat(Contrat toEdit) {
@@ -58,9 +65,9 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		this.text_Fin_Contrat.setText(toEdit.getFin_contrat().toString());
 		this.text_Date_EDL.setText(toEdit.getDate_edl().toString());
 		this.text_Date_Revision.setText(toEdit.getDate_revision().toString());
-		// this.comboBox_Num_Logement.setText(toEdit.getNum().getNum());
-		// this.comboBox_Num_Siren.setText(toEdit.getN_siren().getnSiren());
-		// this.comboBox_ID_Caution.setText(toEdit.getId_caution().getId_Caution());
+		this.comboBox_Num_Logement.setSelectedItem(toEdit.getNum().getNum());
+		this.comboBox_Num_Siren.setSelectedItem(toEdit.getN_siren().getnSiren());
+		this.comboBox_ID_Caution.setSelectedItem(toEdit.getId_caution().getId_Caution());
 	}
 
 	/**
@@ -74,7 +81,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		setBounds(100, 100, 611, 414);
 		getContentPane().setLayout(null);
 
-		JLabel lbl_Duree = new JLabel("Dur�e :");
+		JLabel lbl_Duree = new JLabel("Duree :");
 		lbl_Duree.setBounds(330, 62, 190, 13);
 		getContentPane().add(lbl_Duree);
 
@@ -96,7 +103,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		text_Loyer.setBounds(35, 160, 190, 19);
 		getContentPane().add(text_Loyer);
 
-		JLabel lbl_Periodicite = new JLabel("P�riodicit� :");
+		JLabel lbl_Periodicite = new JLabel("Periodicite :");
 		lbl_Periodicite.setBounds(35, 188, 190, 13);
 		getContentPane().add(lbl_Periodicite);
 
@@ -131,7 +138,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		lbl_Charges.setBounds(330, 146, 190, 13);
 		getContentPane().add(lbl_Charges);
 
-		lbl_Date_Revision = new JLabel("Date r�vision :");
+		lbl_Date_Revision = new JLabel("Date revision :");
 		lbl_Date_Revision.setBounds(330, 272, 190, 13);
 		getContentPane().add(lbl_Date_Revision);
 
@@ -193,11 +200,11 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		lbl_ID_Caution.setBounds(35, 230, 190, 13);
 		getContentPane().add(lbl_ID_Caution);
 
-		comboBox_Num_Logement = new JComboBox();
+		comboBox_Num_Logement = new JComboBox<String>();
 		comboBox_Num_Logement.setBounds(330, 34, 121, 19);
 		getContentPane().add(comboBox_Num_Logement);
 
-		comboBox_Num_Siren = new JComboBox();
+		comboBox_Num_Siren = new JComboBox<String>();
 		comboBox_Num_Siren.setBounds(35, 286, 121, 19);
 		getContentPane().add(comboBox_Num_Siren);
 
@@ -205,7 +212,7 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		lbl_Fin_Contrat.setBounds(35, 314, 190, 13);
 		getContentPane().add(lbl_Fin_Contrat);
 
-		comboBox_ID_Caution = new JComboBox();
+		comboBox_ID_Caution = new JComboBox<String>();
 		comboBox_ID_Caution.setBounds(35, 244, 121, 19);
 		getContentPane().add(comboBox_ID_Caution);
 
@@ -213,5 +220,143 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		text_ID_Contrat.setColumns(10);
 		text_ID_Contrat.setBounds(35, 34, 190, 19);
 		getContentPane().add(text_ID_Contrat);
+		getContentPane().add(text_ID_Contrat);
+		this.controlleur = new GestionAjoutContrat(this);
+		btn_Annuler.addActionListener(controlleur);
+		btn_Valider.addActionListener(controlleur);
+		this.fillComboCaution();
+		this.fillComboEntrepreuneur();
+		this.fillComboLogement();
+	}
+
+	private void fillComboCaution() {
+		DaoCaution dao = new DaoCaution();
+		try {
+			for (Caution c : dao.findAll()) {
+				this.getComboBox_ID_Caution().addItem(c.getId_Caution());
+			}
+			this.getComboBox_ID_Caution().addItem(null);
+		} catch (SQLException e) {
+			new FEN_Erreurs(e.getMessage(), this);
+		}
+	}
+
+	private void fillComboEntrepreuneur() {
+		DaoEntrepreuneur dao = new DaoEntrepreuneur();
+		try {
+			for (Entrepreneur c : dao.findAll()) {
+				this.getComboBox_Num_Siren().addItem(c.getnSiren());
+			}
+			this.getComboBox_ID_Caution().addItem(null);
+		} catch (SQLException e) {
+			new FEN_Erreurs(e.getMessage(), this);
+		}
+	}
+
+	private void fillComboLogement() {
+		DaoLogement dao = new DaoLogement();
+		try {
+			for (Logement c : dao.findAll()) {
+				this.getComboBox_Num_Logement().addItem(c.getNum());
+			}
+		} catch (SQLException e) {
+			new FEN_Erreurs(e.getMessage(), this);
+		}
+	}
+
+	public GestionAjoutContrat getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getText_Prise_effet() {
+		return text_Prise_effet;
+	}
+
+	public JTextField getText_Loyer() {
+		return text_Loyer;
+	}
+
+	public JTextField getText_Paiement() {
+		return text_Paiement;
+	}
+
+	public JTextField getText_Periodicite() {
+		return text_Periodicite;
+	}
+
+	public JTextField getText_Duree() {
+		return text_Duree;
+	}
+
+	public JLabel getLbl_Charges() {
+		return lbl_Charges;
+	}
+
+	public JLabel getLbl_Date_Revision() {
+		return lbl_Date_Revision;
+	}
+
+	public JTextField getText_Date_Paiement() {
+		return text_Date_Paiement;
+	}
+
+	public JLabel getLbl_Date_Paiement() {
+		return lbl_Date_Paiement;
+	}
+
+	public JTextField getText_Charges() {
+		return text_Charges;
+	}
+
+	public JLabel getLbl_Date_Edl() {
+		return lbl_Date_Edl;
+	}
+
+	public JTextField getText_Date_EDL() {
+		return text_Date_EDL;
+	}
+
+	public JLabel getLbl_Num_Siren() {
+		return lbl_Num_Siren;
+	}
+
+	public JTextField getText_Montant_Caution() {
+		return text_Montant_Caution;
+	}
+
+	public JTextField getText_Fin_Contrat() {
+		return text_Fin_Contrat;
+	}
+
+	public JLabel getLbl_Num_Logement() {
+		return lbl_Num_Logement;
+	}
+
+	public JTextField getText_Date_Revision() {
+		return text_Date_Revision;
+	}
+
+	public JLabel getLbl_ID_Caution() {
+		return lbl_ID_Caution;
+	}
+
+	public JComboBox<String> getComboBox_Num_Logement() {
+		return comboBox_Num_Logement;
+	}
+
+	public JComboBox<String> getComboBox_Num_Siren() {
+		return comboBox_Num_Siren;
+	}
+
+	public JLabel getLbl_Fin_Contrat() {
+		return lbl_Fin_Contrat;
+	}
+
+	public JComboBox<String> getComboBox_ID_Caution() {
+		return comboBox_ID_Caution;
+	}
+
+	public JTextField getText_ID_Contrat() {
+		return text_ID_Contrat;
 	}
 }

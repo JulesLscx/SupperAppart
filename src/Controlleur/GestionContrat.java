@@ -12,9 +12,9 @@ import javax.swing.table.DefaultTableModel;
 import Modele.Contrat;
 import Modele.DAO.DaoContrat;
 import Vue.FEN_Accueil;
-import Vue.FEN_Ajout_Contrat;
 import Vue.FEN_Contrat;
 import Vue.FEN_Erreurs;
+import Vue.Ajout.FEN_Ajout_Contrat;
 
 public class GestionContrat implements ActionListener {
 	private FEN_Contrat ai;
