@@ -25,23 +25,23 @@ public class FEN_Entrepreneur extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		btn_modifier = new JButton("Modifier");
-		btn_modifier.setBounds(267, 409, 89, 23);
+		btn_modifier.setBounds(267, 409, 119, 23);
 		getContentPane().add(btn_modifier);
 
 		btn_ajouter = new JButton("Ajouter");
-		btn_ajouter.setBounds(367, 409, 89, 23);
+		btn_ajouter.setBounds(367, 409, 119, 23);
 		getContentPane().add(btn_ajouter);
 
 		btn_supprimer = new JButton("Supprimer");
-		btn_supprimer.setBounds(467, 409, 89, 23);
+		btn_supprimer.setBounds(467, 409, 119, 23);
 		getContentPane().add(btn_supprimer);
 
 		btn_charger = new JButton("Charger");
-		btn_charger.setBounds(567, 409, 89, 23);
+		btn_charger.setBounds(567, 409, 119, 23);
 		getContentPane().add(btn_charger);
 
 		annuler = new JButton("Annuler");
-		annuler.setBounds(698, 409, 89, 23);
+		annuler.setBounds(698, 409, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane spFactureExistante = new JScrollPane();

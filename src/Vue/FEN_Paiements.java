@@ -44,11 +44,11 @@ public class FEN_Paiements extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnAjouter = new JButton("Ajouter ");
-		btnAjouter.setBounds(90, 409, 89, 23);
+		btnAjouter.setBounds(90, 409, 119, 23);
 		getContentPane().add(btnAjouter);
 
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(601, 409, 89, 23);
+		btnAnnuler.setBounds(601, 409, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spPaiement = new JScrollPane();
@@ -82,7 +82,7 @@ public class FEN_Paiements extends JInternalFrame {
 
 				},
 				new String[] {
-						"Num�ro", "Type Habitation", "Locataire", "Surface", "nbPiece", "Immeuble",
+						"Numero", "Type Habitation", "Locataire", "Surface", "Nb Piece", "Immeuble",
 				}));
 		spPaiement.setViewportView(table_Paiement);
 		
@@ -99,14 +99,14 @@ public class FEN_Paiements extends JInternalFrame {
 				{null, null, null, null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"Num\u00E9ro contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision", "P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant", "Fin contrat"
+				"N° contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision", "P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant", "Fin contrat"
 			}
 		));
 		
 		spContrat.setViewportView(table_Contrat);
 		
 		JLabel lblPaiement = new JLabel("Paiement");
-		lblPaiement.setBounds(21, 12, 45, 13);
+		lblPaiement.setBounds(21, 12, 75, 13);
 		getContentPane().add(lblPaiement);
 		
 		JLabel lblContrat = new JLabel("Contrat");
@@ -114,11 +114,11 @@ public class FEN_Paiements extends JInternalFrame {
 		getContentPane().add(lblContrat);
 		
 		JButton btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(250, 410, 89, 23);
+		btnModifier.setBounds(250, 410, 119, 23);
 		getContentPane().add(btnModifier);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(422, 410, 89, 23);
+		btnSupprimer.setBounds(422, 410, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		this.controlleur = new GestionPaiements(this);

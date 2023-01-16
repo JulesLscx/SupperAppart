@@ -31,11 +31,11 @@ public class FEN_Regularisation extends JInternalFrame {
 		getContentPane().add(lbl_Annee_Regu);
 
 		JButton valider = new JButton("Valider");
-		valider.setBounds(180, 405, 89, 23);
+		valider.setBounds(180, 405, 119, 23);
 		getContentPane().add(valider);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(35, 405, 89, 23);
+		annuler.setBounds(35, 405, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane Generation_Regu = new JScrollPane();
@@ -82,7 +82,7 @@ public class FEN_Regularisation extends JInternalFrame {
 		getContentPane().add(textField_Annee_Regu);
 		
 		JButton generer = new JButton("Generer");
-		generer.setBounds(325, 405, 89, 23);
+		generer.setBounds(325, 405, 119, 23);
 		getContentPane().add(generer);
 		
 		JScrollPane Base_Regu = new JScrollPane();

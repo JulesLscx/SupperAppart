@@ -30,11 +30,11 @@ public class FEN_AssuranceImmeuble extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(89, 423, 89, 23);
+		btnValider.setBounds(119, 423, 119, 23);
 		getContentPane().add(btnValider);
 
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(542, 423, 89, 23);
+		btnAnnuler.setBounds(542, 423, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spAssuranceImmeuble = new JScrollPane();
@@ -110,15 +110,15 @@ public class FEN_AssuranceImmeuble extends JInternalFrame {
 		spImmeuble.setViewportView(table_Immeuble);
 
 		JButton btn_Supprimer = new JButton("Supprimer");
-		btn_Supprimer.setBounds(386, 423, 89, 23);
+		btn_Supprimer.setBounds(386, 423, 119, 23);
 		getContentPane().add(btn_Supprimer);
 
 		JButton btnVal = new JButton("Modifier");
-		btnVal.setBounds(232, 423, 89, 23);
+		btnVal.setBounds(232, 423, 119, 23);
 		getContentPane().add(btnVal);
 
 		JLabel lblNewLabel = new JLabel("Assurance immeuble");
-		lblNewLabel.setBounds(29, 8, 105, 13);
+		lblNewLabel.setBounds(29, 8, 140, 13);
 		getContentPane().add(lblNewLabel);
 
 		JLabel lblImmeuble = new JLabel("Immeuble");

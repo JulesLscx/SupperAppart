@@ -27,11 +27,11 @@ public class FEN_Diagnostics extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnModifier.setBounds(274, 390, 89, 23);
+		btnModifier.setBounds(274, 390, 119, 23);
 		getContentPane().add(btnModifier);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(705, 390, 89, 23);
+		annuler.setBounds(705, 390, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane spFactureExistante = new JScrollPane();
@@ -67,15 +67,15 @@ public class FEN_Diagnostics extends JInternalFrame {
 						{ null, null, null, null, null, },
 				},
 				new String[] {
-						"R�f�rence", "Date Diagnostic", "Diagnostic", "Type", "Logement", }));
+						"Reference", "Date Diagnostic", "Diagnostic", "Type", "Logement", }));
 		spFactureExistante.setViewportView(table_Diagnostic);
 		
 		JButton Ajout_1 = new JButton("Ajouter");
-		Ajout_1.setBounds(97, 391, 89, 23);
+		Ajout_1.setBounds(97, 391, 119, 23);
 		getContentPane().add(Ajout_1);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(515, 390, 89, 23);
+		btnSupprimer.setBounds(515, 390, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		this.controlleur = new GestionDiagnostics(this);

@@ -35,11 +35,11 @@ public class FEN_Type_diagnostic extends JInternalFrame {
 		id_type.setColumns(10);
 
 		JLabel lblnom = new JLabel("Nom Diagnostics: ");
-		lblnom.setBounds(168, 92, 80, 20);
+		lblnom.setBounds(168, 92, 110, 20);
 		getContentPane().add(lblnom);
 
 		JLabel lblduree = new JLabel("Duree Diagnostics: ");
-		lblduree.setBounds(168, 186, 80, 20);
+		lblduree.setBounds(168, 186, 110, 20);
 		getContentPane().add(lblduree);
 
 		JLabel lblid_type = new JLabel("Identifiant: ");
@@ -47,11 +47,11 @@ public class FEN_Type_diagnostic extends JInternalFrame {
 		getContentPane().add(lblid_type);
 
 		JButton valider = new JButton("Valider");
-		valider.setBounds(567, 409, 89, 23);
+		valider.setBounds(567, 409, 119, 23);
 		getContentPane().add(valider);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(698, 409, 89, 23);
+		annuler.setBounds(698, 409, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane spFactureExistante = new JScrollPane();
@@ -90,7 +90,7 @@ public class FEN_Type_diagnostic extends JInternalFrame {
 
 				},
 				new String[] {
-						"P�riodicit�", "Type", "Unit�",
+						"Periodicite", "Type", "Unite",
 				}));
 		spFactureExistante.setViewportView(table_TypeFacture);
 		this.controlleur = new GestionTypeDiagnostic(this);

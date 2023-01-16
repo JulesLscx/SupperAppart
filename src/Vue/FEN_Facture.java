@@ -22,11 +22,11 @@ public class FEN_Facture extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(84, 395, 89, 23);
+		btnValider.setBounds(84, 395, 119, 23);
 		getContentPane().add(btnValider);
 
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(481, 395, 89, 23);
+		btnAnnuler.setBounds(481, 395, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spFactureExistante = new JScrollPane();
@@ -117,11 +117,11 @@ public class FEN_Facture extends JInternalFrame {
 		spImmeuble.setViewportView(table_Immeuble);
 		
 		JButton btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(214, 396, 89, 23);
+		btnModifier.setBounds(214, 396, 119, 23);
 		getContentPane().add(btnModifier);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(345, 396, 89, 23);
+		btnSupprimer.setBounds(345, 396, 119, 23);
 		getContentPane().add(btnSupprimer);
 		
 		JLabel lblFacture = new JLabel("Facture");

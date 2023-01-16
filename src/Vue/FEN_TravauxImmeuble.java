@@ -21,11 +21,11 @@ public class FEN_TravauxImmeuble extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(129, 409, 89, 23);
+		btnValider.setBounds(129, 409, 119, 23);
 		getContentPane().add(btnValider);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(659, 409, 89, 23);
+		annuler.setBounds(659, 409, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane spFactureImmeuble = new JScrollPane();
@@ -89,11 +89,11 @@ public class FEN_TravauxImmeuble extends JInternalFrame {
 		getContentPane().add(lblFactureImmeuble);
 		
 		JButton btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(310, 409, 89, 23);
+		btnModifier.setBounds(310, 409, 119, 23);
 		getContentPane().add(btnModifier);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(490, 410, 89, 23);
+		btnSupprimer.setBounds(490, 410, 119, 23);
 		getContentPane().add(btnSupprimer);
 		
 		JLabel lblEntrepreneur = new JLabel("Entrepreneur");
