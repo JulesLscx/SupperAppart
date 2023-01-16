@@ -109,12 +109,12 @@ public class FEN_Contrat extends JInternalFrame {
 		table_Locataire = new JTable();
 		table_Locataire.setModel(new DefaultTableModel(
 				new Object[][] {
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
 				},
 				new String[] {
-						"N° locataire", "Nom", "Pr\u00E9nom", "T\u00E9l\u00E9phone"
+						"N° locataire", "Nom", "Pr\u00E9nom", "T\u00E9l\u00E9phone", "VEVE"
 				}));
 		table_Locataire.getColumnModel().getColumn(0).setPreferredWidth(99);
 		table_Locataire.getColumnModel().getColumn(1).setPreferredWidth(55);

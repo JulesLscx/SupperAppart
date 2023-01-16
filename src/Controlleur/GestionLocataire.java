@@ -74,8 +74,9 @@ public class GestionLocataire implements ActionListener {
 		try {
 			lesLocataires = daoLocataire.findCurrentLoc();
 			ai.getTable_Locataire().setModel(new DefaultTableModel(
-					new String[] { "nLocataire", "nom", "prenom",
-							"email", "telephone", "genre" },
+					new String[] { "N° locataire", "Nom", "Prénom",
+							"Email", "Téléphone",
+							"Genre" },
 					lesLocataires.size()));
 			int i = 0;
 			for (Locataire c : lesLocataires) {
