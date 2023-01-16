@@ -1,5 +1,6 @@
 package Vue;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -16,38 +17,25 @@ import Controlleur.GestionPaiements;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class FEN_Paiements extends JInternalFrame implements ActionListener {
+public class FEN_Paiements extends JInternalFrame {
 	private JTable table_Paiement;
 	private GestionPaiements controlleur;
 	private JTable table_Contrat;
+	private JButton btnModifier;
+	private JButton btnSupprimer;
+	private JButton btnAjouter;
+	private JButton btnAnnuler;
+	private JButton btnCharger;
 
-	/**
-	 * Launch the application.
-	 * public static void main(String[] args) {
-	 * EventQueue.invokeLater(new Runnable() {
-	 * public void run() {
-	 * try {
-	 * Facture frame = new Facture();
-	 * frame.setVisible(true);
-	 * } catch (Exception e) {
-	 * e.printStackTrace();
-	 * }
-	 * }
-	 * });
-	 * }
-	 * 
-	 * /**
-	 * Create the frame.
-	 */
 	public FEN_Paiements() {
 		setBounds(0, 0, 880, 473);
 		getContentPane().setLayout(null);
 
-		JButton btnAjouter = new JButton("Ajouter ");
+		btnAjouter = new JButton("Ajouter");
 		btnAjouter.setBounds(90, 400, 119, 23);
 		getContentPane().add(btnAjouter);
 
-		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setBounds(601, 400, 119, 23);
 		getContentPane().add(btnAnnuler);
 
@@ -58,50 +46,49 @@ public class FEN_Paiements extends JInternalFrame implements ActionListener {
 
 		table_Paiement = new JTable();
 		table_Paiement.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"Numero", "Type Habitation", "Locataire", "Surface", "Nombre piece", "Immeuble"
-			}
-		));
+				new Object[][] {
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+						{ null, null, null, null, null, null },
+				},
+				new String[] {
+						"Id", "Montant", "Date", "Moyen Paiement", "id_contrat"
+				}));
 		spPaiement.setViewportView(table_Paiement);
-		
+
 		JScrollPane spContrat = new JScrollPane();
 		spContrat.setEnabled(false);
 		spContrat.setBounds(21, 240, 825, 84);
 		getContentPane().add(spContrat);
-		
+
 		table_Contrat = new JTable();
 		table_Contrat.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"N\u00B0 contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision", "P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant", "Fin contrat"
-			}
-		));
+				new Object[][] {
+						{ null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null, null, null },
+				},
+				new String[] {
+						"N\u00B0 contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision",
+						"P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant", "Fin contrat"
+				}));
 		table_Contrat.getColumnModel().getColumn(0).setPreferredWidth(65);
 		table_Contrat.getColumnModel().getColumn(1).setPreferredWidth(65);
 		table_Contrat.getColumnModel().getColumn(2).setPreferredWidth(65);
@@ -112,31 +99,51 @@ public class FEN_Paiements extends JInternalFrame implements ActionListener {
 		table_Contrat.getColumnModel().getColumn(7).setPreferredWidth(90);
 		table_Contrat.getColumnModel().getColumn(8).setPreferredWidth(65);
 		table_Contrat.getColumnModel().getColumn(11).setPreferredWidth(65);
-		
+
 		spContrat.setViewportView(table_Contrat);
-		
+
 		JLabel lblPaiement = new JLabel("Paiement :");
 		lblPaiement.setBounds(21, 12, 75, 13);
 		getContentPane().add(lblPaiement);
-		
+
 		JLabel lblContrat = new JLabel("Contrat :");
 		lblContrat.setBounds(21, 217, 75, 13);
 		getContentPane().add(lblContrat);
-		
-		JButton btnModifier = new JButton("Modifier");
+
+		btnModifier = new JButton("Modifier");
 		btnModifier.setBounds(250, 400, 119, 23);
 		getContentPane().add(btnModifier);
-		
-		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.addActionListener(this);
+
+		btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.setBounds(422, 400, 119, 23);
 		getContentPane().add(btnSupprimer);
+
+		btnCharger = new JButton("Charger");
+		btnCharger.setBounds(722, 400, 119, 23);
+		getContentPane().add(btnCharger);
 
 		this.controlleur = new GestionPaiements(this);
 		btnAjouter.addActionListener(controlleur);
 		btnAnnuler.addActionListener(controlleur);
+		btnCharger.addActionListener(controlleur);
+		btnSupprimer.addActionListener(controlleur);
+		btnModifier.addActionListener(controlleur);
 
 	}
-	public void actionPerformed(ActionEvent e) {
+
+	public JButton[] getChangeableButtons() {
+		return new JButton[] { this.btnModifier, this.btnSupprimer };
+	}
+
+	public JTable getTable_Paiement() {
+		return table_Paiement;
+	}
+
+	public GestionPaiements getControlleur() {
+		return controlleur;
+	}
+
+	public JTable getTable_Contrat() {
+		return table_Contrat;
 	}
 }

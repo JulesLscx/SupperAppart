@@ -1,5 +1,7 @@
 package Vue.Ajout;
 
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
@@ -7,7 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controlleur.Ajout.GestionAjoutPaiements;
+import Modele.Contrat;
 import Modele.Paiements;
+import Modele.DAO.DaoContrat;
+import Vue.FEN_Erreurs;
 
 public class FEN_Ajout_Paiements extends JInternalFrame {
 
@@ -16,16 +21,18 @@ public class FEN_Ajout_Paiements extends JInternalFrame {
 	private JTextField text_Mode_Paiements;
 	private JTextField text_Date;
 	private JLabel lbl_ID_Contrat;
-	private JComboBox comboBox_ID_Contrat;
+	private JComboBox<String> comboBox_ID_Contrat;
 	private JTextField text_ID_Paiements;
+	private Paiements paiements;
 
 	public FEN_Ajout_Paiements(Paiements toEdit) {
 		init();
 		this.text_Montant.setText(Float.toString(toEdit.getMontant()));
 		this.text_Mode_Paiements.setText(toEdit.getMoyen_paiement());
 		this.text_Date.setText(toEdit.getDate().toString());
-		// this.comboBox_ID_Contrat.setToolTipText(toEdit.getContrat());
+		this.comboBox_ID_Contrat.setSelectedItem(toEdit.getContrat().getId_contrat());
 		this.text_ID_Paiements.setText(toEdit.getId_paiements());
+		this.paiements = toEdit;
 	}
 
 	/**
@@ -82,7 +89,7 @@ public class FEN_Ajout_Paiements extends JInternalFrame {
 		lbl_ID_Contrat.setBounds(330, 20, 190, 13);
 		getContentPane().add(lbl_ID_Contrat);
 
-		comboBox_ID_Contrat = new JComboBox();
+		comboBox_ID_Contrat = new JComboBox<String>();
 		comboBox_ID_Contrat.setBounds(330, 34, 121, 19);
 		getContentPane().add(comboBox_ID_Contrat);
 
@@ -90,6 +97,54 @@ public class FEN_Ajout_Paiements extends JInternalFrame {
 		text_ID_Paiements.setColumns(10);
 		text_ID_Paiements.setBounds(35, 34, 190, 19);
 		getContentPane().add(text_ID_Paiements);
+
+		this.controlleur = new GestionAjoutPaiements(this);
+		btn_Annuler.addActionListener(controlleur);
+		btn_Valider.addActionListener(controlleur);
+
+		this.fillComboContrat();
+	}
+
+	private void fillComboContrat() {
+		try {
+			for (Contrat c : new DaoContrat().findAll()) {
+				this.comboBox_ID_Contrat.addItem(c.getId_contrat());
+			}
+		} catch (SQLException e) {
+			new FEN_Erreurs("Impossible de remplir le combo des contrats car problème dans la base de données", this);
+		}
+	}
+
+	public boolean isPaiementSet() {
+		return paiements != null;
+	}
+
+	public GestionAjoutPaiements getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getText_Montant() {
+		return text_Montant;
+	}
+
+	public JTextField getText_Mode_Paiements() {
+		return text_Mode_Paiements;
+	}
+
+	public JTextField getText_Date() {
+		return text_Date;
+	}
+
+	public JLabel getLbl_ID_Contrat() {
+		return lbl_ID_Contrat;
+	}
+
+	public JComboBox<String> getComboBox_ID_Contrat() {
+		return comboBox_ID_Contrat;
+	}
+
+	public JTextField getText_ID_Paiements() {
+		return text_ID_Paiements;
 	}
 
 }
