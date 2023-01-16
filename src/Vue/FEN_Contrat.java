@@ -13,8 +13,6 @@ public class FEN_Contrat extends JInternalFrame {
 	private JTable table_Contrat;
 	private GestionContrat controlleur;
 	private JTable table_Locataire;
-	private JTable table_Paiment;
-	private JTable table_Logement;
 	private JTable table_Caution;
 	private JButton btnAnnuler;
 	private JButton btnModifier;
@@ -23,76 +21,86 @@ public class FEN_Contrat extends JInternalFrame {
 	private JButton btn_charger;
 
 	public FEN_Contrat() {
-		setBounds(0, 0, 1026, 509);
+		setBounds(0, 0, 1150, 650);
 		getContentPane().setLayout(null);
 
 		btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(713, 411, 119, 23);
+		btnAnnuler.setBounds(658, 520, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spContrat = new JScrollPane();
 		spContrat.setEnabled(false);
-		spContrat.setBounds(28, 25, 618, 203);
+		spContrat.setBounds(28, 25, 1080, 274);
 		getContentPane().add(spContrat);
 
 		table_Contrat = new JTable();
 		table_Contrat.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
-				},
-				new String[] {
-						"Num\u00E9ro contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision",
-						"P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant caution",
-						"Fin contrat", "Logement", "Entrepreuneur", "Caution"
-				}));
+			new Object[][] {
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, "", null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"N\u00B0 Contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision", "P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant caution", "Fin contrat", "Logement", "Entrepreuneur", "Caution"
+			}
+		));
+		table_Contrat.getColumnModel().getColumn(0).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(1).setPreferredWidth(70);
+		table_Contrat.getColumnModel().getColumn(2).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(3).setPreferredWidth(60);
+		table_Contrat.getColumnModel().getColumn(4).setPreferredWidth(60);
+		table_Contrat.getColumnModel().getColumn(5).setPreferredWidth(90);
+		table_Contrat.getColumnModel().getColumn(6).setPreferredWidth(70);
+		table_Contrat.getColumnModel().getColumn(7).setPreferredWidth(90);
+		table_Contrat.getColumnModel().getColumn(8).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(9).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(10).setPreferredWidth(95);
+		table_Contrat.getColumnModel().getColumn(11).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(12).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(13).setPreferredWidth(85);
+		table_Contrat.getColumnModel().getColumn(14).setPreferredWidth(65);
 		spContrat.setViewportView(table_Contrat);
 
 		btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(342, 411, 119, 23);
+		btnModifier.setBounds(316, 520, 119, 23);
 		getContentPane().add(btnModifier);
 
 		btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(177, 411, 119, 23);
+		btnAjouter.setBounds(145, 520, 119, 23);
 		getContentPane().add(btnAjouter);
 
 		btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(527, 411, 119, 23);
+		btnSupprimer.setBounds(487, 520, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		btn_charger = new JButton("Charger");
-		btn_charger.setBounds(787, 411, 119, 23);
+		btn_charger.setBounds(829, 520, 119, 23);
 		getContentPane().add(btn_charger);
 
 		JLabel lblContrat = new JLabel("Contrats");
 		lblContrat.setBounds(28, 10, 84, 13);
 		getContentPane().add(lblContrat);
 
-		JLabel lblPaiement = new JLabel("Paiement");
-		lblPaiement.setBounds(688, 27, 84, 13);
-		getContentPane().add(lblPaiement);
-
 		JScrollPane spLocataire = new JScrollPane();
 		spLocataire.setEnabled(false);
-		spLocataire.setBounds(28, 264, 343, 79);
+		spLocataire.setBounds(28, 326, 484, 162);
 		getContentPane().add(spLocataire);
 
 		table_Locataire = new JTable();
@@ -103,7 +111,7 @@ public class FEN_Contrat extends JInternalFrame {
 						{ null, null, null, null },
 				},
 				new String[] {
-						"Num\u00E9ro locataire", "Nom", "Pr\u00E9nom", "T\u00E9l\u00E9phone"
+						"N° locataire", "Nom", "Pr\u00E9nom", "T\u00E9l\u00E9phone"
 				}));
 		table_Locataire.getColumnModel().getColumn(0).setPreferredWidth(99);
 		table_Locataire.getColumnModel().getColumn(1).setPreferredWidth(55);
@@ -111,57 +119,16 @@ public class FEN_Contrat extends JInternalFrame {
 		spLocataire.setViewportView(table_Locataire);
 
 		JLabel lblLocataire_1 = new JLabel("Locataire");
-		lblLocataire_1.setBounds(28, 248, 84, 13);
+		lblLocataire_1.setBounds(28, 310, 84, 13);
 		getContentPane().add(lblLocataire_1);
 
-		JScrollPane spPaiement = new JScrollPane();
-		spPaiement.setEnabled(false);
-		spPaiement.setBounds(689, 39, 260, 79);
-		getContentPane().add(spPaiement);
-
-		table_Paiment = new JTable();
-		table_Paiment.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null },
-						{ null, null, null },
-				},
-				new String[] {
-						"Montant", "Date paiement", "Moyen de paiement"
-				}));
-		table_Paiment.getColumnModel().getColumn(1).setPreferredWidth(87);
-		table_Paiment.getColumnModel().getColumn(2).setPreferredWidth(106);
-		spPaiement.setViewportView(table_Paiment);
-
-		JLabel lblLogement = new JLabel("Logement");
-		lblLogement.setBounds(428, 248, 67, 13);
-		getContentPane().add(lblLogement);
-
-		JScrollPane spLogement = new JScrollPane();
-		spLogement.setEnabled(false);
-		spLogement.setBounds(428, 264, 458, 68);
-		getContentPane().add(spLogement);
-
-		table_Logement = new JTable();
-		table_Logement.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-				},
-				new String[] {
-						"Num\u00E9ro habitation", "Type d'habitation", "Surface", "Nombre de pi\u00E8ce"
-				}));
-		table_Logement.getColumnModel().getColumn(0).setPreferredWidth(98);
-		table_Logement.getColumnModel().getColumn(1).setPreferredWidth(93);
-		spLogement.setViewportView(table_Logement);
-
 		JLabel lblCaution = new JLabel("Caution");
-		lblCaution.setBounds(668, 138, 45, 13);
+		lblCaution.setBounds(587, 310, 45, 13);
 		getContentPane().add(lblCaution);
 
 		JScrollPane spCaution = new JScrollPane();
 		spCaution.setEnabled(false);
-		spCaution.setBounds(667, 156, 321, 79);
+		spCaution.setBounds(587, 326, 521, 162);
 		getContentPane().add(spCaution);
 
 		table_Caution = new JTable();
@@ -171,7 +138,7 @@ public class FEN_Contrat extends JInternalFrame {
 						{ null, null, null, null, null, null },
 				},
 				new String[] {
-						"Nnm\u00E9ro caution", "Nom ", "Pr\u00E9nom", "Adresse", "T\u00E9l\u00E9phone", "Profession"
+						"N° caution", "Nom ", "Pr\u00E9nom", "Adresse", "T\u00E9l\u00E9phone", "Profession"
 				}));
 		table_Caution.getColumnModel().getColumn(0).setPreferredWidth(86);
 		table_Caution.getColumnModel().getColumn(1).setPreferredWidth(66);
@@ -196,14 +163,6 @@ public class FEN_Contrat extends JInternalFrame {
 
 	public JTable getTable_Locataire() {
 		return table_Locataire;
-	}
-
-	public JTable getTable_Paiment() {
-		return table_Paiment;
-	}
-
-	public JTable getTable_Logement() {
-		return table_Logement;
 	}
 
 	public JTable getTable_Caution() {
