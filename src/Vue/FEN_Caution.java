@@ -31,73 +31,86 @@ public class FEN_Caution extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(43, 409, 119, 23);
+		btnAjouter.setBounds(43, 405, 119, 23);
 		getContentPane().add(btnAjouter);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(689, 409, 119, 23);
+		annuler.setBounds(710, 405, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane spCaution = new JScrollPane();
 		spCaution.setEnabled(false);
-		spCaution.setBounds(33, 31, 741, 163);
+		spCaution.setBounds(33, 31, 807, 163);
 		getContentPane().add(spCaution);
 
 		table_Caution = new JTable();
 		table_Caution.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-				},
-				new String[] {
-						"idCaution", "email", "telephone", "nom", "prenom", "adresse", "profession",
-				}));
+			new Object[][] {
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Identifiant caution", "Email", "Telephone", "Nom", "Prenom", "Adresse", "Profession"
+			}
+		));
 		spCaution.setViewportView(table_Caution);
 
 		btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(205, 409, 119, 23);
+		btnModifier.setBounds(205, 405, 119, 23);
 		getContentPane().add(btnModifier);
 		JButton btnCharger = new JButton("Charger");
-		btnCharger.setBounds(547, 409, 119, 23);
+		btnCharger.setBounds(547, 405, 119, 23);
 		getContentPane().add(btnCharger);
 
 		btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(377, 409, 119, 23);
+		btnSupprimer.setBounds(377, 405, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		JScrollPane spContrat = new JScrollPane();
 		spContrat.setEnabled(false);
-		spContrat.setBounds(33, 228, 741, 163);
+		spContrat.setBounds(33, 228, 807, 163);
 		getContentPane().add(spContrat);
 
 		table_Contrat = new JTable();
 		table_Contrat.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null, null },
-				},
-				new String[] {
-						"Num\u00E9ro contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision",
-						"P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant", "Fin contrat"
-				}));
+			new Object[][] {
+				{null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"N\u00B0 contrat", "Prise effet", "Dur\u00E9e", "Charges", "Loyer", "Date r\u00E9vision", "P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant", "Fin contrat"
+			}
+		));
+		table_Contrat.getColumnModel().getColumn(0).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(1).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(2).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(3).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(4).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(5).setPreferredWidth(90);
+		table_Contrat.getColumnModel().getColumn(6).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(7).setPreferredWidth(90);
+		table_Contrat.getColumnModel().getColumn(8).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(9).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(10).setPreferredWidth(65);
+		table_Contrat.getColumnModel().getColumn(11).setPreferredWidth(65);
 		spContrat.setViewportView(table_Contrat);
 
 		JLabel lblCaution = new JLabel("Caution");
