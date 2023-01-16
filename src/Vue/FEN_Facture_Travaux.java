@@ -77,10 +77,16 @@ public class FEN_Facture_Travaux extends JInternalFrame {
 				{null, null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"Date intervention", "Nature", "Facture", "Prix", "Num\u00E9ro facture", "Montant indeductible", "R\u00E9duction", "Ordre ch\u00E8que", "Num\u00E9ro ch\u00E8que", "Date paiement"
+				"Date intervention", "Nature", "Facture", "Prix", "N\u00B0 facture", "Montant indeductible", "R\u00E9duction", "Ordre ch\u00E8que", "N\u00B0 ch\u00E8que", "Date paiement"
 			}
 		));
-		table_Facture.getColumnModel().getColumn(4).setPreferredWidth(119);
+		table_Facture.getColumnModel().getColumn(0).setPreferredWidth(90);
+		table_Facture.getColumnModel().getColumn(2).setPreferredWidth(65);
+		table_Facture.getColumnModel().getColumn(3).setPreferredWidth(65);
+		table_Facture.getColumnModel().getColumn(4).setPreferredWidth(65);
+		table_Facture.getColumnModel().getColumn(5).setPreferredWidth(90);
+		table_Facture.getColumnModel().getColumn(6).setPreferredWidth(65);
+		table_Facture.getColumnModel().getColumn(8).setPreferredWidth(65);
 		spFactureLogement.setViewportView(table_Facture);
 		
 		JScrollPane spEntrepreneur = new JScrollPane();
@@ -95,7 +101,7 @@ public class FEN_Facture_Travaux extends JInternalFrame {
 				{null, null, null, null, null},
 			},
 			new String[] {
-				"n\u00B0 siret", "Adresse", "Nom", "IBAN", "Secteur d'activit\u00E9"
+				"N\u00B0 SIREN", "Adresse", "Nom", "IBAN", "Secteur d'activit\u00E9"
 			}
 		));
 		table_Entrepreneur.getColumnModel().getColumn(4).setPreferredWidth(95);
@@ -110,7 +116,7 @@ public class FEN_Facture_Travaux extends JInternalFrame {
 		getContentPane().add(btnSupprimer);
 		
 		JLabel lblFactureLogement = new JLabel("Facture logement");
-		lblFactureLogement.setBounds(22, 10, 110, 13);
+		lblFactureLogement.setBounds(22, 15, 110, 13);
 		getContentPane().add(lblFactureLogement);
 		
 		JLabel lblEntrepreneur = new JLabel("Entrepreneur");

@@ -36,7 +36,7 @@ public class FEN_Immeuble extends JInternalFrame {
 
 		JScrollPane spImmeuble = new JScrollPane();
 		spImmeuble.setEnabled(false);
-		spImmeuble.setBounds(26, 31, 922, 160);
+		spImmeuble.setBounds(26, 31, 978, 160);
 		getContentPane().add(spImmeuble);
 
 		table_Immeuble = new JTable();
@@ -73,7 +73,7 @@ public class FEN_Immeuble extends JInternalFrame {
 
 		JScrollPane spAssuranceImmeuble = new JScrollPane();
 		spAssuranceImmeuble.setEnabled(false);
-		spAssuranceImmeuble.setBounds(574, 228, 340, 80);
+		spAssuranceImmeuble.setBounds(574, 228, 430, 80);
 		getContentPane().add(spAssuranceImmeuble);
 
 		table_AssuranceImmeuble = new JTable();
@@ -92,37 +92,42 @@ public class FEN_Immeuble extends JInternalFrame {
 
 		JScrollPane spLogement = new JScrollPane();
 		spLogement.setEnabled(false);
-		spLogement.setBounds(26, 228, 426, 125);
+		spLogement.setBounds(26, 228, 456, 125);
 		getContentPane().add(spLogement);
 
 		table_Logement = new JTable();
 		table_Logement.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null },
-				},
-				new String[] {
-						"Id_immeuble", "Adresse", "Pde de construction", "N°", "Code Postal", "Copro",
-						"Accessoire communs"
-				}));
+			new Object[][] {
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Identifiant", "Adresse", "Pde construction", "Numero", "CP", "Copro", "Accessoires"
+			}
+		));
+		table_Logement.getColumnModel().getColumn(2).setPreferredWidth(90);
+		table_Logement.getColumnModel().getColumn(3).setPreferredWidth(65);
+		table_Logement.getColumnModel().getColumn(4).setPreferredWidth(65);
+		table_Logement.getColumnModel().getColumn(5).setPreferredWidth(65);
+		table_Logement.getColumnModel().getColumn(6).setPreferredWidth(90);
 		spLogement.setViewportView(table_Logement);
 
 		JLabel lblImeuble = new JLabel("Immeuble");
