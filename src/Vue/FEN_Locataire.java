@@ -26,11 +26,11 @@ public class FEN_Locataire extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		btn_ajouter = new JButton("Ajouter");
-		btn_ajouter.setBounds(96, 426, 89, 23);
+		btn_ajouter.setBounds(63, 426, 119, 23);
 		getContentPane().add(btn_ajouter);
 
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(547, 426, 89, 23);
+		btnAnnuler.setBounds(742, 426, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spLocataire = new JScrollPane();
@@ -63,13 +63,13 @@ public class FEN_Locataire extends JInternalFrame {
 						{ null, null, null, null, null, null, },
 				},
 				new String[] {
-						"nLocataire", "nom", "prenom", "dateFact", "telephone", "genre", "Logement", "Contrat",
+						"N° Locataire", "nom", "prenom", "dateFact", "telephone", "genre", "Logement", "Contrat",
 				}));
 		spLocataire.setViewportView(table_Locataire);
 
 		JScrollPane spContrat = new JScrollPane();
 		spContrat.setEnabled(false);
-		spContrat.setBounds(26, 196, 618, 203);
+		spContrat.setBounds(26, 196, 832, 203);
 		getContentPane().add(spContrat);
 
 		table_Contrat = new JTable();
@@ -97,34 +97,30 @@ public class FEN_Locataire extends JInternalFrame {
 						{ null, null, null, null, null, null, null, null, null, null, null, null, null },
 				},
 				new String[] {
-						"Num\u00E9ro contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision",
+						"N° contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision",
 						"P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant caution",
 						"Fin contrat", "Logement"
 				}));
 		spContrat.setViewportView(table_Contrat);
 
 		JLabel lblLocataire = new JLabel("Locataire");
-		lblLocataire.setBounds(26, 10, 45, 13);
+		lblLocataire.setBounds(26, 10, 75, 13);
 		getContentPane().add(lblLocataire);
-
-		JLabel lblAssurance = new JLabel("Assurance");
-		lblAssurance.setBounds(654, 177, 76, 13);
-		getContentPane().add(lblAssurance);
 
 		JLabel lblContrat = new JLabel("Contrat");
 		lblContrat.setBounds(26, 177, 76, 13);
 		getContentPane().add(lblContrat);
 
 		btnSpprimer = new JButton("Supprimer");
-		btnSpprimer.setBounds(402, 426, 89, 23);
+		btnSpprimer.setBounds(412, 426, 119, 23);
 		getContentPane().add(btnSpprimer);
 
 		btnCharger = new JButton("Charger");
-		btnCharger.setBounds(500, 426, 89, 23);
+		btnCharger.setBounds(573, 426, 119, 23);
 		getContentPane().add(btnCharger);
 
 		btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(242, 426, 89, 23);
+		btnModifier.setBounds(243, 426, 119, 23);
 		getContentPane().add(btnModifier);
 
 		filter = new JCheckBox("Locataires Actuels");

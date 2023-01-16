@@ -32,7 +32,7 @@ public class FEN_Logement extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(869, 409, 89, 23);
+		btnAnnuler.setBounds(869, 409, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spLogement = new JScrollPane();
@@ -107,7 +107,7 @@ public class FEN_Logement extends JInternalFrame {
 		spLocataire.setViewportView(table_Locataire);
 
 		JLabel lblLogement = new JLabel("Logement");
-		lblLogement.setBounds(25, 10, 45, 13);
+		lblLogement.setBounds(25, 10, 90, 13);
 		getContentPane().add(lblLogement);
 
 		JLabel lblImmeuble = new JLabel("Immeuble");
@@ -119,19 +119,19 @@ public class FEN_Logement extends JInternalFrame {
 		getContentPane().add(lblLocataire);
 
 		btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(647, 409, 89, 23);
+		btnSupprimer.setBounds(647, 409, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(383, 410, 89, 23);
+		btnModifier.setBounds(383, 410, 119, 23);
 		getContentPane().add(btnModifier);
 
 		btnCharger = new JButton("Charger");
-		btnCharger.setBounds(283, 410, 89, 23);
+		btnCharger.setBounds(283, 410, 119, 23);
 		getContentPane().add(btnCharger);
 
 		btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(183, 410, 89, 23);
+		btnAjouter.setBounds(183, 410, 119, 23);
 		getContentPane().add(btnAjouter);
 
 		this.controlleur = new GestionLogement(this);

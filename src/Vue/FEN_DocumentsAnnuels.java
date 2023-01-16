@@ -21,11 +21,11 @@ public class FEN_DocumentsAnnuels extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(469, 395, 89, 23);
+		btnSupprimer.setBounds(469, 395, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(681, 395, 89, 23);
+		annuler.setBounds(681, 395, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane spFactureExistante = new JScrollPane();
@@ -58,7 +58,7 @@ public class FEN_DocumentsAnnuels extends JInternalFrame {
 						{ null, null, null, null, },
 				},
 				new String[] {
-						"Ann�e", "Certificat", "Ramonage", "Locataire",
+						"Annee", "Certificat", "Ramonage", "Locataire",
 				}));
 		this.controlleur = new GestionDocumentsAnnuels(this);
 		btnSupprimer.addActionListener(controlleur);
@@ -66,11 +66,11 @@ public class FEN_DocumentsAnnuels extends JInternalFrame {
 		spFactureExistante.setViewportView(table_DocumentsAnnuels);
 		
 		JButton btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(272, 395, 89, 23);
+		btnModifier.setBounds(272, 395, 119, 23);
 		getContentPane().add(btnModifier);
 		
 		JButton btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(76, 396, 89, 23);
+		btnAjouter.setBounds(76, 396, 119, 23);
 		getContentPane().add(btnAjouter);
 
 	}

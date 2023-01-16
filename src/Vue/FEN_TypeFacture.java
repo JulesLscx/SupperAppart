@@ -20,8 +20,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class FEN_TypeFacture extends JInternalFrame {
-	private JTextField periodicite, type, unite;
 	private JTable table_TypeFacture;
+	private JTable table_Facture;
 
 	public JTable getTable_TypeFacture() {
 		return table_TypeFacture;
@@ -32,95 +32,88 @@ public class FEN_TypeFacture extends JInternalFrame {
 	private GestionTable_TypeF controlleurTable;
 
 	public FEN_TypeFacture() {
-		setBounds(0, 0, 880, 473);
+		setBounds(0, 0, 880, 515);
 		getContentPane().setLayout(null);
 
-		periodicite = new JTextField();
-		periodicite.setBounds(168, 112, 180, 32);
-		getContentPane().add(periodicite);
-		periodicite.setColumns(10);
-
-		type = new JTextField();
-		type.setBounds(168, 206, 180, 32);
-		getContentPane().add(type);
-		type.setColumns(10);
-
-		unite = new JTextField();
-		unite.setBounds(168, 300, 180, 32);
-		getContentPane().add(unite);
-		unite.setColumns(10);
-
-		JLabel lblPeriode = new JLabel("Périodicité: ");
-		lblPeriode.setBounds(168, 92, 80, 20);
-		getContentPane().add(lblPeriode);
-
-		JLabel lblType = new JLabel("Type: ");
-		lblType.setBounds(168, 186, 80, 20);
-		getContentPane().add(lblType);
-
-		JLabel lblUnite = new JLabel("Unit�: ");
-		lblUnite.setBounds(168, 280, 80, 20);
-		getContentPane().add(lblUnite);
-
 		this.btn_ajouter = new JButton("Ajouter");
-		btn_ajouter.setBounds(567, 409, 89, 23);
+		btn_ajouter.setBounds(59, 434, 119, 23);
 		getContentPane().add(btn_ajouter);
 
 		this.annuler = new JButton("Annuler");
-		annuler.setBounds(698, 409, 89, 23);
+		annuler.setBounds(695, 434, 119, 23);
 		getContentPane().add(annuler);
 
 		this.btnCharger = new JButton("Charger");
-		btnCharger.setBounds(498, 409, 89, 23);
+		btnCharger.setBounds(525, 434, 119, 23);
 		getContentPane().add(btnCharger);
 
 		this.btnModifer = new JButton("Modifier");
-		btnModifer.setBounds(398, 409, 89, 23);
+		btnModifer.setBounds(204, 434, 119, 23);
 		getContentPane().add(btnModifer);
 
 		this.btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(298, 409, 89, 23);
+		btnSupprimer.setBounds(364, 434, 119, 23);
 		getContentPane().add(btnSupprimer);
 
-		JScrollPane spFactureExistante = new JScrollPane();
-		spFactureExistante.setEnabled(false);
-		spFactureExistante.setBounds(514, 31, 340, 358);
-		getContentPane().add(spFactureExistante);
+		JScrollPane spTypeFactureExistante = new JScrollPane();
+		spTypeFactureExistante.setEnabled(false);
+		spTypeFactureExistante.setBounds(24, 201, 271, 186);
+		getContentPane().add(spTypeFactureExistante);
 
 		table_TypeFacture = new JTable();
 		table_TypeFacture.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
-						{ null, null, null, },
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"P\u00E9riodicit\u00E9", "Type", "Unit\u00E9"
+			}
+		));
+		spTypeFactureExistante.setViewportView(table_TypeFacture);
+		
+		JScrollPane spFactureExistante = new JScrollPane();
+		spFactureExistante.setEnabled(false);
+		spFactureExistante.setBounds(24, 31, 637, 136);
+		getContentPane().add(spFactureExistante);
 
+		table_Facture = new JTable();
+		table_Facture.setModel(new DefaultTableModel(
+				new Object[][] {
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, },
 				},
 				new String[] {
-						"Périodicité", "Type", "Unité",
+						"NFacture", "Montant", "Prix", "Date", "CoutFixe", "PrixConstate", "Total",
 				}));
-		spFactureExistante.setViewportView(table_TypeFacture);
+		spFactureExistante.setViewportView(table_Facture);
+		
+		
 		this.controlleur = new GestionTypeFacture(this);
 		btn_ajouter.addActionListener(controlleur);
 		annuler.addActionListener(controlleur);
@@ -130,6 +123,14 @@ public class FEN_TypeFacture extends JInternalFrame {
 
 		this.controlleurTable = new GestionTable_TypeF(controlleur);
 		this.getTable_TypeFacture().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		JLabel lblTypeFacture = new JLabel("Type de facture");
+		lblTypeFacture.setBounds(22, 178, 107, 13);
+		getContentPane().add(lblTypeFacture);
+		
+		JLabel lblFacture = new JLabel("Facture");
+		lblFacture.setBounds(23, 10, 107, 13);
+		getContentPane().add(lblFacture);
 		this.getTable_TypeFacture().getSelectionModel().addListSelectionListener(controlleurTable);
 
 	}
@@ -137,5 +138,4 @@ public class FEN_TypeFacture extends JInternalFrame {
 	public JButton[] getChangeableButtons() {
 		return new JButton[] { this.btnSupprimer, this.btnModifer };
 	}
-
 }

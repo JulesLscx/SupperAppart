@@ -39,11 +39,11 @@ public class FEN_Facture_Travaux extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(84, 397, 89, 23);
+		btnValider.setBounds(84, 397, 119, 23);
 		getContentPane().add(btnValider);
 
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(547, 397, 89, 23);
+		btnAnnuler.setBounds(547, 397, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spFactureLogement = new JScrollPane();
@@ -102,15 +102,15 @@ public class FEN_Facture_Travaux extends JInternalFrame {
 		spEntrepreneur.setViewportView(table_Entrepreneur);
 		
 		JButton btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(238, 398, 89, 23);
+		btnModifier.setBounds(238, 398, 119, 23);
 		getContentPane().add(btnModifier);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(395, 397, 89, 23);
+		btnSupprimer.setBounds(395, 397, 119, 23);
 		getContentPane().add(btnSupprimer);
 		
 		JLabel lblFactureLogement = new JLabel("Facture logement");
-		lblFactureLogement.setBounds(22, 10, 100, 13);
+		lblFactureLogement.setBounds(22, 10, 110, 13);
 		getContentPane().add(lblFactureLogement);
 		
 		JLabel lblEntrepreneur = new JLabel("Entrepreneur");

@@ -31,11 +31,11 @@ public class FEN_Caution extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(105, 409, 89, 23);
+		btnAjouter.setBounds(43, 409, 119, 23);
 		getContentPane().add(btnAjouter);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(735, 409, 89, 23);
+		annuler.setBounds(689, 409, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane spCaution = new JScrollPane();
@@ -72,14 +72,14 @@ public class FEN_Caution extends JInternalFrame {
 		spCaution.setViewportView(table_Caution);
 
 		btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(315, 409, 89, 23);
+		btnModifier.setBounds(205, 409, 119, 23);
 		getContentPane().add(btnModifier);
 		JButton btnCharger = new JButton("Charger");
-		btnCharger.setBounds(688, 409, 89, 23);
+		btnCharger.setBounds(547, 409, 119, 23);
 		getContentPane().add(btnCharger);
 
 		btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(518, 409, 89, 23);
+		btnSupprimer.setBounds(377, 409, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		JScrollPane spContrat = new JScrollPane();

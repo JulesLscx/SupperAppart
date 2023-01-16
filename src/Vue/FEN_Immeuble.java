@@ -27,11 +27,11 @@ public class FEN_Immeuble extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(152, 421, 89, 23);
+		btnAjouter.setBounds(53, 421, 119, 23);
 		getContentPane().add(btnAjouter);
 
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(758, 421, 89, 23);
+		btnAnnuler.setBounds(721, 421, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spImmeuble = new JScrollPane();
@@ -138,14 +138,14 @@ public class FEN_Immeuble extends JInternalFrame {
 		getContentPane().add(lblLogement);
 
 		btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(550, 421, 89, 23);
+		btnSupprimer.setBounds(363, 421, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(339, 421, 89, 23);
+		btnModifier.setBounds(198, 421, 119, 23);
 		getContentPane().add(btnModifier);
 		btnCharger = new JButton("Charger");
-		btnCharger.setBounds(209, 421, 89, 23);
+		btnCharger.setBounds(545, 421, 119, 23);
 		getContentPane().add(btnCharger);
 
 		this.controlleur = new GestionImmeuble(this);
