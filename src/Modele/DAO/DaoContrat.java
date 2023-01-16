@@ -33,7 +33,7 @@ public class DaoContrat extends DaoModele<Contrat> {
                         NUM,
                         N_SIREN,
                         ID_CAUTION)
-                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);""");
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""");
         prSt.setNString(1, tupple.getId_contrat());
         prSt.setDate(2, tupple.getPrise_effet());
         prSt.setInt(3, tupple.getDuree());
@@ -86,35 +86,55 @@ public class DaoContrat extends DaoModele<Contrat> {
         String req = """
                 Update contrat set prise_effet = ?,
                  durée = ?, charges = ?, loyer = ?,
-                  date_rev = ?, périodicité = ?,
+                  date_revision = ?, périodicité = ?,
                    date_paiement = ?, paiement = ?,
                     date_edl = ?, montant_caution = ?,
                      fin_contrat = ?, num = ?, n_siren = ?,
                       id_caution = ? where id_contrat = ?
                 """;
         PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(req);
-        prSt.setNString(1, tupple.getId_contrat());
-        prSt.setDate(2, tupple.getPrise_effet());
-        prSt.setInt(3, tupple.getDuree());
-        prSt.setFloat(4, tupple.getCharges());
-        prSt.setFloat(5, tupple.getLoyer());
-        prSt.setDate(6, tupple.getDate_revision());
-        prSt.setNString(7, tupple.getPeriodicite());
-        prSt.setDate(8, tupple.getDate_paiement());
-        prSt.setFloat(9, tupple.getPaiement());
-        prSt.setDate(10, tupple.getDate_edl());
-        prSt.setFloat(11, tupple.getMontant_caution());
-        prSt.setDate(12, tupple.getFin_contrat());
-        prSt.setNString(13, tupple.getNum().getNum());
-        if (tupple.getN_siren() == null) {
-            prSt.setNull(14, OracleTypes.VARCHAR);
+        prSt.setNString(15, tupple.getId_contrat());
+        prSt.setDate(1, tupple.getPrise_effet());
+        prSt.setInt(2, tupple.getDuree());
+        prSt.setFloat(3, tupple.getCharges());
+        prSt.setFloat(4, tupple.getLoyer());
+        if (tupple.getDate_revision() != null) {
+            prSt.setDate(5, tupple.getDate_revision());
         } else {
-            prSt.setNString(14, tupple.getN_siren().getnSiren());
+            prSt.setNull(5, OracleTypes.DATE);
+        }
+        if (tupple.getPeriodicite() != null) {
+            prSt.setNString(6, tupple.getPeriodicite());
+        } else {
+            prSt.setNull(6, OracleTypes.VARCHAR);
+        }
+        if (tupple.getDate_paiement() != null) {
+            prSt.setDate(7, tupple.getDate_paiement());
+        } else {
+            prSt.setNull(7, OracleTypes.DATE);
+        }
+        prSt.setFloat(8, tupple.getPaiement());
+        if (tupple.getDate_edl() != null) {
+            prSt.setDate(9, tupple.getDate_edl());
+        } else {
+            prSt.setNull(9, OracleTypes.DATE);
+        }
+        prSt.setFloat(10, tupple.getMontant_caution());
+        if (tupple.getFin_contrat() != null) {
+            prSt.setDate(11, tupple.getFin_contrat());
+        } else {
+            prSt.setNull(11, OracleTypes.DATE);
+        }
+        prSt.setNString(12, tupple.getNum().getNum());
+        if (tupple.getN_siren() == null) {
+            prSt.setNull(13, OracleTypes.VARCHAR);
+        } else {
+            prSt.setNString(13, tupple.getN_siren().getnSiren());
         }
         if (tupple.getId_caution() == null) {
-            prSt.setNull(15, OracleTypes.VARCHAR);
+            prSt.setNull(14, OracleTypes.VARCHAR);
         } else {
-            prSt.setNString(15, tupple.getId_caution().getId_Caution());
+            prSt.setNString(14, tupple.getId_caution().getId_Caution());
         }
 
         prSt.executeUpdate();

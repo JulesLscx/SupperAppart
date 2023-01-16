@@ -54,21 +54,29 @@ public class FEN_Ajout_Contrat extends JInternalFrame {
 		init();
 		this.text_ID_Contrat.setText(toEdit.getId_contrat());
 		this.text_ID_Contrat.setEditable(false);
-		this.text_Prise_effet.setText(toEdit.getPrise_effet().toString());
+		this.controlleur.ecrireDate(text_Prise_effet, toEdit.getPrise_effet());
 		this.text_Loyer.setText(Float.toString(toEdit.getLoyer()));
-		this.text_Paiement.setText(toEdit.getPaiement());
+		this.text_Paiement.setText(String.valueOf(toEdit.getPaiement()));
 		this.text_Periodicite.setText(toEdit.getPeriodicite());
-		this.text_Duree.setText(Float.toString(toEdit.getDuree()));
-		this.text_Date_Paiement.setText(toEdit.getDate_paiement().toString());
+		this.text_Duree.setText(Integer.toString(toEdit.getDuree()));
+		if (toEdit.getDate_paiement() != null)
+			this.controlleur.ecrireDate(text_Date_Paiement, toEdit.getDate_paiement());
 		this.text_Charges.setText(Float.toString(toEdit.getCharges()));
 		this.text_Date_EDL.setText(toEdit.getDate_edl().toString());
 		this.text_Montant_Caution.setText(Float.toString(toEdit.getMontant_caution()));
-		this.text_Fin_Contrat.setText(toEdit.getFin_contrat().toString());
+		if (toEdit.getFin_contrat() != null) {
+			this.controlleur.ecrireDate(text_Fin_Contrat, toEdit.getFin_contrat());
+		}
 		this.text_Date_EDL.setText(toEdit.getDate_edl().toString());
-		this.text_Date_Revision.setText(toEdit.getDate_revision().toString());
+		if (toEdit.getDate_revision() != null) {
+			this.controlleur.ecrireDate(text_Date_Revision, toEdit.getDate_revision());
+			;
+		}
 		this.comboBox_Num_Logement.setSelectedItem(toEdit.getNum().getNum());
-		this.comboBox_Num_Siren.setSelectedItem(toEdit.getN_siren().getnSiren());
-		this.comboBox_ID_Caution.setSelectedItem(toEdit.getId_caution().getId_Caution());
+		if (toEdit.getN_siren() != null)
+			this.comboBox_Num_Siren.setSelectedItem(toEdit.getN_siren().getnSiren());
+		if (toEdit.getId_caution() != null)
+			this.comboBox_ID_Caution.setSelectedItem(toEdit.getId_caution().getId_Caution());
 		this.contrat = toEdit;
 	}
 
