@@ -144,4 +144,10 @@ public class GestionLocataire implements ActionListener {
 			e.printStackTrace();
 		}
 	}
+
+	public void enableButtons(boolean b) {
+		for (JButton j : this.ai.getChangeableButtons()) {
+			j.setEnabled(b);
+		}
+	}
 }

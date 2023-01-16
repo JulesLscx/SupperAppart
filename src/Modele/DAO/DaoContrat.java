@@ -1,9 +1,11 @@
 package Modele.DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -214,4 +216,18 @@ public class DaoContrat extends DaoModele<Contrat> {
         return creerInstance(rs);
     }
 
+    public Collection<Contrat> findByLocataire(String nLocataire) throws SQLException {
+        String sql = "{? = call BEAUX_LOCATAIRE(?)}";
+        ResultSet rs;
+        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+        prSt.registerOutParameter(1, OracleTypes.CURSOR);
+        prSt.setString(2, nLocataire);
+        prSt.execute();
+        rs = (ResultSet) prSt.getObject(1);
+        Collection<Contrat> lesLocataires = new ArrayList<Contrat>();
+        while (rs.next()) {
+            lesLocataires.add(creerInstance(rs));
+        }
+        return lesLocataires;
+    }
 }

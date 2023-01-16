@@ -6,9 +6,11 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionLocataire;
+import Controlleur.Table.GestionTableLocataire;
 
 public class FEN_Locataire extends JInternalFrame {
 	private JTable table_Locataire;
@@ -25,6 +27,7 @@ public class FEN_Locataire extends JInternalFrame {
 	private JButton btnSpprimer;
 	private JButton btnModifier;
 	private JButton btn_ajouter;
+	private GestionTableLocataire gestionTable;
 
 	public FEN_Locataire() {
 		setBounds(0, 0, 880, 504);
@@ -137,6 +140,10 @@ public class FEN_Locataire extends JInternalFrame {
 		btnModifier.addActionListener(controlleur);
 		btnSpprimer.addActionListener(controlleur);
 		btnAnnuler.addActionListener(controlleur);
+
+		this.gestionTable = new GestionTableLocataire(controlleur, table_Contrat);
+		this.table_Locataire.getSelectionModel().addListSelectionListener(gestionTable);
+		this.table_Locataire.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 
 	public JTable getTable_Locataire() {
