@@ -11,18 +11,33 @@ import Controlleur.GestionFactureTravaux;
 
 public class FEN_Facture_Travaux_Logement extends JInternalFrame {
 	private JTable table_Facture;
+
+	public JTable getTable_Facture() {
+		return table_Facture;
+	}
+
 	private JTable table_Entrepreneur;
+
+	public JTable getTable_Entrepreneur() {
+		return table_Entrepreneur;
+	}
+
 	private GestionFactureTravaux controlleur;
+	private JButton btnModifier;
+	private JButton btnSupprimer;
+	private JButton btnAnnuler;
+	private JButton btn_Ajouter;
+	private JButton btnCharger;
 
 	public FEN_Facture_Travaux_Logement() {
 		setBounds(0, 0, 880, 473);
 		getContentPane().setLayout(null);
 
-		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(84, 397, 119, 23);
-		getContentPane().add(btnValider);
+		btn_Ajouter = new JButton("Ajouter");
+		btn_Ajouter.setBounds(84, 397, 119, 23);
+		getContentPane().add(btn_Ajouter);
 
-		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setBounds(547, 397, 119, 23);
 		getContentPane().add(btnAnnuler);
 
@@ -86,15 +101,19 @@ public class FEN_Facture_Travaux_Logement extends JInternalFrame {
 		table_Entrepreneur.getColumnModel().getColumn(4).setPreferredWidth(95);
 		spEntrepreneur.setViewportView(table_Entrepreneur);
 
-		JButton btnModifier = new JButton("Modifier");
+		btnModifier = new JButton("Modifier");
 		btnModifier.setBounds(238, 398, 119, 23);
 		getContentPane().add(btnModifier);
 
-		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.setBounds(395, 397, 119, 23);
 		getContentPane().add(btnSupprimer);
 
-		JLabel lblFactureLogement = new JLabel("Facture logement");
+		btnCharger = new JButton("Charger");
+		btnCharger.setBounds(695, 397, 119, 23);
+		getContentPane().add(btnCharger);
+
+		JLabel lblFactureLogement = new JLabel("Facture Travaux Logement");
 		lblFactureLogement.setBounds(22, 15, 110, 13);
 		getContentPane().add(lblFactureLogement);
 
@@ -102,8 +121,15 @@ public class FEN_Facture_Travaux_Logement extends JInternalFrame {
 		lblEntrepreneur.setBounds(22, 214, 126, 13);
 		getContentPane().add(lblEntrepreneur);
 		this.controlleur = new GestionFactureTravaux(this);
-		btnValider.addActionListener(controlleur);
+		btn_Ajouter.addActionListener(controlleur);
 		btnAnnuler.addActionListener(controlleur);
+		btnCharger.addActionListener(controlleur);
+		btnModifier.addActionListener(controlleur);
+		btnSupprimer.addActionListener(controlleur);
+	}
+
+	public JButton[] getChangeableButtons() {
+		return new JButton[] { this.btnModifier, this.btnSupprimer };
 	}
 
 }

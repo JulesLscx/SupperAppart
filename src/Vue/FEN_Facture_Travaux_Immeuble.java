@@ -112,6 +112,7 @@ public class FEN_Facture_Travaux_Immeuble extends JInternalFrame {
 		annuler.addActionListener(controlleur);
 		btnModifier.addActionListener(controlleur);
 		btnSupprimer.addActionListener(controlleur);
+		btnCharger.addActionListener(controlleur);
 	}
 
 	public JButton[] getChangeableButtons() {

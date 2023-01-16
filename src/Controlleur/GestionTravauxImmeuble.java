@@ -2,7 +2,6 @@ package Controlleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -10,12 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import Modele.Entrepreneur;
 import Modele.Facture_Travaux_Immeuble;
-import Modele.Immeuble;
-import Modele.DAO.DaoEntrepreuneur;
 import Modele.DAO.DaoFacture_Travaux_Immeuble;
-import Modele.DAO.DaoImmeuble;
 import Vue.FEN_Accueil;
 import Vue.FEN_Erreurs;
 import Vue.FEN_Facture_Travaux_Immeuble;
@@ -69,33 +64,12 @@ public class GestionTravauxImmeuble implements ActionListener {
 	}
 
 	public Facture_Travaux_Immeuble lireLigneTable(int index) {
-		String num_fac = (String) ai.getTable_TravauxImmeuble().getValueAt(index, 0);
-		String nature = (String) ai.getTable_TravauxImmeuble().getValueAt(index, 1);
-		Float prix = (Float) ai.getTable_TravauxImmeuble().getValueAt(index, 2);
-		Float montant_indeductible = (Float) ai.getTable_TravauxImmeuble().getValueAt(index, 3);
-		Float reduction = (Float) ai.getTable_TravauxImmeuble().getValueAt(index, 4);
-		String ordre_du_cheque = (String) ai.getTable_TravauxImmeuble().getValueAt(index, 5);
-		String numero_de_cheque = (String) ai.getTable_TravauxImmeuble().getValueAt(index, 6);
-		Date date_de_paiement = Date.valueOf((String) ai.getTable_TravauxImmeuble().getValueAt(index, 7));
-		DaoEntrepreuneur dao = new DaoEntrepreuneur();
-		Entrepreneur n_siren = null;
+		DaoFacture_Travaux_Immeuble dao = new DaoFacture_Travaux_Immeuble();
 		try {
-			n_siren = dao.findById(null, (String) ai.getTable_TravauxImmeuble().getValueAt(index, 8));
+			return dao.findById(null, (String) this.ai.getTable_TravauxImmeuble().getValueAt(index, 0));
 		} catch (SQLException e) {
-			new FEN_Erreurs("Impossible de trouver l'entrepreuneur veuillez réessayer", ai);
+			return null;
 		}
-
-		DaoImmeuble daoI = new DaoImmeuble();
-		Immeuble num = null;
-		try {
-			num = daoI.findById(null, (String) ai.getTable_TravauxImmeuble().getValueAt(index, 9));
-		} catch (SQLException e) {
-			new FEN_Erreurs("Impossible de trouver l'immeuble veuillez réessayer", ai);
-		}
-
-		return new Facture_Travaux_Immeuble(num_fac, nature, prix, montant_indeductible, reduction, ordre_du_cheque,
-				numero_de_cheque,
-				date_de_paiement, num, n_siren);
 
 	}
 
@@ -132,7 +106,7 @@ public class GestionTravauxImmeuble implements ActionListener {
 			lesFacs = dao.findAll();
 			ai.getTable_TravauxImmeuble().setModel(new DefaultTableModel(
 					new String[] { "N° facture", "Nature", "Prix", "Montant indéductible", "Réduction",
-							"Ordre du chèque", "N° chèque", "N° siren", "Immeuble" },
+							"Ordre du chèque", "N° chèque", "Date de paiement", "N° siren", "Immeuble" },
 					lesFacs.size()));
 			int i = 0;
 			for (Facture_Travaux_Immeuble c : lesFacs) {

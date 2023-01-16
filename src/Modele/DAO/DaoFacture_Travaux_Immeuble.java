@@ -1,10 +1,12 @@
 package Modele.DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import Controlleur.CictOracleDataSource;
@@ -12,13 +14,14 @@ import Modele.Entrepreneur;
 import Modele.Facture_Travaux_Immeuble;
 import Modele.Immeuble;
 import Modele.DAO.Requete.Requete;
+import oracle.jdbc.OracleTypes;
 
 public class DaoFacture_Travaux_Immeuble extends DaoModele<Facture_Travaux_Immeuble> {
 
     @Override
     public void create(Facture_Travaux_Immeuble tupple) throws SQLException {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
-                .prepareCall("call INSERTFACTURETRAVAUXIMMEUBLE(?,?,?,?,?,?,?)");
+                .prepareCall("call INSERTFACTURETRAVAUXIMMEUBLE(?,?,?,?,?,?,?,?,?,?)");
         prSt.setNString(1, tupple.getNum_fac());
         prSt.setNString(2, tupple.getNature());
         prSt.setFloat(3, tupple.getPrix());
@@ -113,6 +116,21 @@ public class DaoFacture_Travaux_Immeuble extends DaoModele<Facture_Travaux_Immeu
         ResultSet rs = prSt.getResultSet();
         rs.next();
         return creerInstance(rs);
+    }
+
+    public List<Facture_Travaux_Immeuble> findByAnnee(int annee) throws SQLException {
+        List<Facture_Travaux_Immeuble> result = new LinkedList<Facture_Travaux_Immeuble>();
+        String sql = "{? = call TOTALTRAVAUXIM(?)}";
+        ResultSet rs;
+        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+        prSt.registerOutParameter(1, OracleTypes.CURSOR);
+        prSt.setInt(2, annee);
+        prSt.execute();
+        rs = (ResultSet) prSt.getObject(1);
+        while (rs.next()) {
+            result.add(creerInstance(rs));
+        }
+        return result;
     }
 
 }

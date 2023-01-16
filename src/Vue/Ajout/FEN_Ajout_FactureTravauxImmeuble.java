@@ -1,6 +1,9 @@
 package Vue.Ajout;
 
 import java.awt.EventQueue;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,15 +12,18 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controlleur.Ajout.GestionAjoutFactureTravauxImmeuble;
+import Modele.Entrepreneur;
 import Modele.Facture_Travaux_Immeuble;
+import Modele.Immeuble;
+import Modele.DAO.DaoEntrepreuneur;
+import Modele.DAO.DaoImmeuble;
+import Vue.FEN_Erreurs;
 
 public class FEN_Ajout_FactureTravauxImmeuble extends JInternalFrame {
 
 	/**
 	 * Launch the application.
 	 */
-	private JTextField idContrat, charges, duree, priseEffet, datePaiement, periodicite, loyer, dateRevision;
-	private JTextField finContrat, montantCaution, paiement, dateEDL;
 
 	private GestionAjoutFactureTravauxImmeuble controlleur;
 	private JTextField text_Num_Cheque;
@@ -31,9 +37,10 @@ public class FEN_Ajout_FactureTravauxImmeuble extends JInternalFrame {
 	private JLabel lbl_Entrepreneur;
 	private JTextField text_Nature;
 	private JLabel lbl_Nature;
-	private JComboBox comboBox_Entrepreneur;
-	private JComboBox comboBox_ID_Immeuble;
+	private JComboBox<String> comboBox_Entrepreneur;
+	private JComboBox<String> comboBox_ID_Immeuble;
 	private JTextField text_Num_Fac;
+	private Facture_Travaux_Immeuble fac;
 
 	public FEN_Ajout_FactureTravauxImmeuble(Facture_Travaux_Immeuble toEdit) {
 		init();
@@ -44,9 +51,10 @@ public class FEN_Ajout_FactureTravauxImmeuble extends JInternalFrame {
 		this.text_Montant_Indeductible.setText(Float.toString(toEdit.getMontant_indeductible()));
 		this.text_Date_Paiement.setText(toEdit.getDate_de_paiement().toString());
 		this.text_Nature.setText(toEdit.getNature());
-		// this.comboBox_Entrepreneur.setToolTipText(toEdit.getEntrepreneur());
-		// this.comboBox_ID_Immeuble.(toEdit.getImmeuble());
+		this.comboBox_Entrepreneur.setSelectedItem(toEdit.getEntrepreneur().getnSiren());
+		this.comboBox_ID_Immeuble.setSelectedItem(toEdit.getImmeuble().getId_immeuble());
 		this.text_Num_Fac.setText(toEdit.getNum_fac());
+		this.fac = toEdit;
 	}
 
 	/**
@@ -143,11 +151,11 @@ public class FEN_Ajout_FactureTravauxImmeuble extends JInternalFrame {
 		lbl_Nature.setBounds(330, 20, 190, 13);
 		getContentPane().add(lbl_Nature);
 
-		comboBox_Entrepreneur = new JComboBox();
+		comboBox_Entrepreneur = new JComboBox<String>();
 		comboBox_Entrepreneur.setBounds(330, 202, 121, 19);
 		getContentPane().add(comboBox_Entrepreneur);
 
-		comboBox_ID_Immeuble = new JComboBox();
+		comboBox_ID_Immeuble = new JComboBox<String>();
 		comboBox_ID_Immeuble.setBounds(35, 202, 121, 19);
 		getContentPane().add(comboBox_ID_Immeuble);
 
@@ -155,6 +163,106 @@ public class FEN_Ajout_FactureTravauxImmeuble extends JInternalFrame {
 		text_Num_Fac.setColumns(10);
 		text_Num_Fac.setBounds(35, 34, 190, 19);
 		getContentPane().add(text_Num_Fac);
+		this.fillEntrepreneur();
+		this.fillImmeuble();
+
+		this.controlleur = new GestionAjoutFactureTravauxImmeuble(this);
+		btn_Annuler.addActionListener(controlleur);
+		btn_Valider.addActionListener(controlleur);
+	}
+
+	private void fillEntrepreneur() {
+		DaoEntrepreuneur dao = new DaoEntrepreuneur();
+		Collection<Entrepreneur> lesEnt = null;
+		try {
+			lesEnt = dao.findAll();
+		} catch (SQLException e1) {
+			new FEN_Erreurs(e1.getMessage(), this);
+		}
+		for (Entrepreneur e : lesEnt) {
+			this.comboBox_Entrepreneur.addItem(e.getnSiren());
+		}
+	}
+
+	private void fillImmeuble() {
+		DaoImmeuble dao = new DaoImmeuble();
+		Collection<Immeuble> lesEnt = null;
+		try {
+			lesEnt = dao.findAll();
+		} catch (SQLException e1) {
+			new FEN_Erreurs(e1.getMessage(), this);
+		}
+		for (Immeuble i : lesEnt) {
+			this.comboBox_ID_Immeuble.addItem(i.getId_immeuble());
+		}
+	}
+
+	public boolean isFacSet() {
+		return this.fac != null;
+	}
+
+	public GestionAjoutFactureTravauxImmeuble getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getText_Num_Cheque() {
+		return text_Num_Cheque;
+	}
+
+	public JTextField getText_Reduction() {
+		return text_Reduction;
+	}
+
+	public JTextField getText_Prix() {
+		return text_Prix;
+	}
+
+	public JTextField getText_Ordre_Cheque() {
+		return text_Ordre_Cheque;
+	}
+
+	public JLabel getLbl_Date_Paiement() {
+		return lbl_Date_Paiement;
+	}
+
+	public JTextField getText_Montant_Indeductible() {
+		return text_Montant_Indeductible;
+	}
+
+	public JLabel getLbl_Montant_Indeductible() {
+		return lbl_Montant_Indeductible;
+	}
+
+	public JTextField getText_Date_Paiement() {
+		return text_Date_Paiement;
+	}
+
+	public JLabel getLbl_Entrepreneur() {
+		return lbl_Entrepreneur;
+	}
+
+	public JTextField getText_Nature() {
+		return text_Nature;
+	}
+
+	public JLabel getLbl_Nature() {
+		return lbl_Nature;
+	}
+
+	public JComboBox<String> getComboBox_Entrepreneur() {
+		return comboBox_Entrepreneur;
+	}
+
+	public JComboBox<String> getComboBox_ID_Immeuble() {
+		return comboBox_ID_Immeuble;
+	}
+
+	public JTextField getText_Num_Fac() {
+		return text_Num_Fac;
+	}
+
+	public Object getFac() {
+		return fac;
 	}
 
 }

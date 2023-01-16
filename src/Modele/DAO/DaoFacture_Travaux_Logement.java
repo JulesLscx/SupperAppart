@@ -1,10 +1,12 @@
 package Modele.DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import Controlleur.CictOracleDataSource;
@@ -12,6 +14,7 @@ import Modele.Entrepreneur;
 import Modele.Facture_Travaux_Logement;
 import Modele.Logement;
 import Modele.DAO.Requete.Requete;
+import oracle.jdbc.OracleTypes;
 
 public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logement> {
     @Override
@@ -26,14 +29,14 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
         prSt.setNString(6, tupple.getOrdre_du_cheque());
         prSt.setNString(7, tupple.getNumero_du_cheque());
         prSt.setDate(8, tupple.getDate_de_paiement());
-        prSt.setNString(9, tupple.getLogement().getNum());
-        prSt.setNString(10, tupple.getEntrepreneur().getnSiren());
+        prSt.setNString(10, tupple.getLogement().getNum());
+        prSt.setNString(9, tupple.getEntrepreneur().getnSiren());
         prSt.execute();
     }
 
     @Override
     public void update(Facture_Travaux_Logement tupple) throws SQLException {
-        String req = "Update Facture_travaux_immeuble set nature = ?, prix = ?, montant_indeductible = ?, réduction = ?, ordre_du_chèque = ?, numéro_de_chèque = ?, date_de_paiement = ?, id_immeuble = ?, n_siren = ? where num_fac = ?";
+        String req = "Update Facture_travaux set nature = ?, prix = ?, montant_indeductible = ?, réduction = ?, ordre_du_chèque = ?, numéro_de_chèque = ?, date_de_paiement = ?, num = ?, n_siren = ? where num_fac = ?";
         PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(req);
 
         prSt.setNString(10, tupple.getNum_fac());
@@ -53,7 +56,7 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
     @Override
     public void delete(Facture_Travaux_Logement tupple) throws SQLException {
         PreparedStatement st = CictOracleDataSource.getLaConnection()
-                .prepareStatement("DELETE FROM Facture_Travaux_Immeuble WHERE num_fac = ?");
+                .prepareStatement("DELETE FROM Facture_Travaux WHERE num_fac = ?");
         st.setString(1, tupple.getNum_fac());
         st.executeUpdate();
     }
@@ -61,7 +64,7 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
     @Override
     public Collection<Facture_Travaux_Logement> findAll() throws SQLException {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
-                .prepareStatement("select * from Facture_travaux_immeuble");
+                .prepareStatement("select * from Facture_travaux");
         return super.select(prSt);
     }
 
@@ -82,9 +85,9 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
         numero_du_cheque = curseur.getNString(7);
         date_de_paiement = curseur.getDate(8);
         DaoLogement dao = new DaoLogement();
-        logement = dao.findById(null, curseur.getNString(9));
+        logement = dao.findById(null, curseur.getNString(10));
         DaoEntrepreuneur daoE = new DaoEntrepreuneur();
-        entrepreneur = daoE.findById(null, curseur.getNString(10));
+        entrepreneur = daoE.findById(null, curseur.getNString(9));
         result = new Facture_Travaux_Logement(num_fac, nature, prix, montant_indeductible, reduction, ordre_du_cheque,
                 numero_du_cheque, date_de_paiement, logement, entrepreneur);
         return result;
@@ -112,6 +115,21 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
         ResultSet rs = prSt.getResultSet();
         rs.next();
         return creerInstance(rs);
+    }
+
+    public List<Facture_Travaux_Logement> findByAnnee(int annee) throws SQLException {
+        List<Facture_Travaux_Logement> result = new LinkedList<Facture_Travaux_Logement>();
+        String sql = "{? = call TOTALTRAVAUXLOG(?)}";
+        ResultSet rs;
+        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+        prSt.registerOutParameter(1, OracleTypes.CURSOR);
+        prSt.setInt(2, annee);
+        prSt.execute();
+        rs = (ResultSet) prSt.getObject(1);
+        while (rs.next()) {
+            result.add(creerInstance(rs));
+        }
+        return result;
     }
 
 }
