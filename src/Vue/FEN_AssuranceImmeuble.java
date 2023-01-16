@@ -30,11 +30,11 @@ public class FEN_AssuranceImmeuble extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(119, 423, 119, 23);
+		btnValider.setBounds(133, 423, 119, 23);
 		getContentPane().add(btnValider);
 
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(542, 423, 119, 23);
+		btnAnnuler.setBounds(682, 423, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spAssuranceImmeuble = new JScrollPane();
@@ -44,37 +44,39 @@ public class FEN_AssuranceImmeuble extends JInternalFrame {
 
 		table_AssuranceImmeuble = new JTable();
 		table_AssuranceImmeuble.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-						{ null, null, null, null },
-				},
-				new String[] {
-						"Assurance bien", "Assurance juridique", "Ann\u00E9e", "Immeuble"
-				}));
+			new Object[][] {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"Assurance bien", "Assurance juridique", "Ann\u00E9e", "Immeuble"
+			}
+		));
+		table_AssuranceImmeuble.getColumnModel().getColumn(2).setPreferredWidth(65);
 		spAssuranceImmeuble.setViewportView(table_AssuranceImmeuble);
 
 		JScrollPane spImmeuble = new JScrollPane();
 		spImmeuble.setEnabled(false);
-		spImmeuble.setBounds(29, 240, 690, 160);
+		spImmeuble.setBounds(29, 240, 920, 160);
 		getContentPane().add(spImmeuble);
 
 		table_Immeuble = new JTable();
@@ -110,15 +112,15 @@ public class FEN_AssuranceImmeuble extends JInternalFrame {
 		spImmeuble.setViewportView(table_Immeuble);
 
 		JButton btn_Supprimer = new JButton("Supprimer");
-		btn_Supprimer.setBounds(386, 423, 119, 23);
+		btn_Supprimer.setBounds(500, 423, 119, 23);
 		getContentPane().add(btn_Supprimer);
 
 		JButton btnVal = new JButton("Modifier");
-		btnVal.setBounds(232, 423, 119, 23);
+		btnVal.setBounds(320, 423, 119, 23);
 		getContentPane().add(btnVal);
 
 		JLabel lblNewLabel = new JLabel("Assurance immeuble");
-		lblNewLabel.setBounds(29, 8, 140, 13);
+		lblNewLabel.setBounds(29, 11, 140, 13);
 		getContentPane().add(lblNewLabel);
 
 		JLabel lblImmeuble = new JLabel("Immeuble");
@@ -126,23 +128,24 @@ public class FEN_AssuranceImmeuble extends JInternalFrame {
 		getContentPane().add(lblImmeuble);
 
 		JLabel lblEntrepreneur = new JLabel("Entrepreneur");
-		lblEntrepreneur.setBounds(521, 8, 105, 13);
+		lblEntrepreneur.setBounds(521, 11, 105, 13);
 		getContentPane().add(lblEntrepreneur);
 
 		JScrollPane spEntrepreneur = new JScrollPane();
 		spEntrepreneur.setEnabled(false);
-		spEntrepreneur.setBounds(521, 31, 438, 66);
+		spEntrepreneur.setBounds(521, 31, 428, 66);
 		getContentPane().add(spEntrepreneur);
 
 		table_Entrepreneur = new JTable();
 		table_Entrepreneur.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-				},
-				new String[] {
-						"n\u00B0 siret", "Adresse", "Nom", "IBAN", "Secteur d'activit\u00E9"
-				}));
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"N\u00B0 SIREN", "Adresse", "Nom", "IBAN", "Secteur d'activit\u00E9"
+			}
+		));
 		table_Entrepreneur.getColumnModel().getColumn(4).setPreferredWidth(95);
 		spEntrepreneur.setViewportView(table_Entrepreneur);
 

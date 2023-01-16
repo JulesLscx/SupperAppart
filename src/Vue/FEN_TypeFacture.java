@@ -109,7 +109,7 @@ public class FEN_TypeFacture extends JInternalFrame {
 						{ null, null, null, null, null, null, null, },
 				},
 				new String[] {
-						"NFacture", "Montant", "Prix", "Date", "CoutFixe", "PrixConstate", "Total",
+						"N° facture", "Montant", "Prix", "Date", "Cout fixe", "Prix constatée", "Total"
 				}));
 		spFactureExistante.setViewportView(table_Facture);
 		
