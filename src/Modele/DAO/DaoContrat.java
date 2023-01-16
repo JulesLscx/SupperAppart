@@ -81,6 +81,7 @@ public class DaoContrat extends DaoModele<Contrat> {
         }
 
         prSt.executeUpdate();
+        prSt.close();
     }
 
     @Override
@@ -140,7 +141,7 @@ public class DaoContrat extends DaoModele<Contrat> {
         }
 
         prSt.executeUpdate();
-
+        prSt.close();
     }
 
     @Override
@@ -149,6 +150,7 @@ public class DaoContrat extends DaoModele<Contrat> {
                 .prepareStatement("DELETE FROM Contrat WHERE id_contrat = ?");
         st.setString(1, tupple.getId_contrat());
         st.executeUpdate();
+        st.close();
     }
 
     @Override
@@ -213,7 +215,10 @@ public class DaoContrat extends DaoModele<Contrat> {
         pr.execute();
         ResultSet rs = pr.getResultSet();
         rs.next();
-        return creerInstance(rs);
+        Contrat c = creerInstance(rs);
+        rs.close();
+        pr.close();
+        return c;
     }
 
     public Collection<Contrat> findByLocataire(String nLocataire) throws SQLException {
@@ -228,6 +233,8 @@ public class DaoContrat extends DaoModele<Contrat> {
         while (rs.next()) {
             lesLocataires.add(creerInstance(rs));
         }
+        rs.close();
+        prSt.close();
         return lesLocataires;
     }
 }

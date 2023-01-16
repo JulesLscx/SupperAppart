@@ -50,6 +50,7 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
         prSt.setNString(8, tupple.getLogement().getNum());
         prSt.setNString(9, tupple.getEntrepreneur().getnSiren());
         prSt.execute();
+        prSt.close();
 
     }
 
@@ -59,6 +60,7 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
                 .prepareStatement("DELETE FROM Facture_Travaux WHERE num_fac = ?");
         st.setString(1, tupple.getNum_fac());
         st.executeUpdate();
+        st.close();
     }
 
     @Override
@@ -114,7 +116,10 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
         prSt.execute();
         ResultSet rs = prSt.getResultSet();
         rs.next();
-        return creerInstance(rs);
+        Facture_Travaux_Logement f = creerInstance(rs);
+        rs.close();
+        prSt.close();
+        return f;
     }
 
     public List<Facture_Travaux_Logement> findByAnnee(int annee) throws SQLException {
@@ -129,6 +134,8 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
         while (rs.next()) {
             result.add(creerInstance(rs));
         }
+        prSt.close();
+        rs.close();
         return result;
     }
 

@@ -33,6 +33,7 @@ public class DaoFacture_Travaux_Immeuble extends DaoModele<Facture_Travaux_Immeu
         prSt.setNString(9, tupple.getImmeuble().getId_immeuble());
         prSt.setNString(10, tupple.getEntrepreneur().getnSiren());
         prSt.execute();
+        prSt.close();
     }
 
     @Override
@@ -51,6 +52,7 @@ public class DaoFacture_Travaux_Immeuble extends DaoModele<Facture_Travaux_Immeu
         prSt.setNString(8, tupple.getImmeuble().getId_immeuble());
         prSt.setNString(9, tupple.getEntrepreneur().getnSiren());
         prSt.execute();
+        prSt.close();
 
     }
 
@@ -60,6 +62,7 @@ public class DaoFacture_Travaux_Immeuble extends DaoModele<Facture_Travaux_Immeu
                 .prepareStatement("DELETE FROM Facture_Travaux_Immeuble WHERE num_fac = ?");
         st.setString(1, tupple.getNum_fac());
         st.executeUpdate();
+        st.close();
     }
 
     @Override
@@ -115,7 +118,10 @@ public class DaoFacture_Travaux_Immeuble extends DaoModele<Facture_Travaux_Immeu
         prSt.execute();
         ResultSet rs = prSt.getResultSet();
         rs.next();
-        return creerInstance(rs);
+        Facture_Travaux_Immeuble f = creerInstance(rs);
+        rs.close();
+        prSt.close();
+        return f;
     }
 
     public List<Facture_Travaux_Immeuble> findByAnnee(int annee) throws SQLException {

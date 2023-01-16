@@ -28,6 +28,7 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
         prSt.setInt(7, tupple.getCopro());
         prSt.setNString(8, tupple.getAccess_com());
         prSt.execute();
+        prSt.close();
     }
 
     @Override
@@ -44,6 +45,7 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
         prSt.setNString(7, tupple.getAccess_com());
         prSt.setNString(8, tupple.getId_immeuble());
         prSt.execute();
+        prSt.close();
 
     }
 
@@ -53,6 +55,7 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
                 .prepareStatement("DELETE FROM IMMEUBLE WHERE ID_IMMEUBLE = ?");
         st.setString(1, tupple.getId_immeuble());
         st.executeUpdate();
+        st.close();
 
     }
 
@@ -100,7 +103,10 @@ public class DaoImmeuble extends DaoModele<Immeuble> {
         prSt.execute();
         ResultSet rs = prSt.getResultSet();
         rs.next();
-        return creerInstance(rs);
+        Immeuble i = creerInstance(rs);
+        rs.close();
+        prSt.close();
+        return i;
     }
 
 }

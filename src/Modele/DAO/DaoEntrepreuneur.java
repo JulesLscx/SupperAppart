@@ -22,6 +22,7 @@ public class DaoEntrepreuneur extends DaoModele<Entrepreneur> {
         prSt.setNString(4, tupple.getIban());
         prSt.setNString(5, tupple.getSecteur_activite());
         prSt.execute();
+        prSt.close();
     }
 
     @Override
@@ -35,6 +36,7 @@ public class DaoEntrepreuneur extends DaoModele<Entrepreneur> {
         prSt.setNString(3, tupple.getIban());
         prSt.setNString(4, tupple.getSecteur_activite());
         prSt.execute();
+        prSt.close();
 
     }
 
@@ -44,6 +46,7 @@ public class DaoEntrepreuneur extends DaoModele<Entrepreneur> {
                 .prepareStatement("DELETE FROM Entrepreneur WHERE n_siren = ?");
         st.setString(1, tupple.getnSiren());
         st.executeUpdate();
+        st.close();
     }
 
     @Override
@@ -86,6 +89,9 @@ public class DaoEntrepreuneur extends DaoModele<Entrepreneur> {
         ps.execute();
         ResultSet rs = ps.getResultSet();
         rs.next();
-        return creerInstance(rs);
+        Entrepreneur e = creerInstance(rs);
+        rs.close();
+        ps.close();
+        return e;
     }
 }

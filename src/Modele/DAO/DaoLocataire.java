@@ -11,7 +11,6 @@ import java.util.List;
 import Controlleur.CictOracleDataSource;
 import Modele.Locataire;
 import Modele.DAO.Requete.Requete;
-import oracle.jdbc.OracleType;
 import oracle.jdbc.OracleTypes;
 
 public class DaoLocataire extends DaoModele<Locataire> {
@@ -27,6 +26,7 @@ public class DaoLocataire extends DaoModele<Locataire> {
         prSt.setString(6, Character.toString(tupple.getGenre()));
         prSt.setNString(1, tupple.getnLocataire());
         prSt.execute();
+        prSt.close();
     }
 
     @Override
@@ -40,6 +40,7 @@ public class DaoLocataire extends DaoModele<Locataire> {
         prSt.setString(5, Character.toString(tupple.getGenre()));
         prSt.setNString(6, tupple.getnLocataire());
         prSt.execute();
+        prSt.close();
 
     }
 
@@ -49,6 +50,7 @@ public class DaoLocataire extends DaoModele<Locataire> {
                 .prepareStatement("DELETE FROM Locataire WHERE NLocataire = ?");
         st.setString(1, tupple.getnLocataire());
         st.executeUpdate();
+        st.close();
 
     }
 
@@ -91,7 +93,10 @@ public class DaoLocataire extends DaoModele<Locataire> {
         st.execute();
         ResultSet rs = st.getResultSet();
         rs.next();
-        return creerInstance(rs);
+        Locataire res = creerInstance(rs);
+        rs.close();
+        st.close();
+        return res;
     }
 
     public Collection<Locataire> findCurrentLoc() throws SQLException {
@@ -112,7 +117,8 @@ public class DaoLocataire extends DaoModele<Locataire> {
         while (rs.next()) {
             lesLocataires.add(creerInstance(rs));
         }
-
+        rs.close();
+        prSt.close();
         return lesLocataires;
     }
 
@@ -126,6 +132,8 @@ public class DaoLocataire extends DaoModele<Locataire> {
         while (rs.next()) {
             lesLocataires.add(this.findById(null, rs.getNString(1)));
         }
+        prSt.close();
+        rs.close();
         return lesLocataires;
     }
 

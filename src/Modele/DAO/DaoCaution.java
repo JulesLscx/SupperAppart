@@ -3,7 +3,6 @@ package Modele.DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,6 +24,7 @@ public class DaoCaution extends DaoModele<Caution> {
         prSt.setNString(6, tupple.getTelephone());
         prSt.setNString(7, tupple.getProfession());
         prSt.execute();
+        prSt.close();
     }
 
     @Override
@@ -40,6 +40,7 @@ public class DaoCaution extends DaoModele<Caution> {
         prSt.setNString(6, tupple.getProfession());
         prSt.setNString(7, tupple.getId_Caution());
         prSt.execute();
+        prSt.close();
 
     }
 
@@ -92,7 +93,10 @@ public class DaoCaution extends DaoModele<Caution> {
         prSt.execute();
         ResultSet rs = prSt.getResultSet();
         rs.next();
-        return creerInstance(rs);
+        Caution c = creerInstance(rs);
+        rs.close();
+        prSt.close();
+        return c;
     }
 
 }

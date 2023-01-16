@@ -20,6 +20,7 @@ public class DaoType_Fac extends DaoModele<Type_Fac> {
         prSt.setNString(2, tupple.getPeriodicite());
         prSt.setNString(3, tupple.getUnite());
         prSt.execute();
+        prSt.close();
     }
 
     @Override
@@ -31,6 +32,7 @@ public class DaoType_Fac extends DaoModele<Type_Fac> {
         prSt.setNString(2, tupple.getUnite());
         prSt.setNString(3, tupple.getTypeF());
         prSt.execute();
+        prSt.close();
 
     }
 
@@ -40,7 +42,7 @@ public class DaoType_Fac extends DaoModele<Type_Fac> {
                 .prepareStatement("DELETE FROM TYPE_FAC WHERE TYPEF = ?");
         st.setString(1, tupple.getTypeF());
         st.executeUpdate();
-
+        st.close();
     }
 
     @Override
@@ -80,7 +82,10 @@ public class DaoType_Fac extends DaoModele<Type_Fac> {
         prSt.setNString(1, id[0]);
         ResultSet rs = prSt.getResultSet();
         rs.next();
-        return creerInstance(rs);
+        Type_Fac result = creerInstance(rs);
+        rs.close();
+        prSt.close();
+        return result;
     }
 
 }

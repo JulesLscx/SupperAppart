@@ -26,6 +26,7 @@ public class DaoLogement extends DaoModele<Logement> {
         prSt.setNString(5, tupple.getImmeuble().getId_immeuble());
         prSt.setNString(1, tupple.getNum());
         prSt.execute();
+        prSt.close();
     }
 
     @Override
@@ -38,6 +39,7 @@ public class DaoLogement extends DaoModele<Logement> {
         prSt.setNString(4, tupple.getImmeuble().getId_immeuble());
         prSt.setNString(5, tupple.getNum());
         prSt.execute();
+        prSt.close();
 
     }
 
@@ -47,6 +49,7 @@ public class DaoLogement extends DaoModele<Logement> {
                 .prepareStatement("DELETE FROM Logement WHERE num = ?");
         st.setString(1, tupple.getNum());
         st.executeUpdate();
+        st.close();
 
     }
 
@@ -91,7 +94,10 @@ public class DaoLogement extends DaoModele<Logement> {
         prSt.execute();
         ResultSet rs = prSt.getResultSet();
         rs.next();
-        return creerInstance(rs);
+        Logement l = creerInstance(rs);
+        rs.close();
+        prSt.close();
+        return l;
     }
 
     public Collection<Logement> findByImmeuble(String id_immeuble) throws SQLException {
@@ -106,6 +112,8 @@ public class DaoLogement extends DaoModele<Logement> {
         while (rs.next()) {
             lesLogements.add(creerInstance(rs));
         }
+        rs.close();
+        prSt.close();
         return lesLogements;
     }
 
