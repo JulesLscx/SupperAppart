@@ -15,13 +15,13 @@ import Vue.FEN_Diagnostics;
 import Vue.FEN_DocumentsAnnuels;
 import Vue.FEN_Entrepreneur;
 import Vue.FEN_Facture;
-import Vue.FEN_Facture_Travaux;
+import Vue.FEN_Facture_Travaux_Immeuble;
+import Vue.FEN_Facture_Travaux_Logement;
 import Vue.FEN_Immeuble;
 import Vue.FEN_Locataire;
 import Vue.FEN_Logement;
 import Vue.FEN_Paiements;
 import Vue.FEN_Regularisation;
-import Vue.FEN_TravauxImmeuble;
 import Vue.FEN_TypeFacture;
 import Vue.FEN_Type_diagnostic;
 
@@ -156,7 +156,7 @@ public class GestionPrincipale implements ActionListener {
 			case "Facture Travaux":
 				if (!this.pr.getOuverte()) {
 					this.pr.switchOuverte();
-					FEN_Facture_Travaux tr = new FEN_Facture_Travaux();
+					FEN_Facture_Travaux_Logement tr = new FEN_Facture_Travaux_Logement();
 					this.pr.getLayeredPane().add(tr);
 					tr.setLocation(80, 127);
 					tr.setVisible(true);
@@ -165,7 +165,7 @@ public class GestionPrincipale implements ActionListener {
 			case "Travaux Immeuble":
 				if (!this.pr.getOuverte()) {
 					this.pr.switchOuverte();
-					FEN_TravauxImmeuble tri = new FEN_TravauxImmeuble();
+					FEN_Facture_Travaux_Immeuble tri = new FEN_Facture_Travaux_Immeuble();
 					this.pr.getLayeredPane().add(tri);
 					tri.setLocation(80, 127);
 					tri.setVisible(true);

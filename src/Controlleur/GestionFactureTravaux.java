@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import Vue.FEN_Accueil;
-import Vue.FEN_Facture_Travaux;
+import Vue.FEN_Facture_Travaux_Logement;
 
 public class GestionFactureTravaux implements ActionListener {
-	private FEN_Facture_Travaux ai;
+	private FEN_Facture_Travaux_Logement ai;
 
-	public GestionFactureTravaux(FEN_Facture_Travaux ai) {
+	public GestionFactureTravaux(FEN_Facture_Travaux_Logement ai) {
 		this.ai = ai;
 	}
 
