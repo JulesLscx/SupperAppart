@@ -198,4 +198,37 @@ public class Contrat {
     public void setId_caution(Caution id_caution) {
         this.id_caution = id_caution;
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id_contrat == null) ? 0 : id_contrat.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Contrat other = (Contrat) obj;
+        if (id_contrat == null) {
+            if (other.id_contrat != null)
+                return false;
+        } else if (!id_contrat.equals(other.id_contrat))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Contrat [id_contrat=" + id_contrat + ", prise_effet=" + prise_effet + ", duree=" + duree + ", charges="
+                + charges + ", loyer=" + loyer + ", paiement=" + paiement + ", montant_caution=" + montant_caution
+                + ", fin_contrat=" + fin_contrat + ", num=" + num + ", id_caution=" + id_caution + ", signer=" + signer
+                + "]";
+    }
 }
