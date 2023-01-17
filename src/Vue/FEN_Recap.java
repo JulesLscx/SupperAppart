@@ -21,9 +21,15 @@ public class FEN_Recap extends JInternalFrame {
 
 	private GestionRecap controlleur;
 	private JTable table_Paiements;
+
+	public JTable getTable_Paiements() {
+		return table_Paiements;
+	}
+
 	private JButton btnCharger;
 
 	private JComboBox<String> comboBox_Immeuble;
+	private JTextField textField_Annee;
 
 	public FEN_Recap() {
 		setBounds(0, 0, 968, 473);
@@ -118,7 +124,7 @@ public class FEN_Recap extends JInternalFrame {
 		lbl_Filtre_Annee.setBounds(681, 269, 95, 13);
 		getContentPane().add(lbl_Filtre_Annee);
 
-		JTextField textField_Annee = new JTextField();
+		textField_Annee = new JTextField();
 		textField_Annee.setBounds(681, 284, 86, 20);
 		getContentPane().add(textField_Annee);
 		textField_Annee.setColumns(10);
@@ -129,5 +135,25 @@ public class FEN_Recap extends JInternalFrame {
 		this.controlleur = new GestionRecap(this);
 		annuler.addActionListener(controlleur);
 		btnCharger.addActionListener(controlleur);
+	}
+
+	public JTable getTable_Factures() {
+		return table_Factures;
+	}
+
+	public GestionRecap getControlleur() {
+		return controlleur;
+	}
+
+	public JButton getBtnCharger() {
+		return btnCharger;
+	}
+
+	public JComboBox<String> getComboBox_Immeuble() {
+		return comboBox_Immeuble;
+	}
+
+	public JTextField getTextField_Annee() {
+		return textField_Annee;
 	}
 }

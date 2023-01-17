@@ -122,13 +122,14 @@ public class DaoFacture_Travaux_Logement extends DaoModele<Facture_Travaux_Logem
         return f;
     }
 
-    public List<Facture_Travaux_Logement> findByAnnee(int annee) throws SQLException {
+    public List<Facture_Travaux_Logement> findByAnnee(int annee, String id_immeuble) throws SQLException {
         List<Facture_Travaux_Logement> result = new LinkedList<Facture_Travaux_Logement>();
-        String sql = "{? = call TOTALTRAVAUXLOG(?)}";
+        String sql = "{? = call TOTALTRAVAUXLOG(?,?)}";
         ResultSet rs;
         CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
         prSt.registerOutParameter(1, OracleTypes.CURSOR);
         prSt.setInt(2, annee);
+        prSt.setString(3, id_immeuble);
         prSt.execute();
         rs = (ResultSet) prSt.getObject(1);
         while (rs.next()) {

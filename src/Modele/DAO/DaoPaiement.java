@@ -1,9 +1,11 @@
 package Modele.DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import Controlleur.CictOracleDataSource;
 import Modele.Contrat;
 import Modele.Paiements;
 import Modele.DAO.Requete.Requete;
+import oracle.jdbc.OracleTypes;
 
 public class DaoPaiement extends DaoModele<Paiements> {
 
@@ -94,5 +97,23 @@ public class DaoPaiement extends DaoModele<Paiements> {
         rs.close();
         prSt.close();
         return result;
+    }
+
+    public Collection<Paiements> findByAnnee(int annee, String id_immeuble) throws SQLException {
+        String sql = "{? = call PAIEMENTS_ANNEE(?,?)}";
+        ResultSet rs;
+        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+        prSt.registerOutParameter(1, OracleTypes.CURSOR);
+        prSt.setInt(2, annee);
+        prSt.setString(3, id_immeuble);
+        prSt.execute();
+        rs = (ResultSet) prSt.getObject(1);
+        Collection<Paiements> lesPaiements = new ArrayList<Paiements>();
+        while (rs.next()) {
+            lesPaiements.add(creerInstance(rs));
+        }
+        rs.close();
+        prSt.close();
+        return lesPaiements;
     }
 }
