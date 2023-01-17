@@ -1,7 +1,5 @@
 package Vue.Ajout;
 
-import java.sql.SQLException;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
@@ -9,10 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controlleur.Ajout.GestionAjoutLogement;
-import Modele.Immeuble;
 import Modele.Logement;
-import Modele.DAO.DaoImmeuble;
-import Vue.FEN_Erreurs;
 
 public class FEN_Ajout_Logement extends JInternalFrame {
 

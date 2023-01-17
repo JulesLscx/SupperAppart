@@ -24,8 +24,8 @@ public class FEN_Ajout_Facture extends JInternalFrame {
 	private JTextField text_Prix_U_C;
 	private JLabel lbl_Prix_U_C;
 	private JLabel lbl_Date_Facture;
-	private JComboBox comboBox_ID_Immeuble;
-	private JComboBox comboBox_Type_Facture;
+	private JComboBox<String> comboBox_ID_Immeuble;
+	private JComboBox<String> comboBox_Type_Facture;
 	private JTextField text_Num_Facture;
 
 	public FEN_Ajout_Facture(Factures_Charges toEdit) {
@@ -116,11 +116,11 @@ public class FEN_Ajout_Facture extends JInternalFrame {
 		lbl_Date_Facture.setBounds(330, 20, 190, 13);
 		getContentPane().add(lbl_Date_Facture);
 
-		comboBox_ID_Immeuble = new JComboBox();
+		comboBox_ID_Immeuble = new JComboBox<String>();
 		comboBox_ID_Immeuble.setBounds(35, 160, 121, 19);
 		getContentPane().add(comboBox_ID_Immeuble);
 
-		comboBox_Type_Facture = new JComboBox();
+		comboBox_Type_Facture = new JComboBox<String>();
 		comboBox_Type_Facture.setBounds(330, 160, 121, 19);
 		getContentPane().add(comboBox_Type_Facture);
 
@@ -128,6 +128,10 @@ public class FEN_Ajout_Facture extends JInternalFrame {
 		text_Num_Facture.setColumns(10);
 		text_Num_Facture.setBounds(35, 34, 190, 19);
 		getContentPane().add(text_Num_Facture);
+
+		this.controlleur = new GestionAjoutFacture(this);
+		btn_Annuler.addActionListener(controlleur);
+		btn_Valider.addActionListener(controlleur);
 	}
 
 }

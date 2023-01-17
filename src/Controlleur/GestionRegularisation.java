@@ -65,9 +65,10 @@ public class GestionRegularisation implements ActionListener {
 	}
 
 	private void pushAll() {
+		DaoRegularisation dao = new DaoRegularisation();
 		for (int i = 0; i < this.ai.getTable_Generation_Regu().getRowCount(); i++) {
-			DaoRegularisation dao = new DaoRegularisation();
-			if (this.ai.getTable_Generation_Regu().getValueAt(i, 3) != null) {
+			if (this.ai.getTable_Generation_Regu().getValueAt(i, 3) instanceof Float
+					|| (String) this.ai.getTable_Generation_Regu().getValueAt(i, 3) != "") {
 				try {
 					dao.create(lireLigneTable(i, this.ai.getTable_Generation_Regu()));
 				} catch (SQLException e) {

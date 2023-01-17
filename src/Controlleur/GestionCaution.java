@@ -7,10 +7,10 @@ import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import Modele.Caution;
 import Modele.DAO.DaoCaution;
+import Other.MyDefaultTableModel;
 import Vue.FEN_Accueil;
 import Vue.FEN_Caution;
 import Vue.FEN_Erreurs;
@@ -106,7 +106,7 @@ public class GestionCaution
 		Collection<Caution> lesCautions;
 		try {
 			lesCautions = daoCaution.findAll();
-			ai.getTable_Caution().setModel(new DefaultTableModel(
+			ai.getTable_Caution().setModel(new MyDefaultTableModel(
 					new String[] { "IdCaution", "Nom", "Prénom", "Adresse", "Email", "Téléphone", "profession" },
 					lesCautions.size()));
 			int i = 0;

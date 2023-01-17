@@ -7,10 +7,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
 
 import Controlleur.GestionImmeuble;
 import Controlleur.Table.GestionTableImmeuble;
+import Other.MyDefaultTableModel;
 
 public class FEN_Immeuble extends JInternalFrame {
 	private JTable table_Immeuble;
@@ -77,7 +77,7 @@ public class FEN_Immeuble extends JInternalFrame {
 		getContentPane().add(spAssuranceImmeuble);
 
 		table_AssuranceImmeuble = new JTable();
-		table_AssuranceImmeuble.setModel(new DefaultTableModel(
+		table_AssuranceImmeuble.setModel(new MyDefaultTableModel(
 				new Object[][] {
 						{ null, null, null, null },
 						{ null, null, null, null },
@@ -96,33 +96,32 @@ public class FEN_Immeuble extends JInternalFrame {
 		getContentPane().add(spLogement);
 
 		table_Logement = new JTable();
-		table_Logement.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"Identifiant", "Adresse", "Pde construction", "Numero", "CP", "Copro", "Accessoires"
-			}
-		));
+		table_Logement.setModel(new MyDefaultTableModel(
+				new Object[][] {
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null },
+				},
+				new String[] {
+						"Identifiant", "Adresse", "Pde construction", "Numero", "CP", "Copro", "Accessoires"
+				}));
 		table_Logement.getColumnModel().getColumn(2).setPreferredWidth(90);
 		table_Logement.getColumnModel().getColumn(3).setPreferredWidth(65);
 		table_Logement.getColumnModel().getColumn(4).setPreferredWidth(65);

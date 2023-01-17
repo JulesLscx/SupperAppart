@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Modele.Locataire;
 import Modele.DAO.DaoLocataire;
+import Other.MyDefaultTableModel;
 import Vue.FEN_Accueil;
 import Vue.FEN_Erreurs;
 import Vue.FEN_Locataire;
@@ -129,7 +130,7 @@ public class GestionLocataire implements ActionListener {
 		Collection<Locataire> lesLocataires;
 		try {
 			lesLocataires = daoLocataire.findAll();
-			ai.getTable_Locataire().setModel(new DefaultTableModel(
+			ai.getTable_Locataire().setModel(new MyDefaultTableModel(
 					new String[] { "nLocataire", "nom", "prenom",
 							"email", "telephone", "genre" },
 					lesLocataires.size()));

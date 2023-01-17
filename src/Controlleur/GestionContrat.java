@@ -7,10 +7,10 @@ import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import Modele.Contrat;
 import Modele.DAO.DaoContrat;
+import Other.MyDefaultTableModel;
 import Vue.FEN_Accueil;
 import Vue.FEN_Contrat;
 import Vue.FEN_Erreurs;
@@ -117,25 +117,27 @@ public class GestionContrat implements ActionListener {
 		Collection<Contrat> lesContrats;
 		try {
 			lesContrats = daoContrat.findAll();
-			table_Contrat.setModel(new DefaultTableModel(
-					new String[] { "N\u00B0 Contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer", "Date r\u00E9vision", "P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL", "Montant caution", "Fin contrat", "Logement", "Entrepreuneur", "Caution"
-				},
+			table_Contrat.setModel(new MyDefaultTableModel(
+					new String[] { "N\u00B0 Contrat", "Prise effet", "Dur\u00E9e", "Charge", "Loyer",
+							"Date r\u00E9vision", "P\u00E9riodicit\u00E9", "Date paiement", "Paiement", "Date EDL",
+							"Montant caution", "Fin contrat", "Logement", "Entrepreuneur", "Caution"
+					},
 					lesContrats.size()));
-					table_Contrat.getColumnModel().getColumn(0).setPreferredWidth(65);
-		table_Contrat.getColumnModel().getColumn(1).setPreferredWidth(70);
-		table_Contrat.getColumnModel().getColumn(2).setPreferredWidth(65);
-		table_Contrat.getColumnModel().getColumn(3).setPreferredWidth(60);
-		table_Contrat.getColumnModel().getColumn(4).setPreferredWidth(60);
-		table_Contrat.getColumnModel().getColumn(5).setPreferredWidth(90);
-		table_Contrat.getColumnModel().getColumn(6).setPreferredWidth(70);
-		table_Contrat.getColumnModel().getColumn(7).setPreferredWidth(90);
-		table_Contrat.getColumnModel().getColumn(8).setPreferredWidth(65);
-		table_Contrat.getColumnModel().getColumn(9).setPreferredWidth(65);
-		table_Contrat.getColumnModel().getColumn(10).setPreferredWidth(95);
-		table_Contrat.getColumnModel().getColumn(11).setPreferredWidth(65);
-		table_Contrat.getColumnModel().getColumn(12).setPreferredWidth(65);
-		table_Contrat.getColumnModel().getColumn(13).setPreferredWidth(85);
-		table_Contrat.getColumnModel().getColumn(14).setPreferredWidth(65);
+			table_Contrat.getColumnModel().getColumn(0).setPreferredWidth(65);
+			table_Contrat.getColumnModel().getColumn(1).setPreferredWidth(70);
+			table_Contrat.getColumnModel().getColumn(2).setPreferredWidth(65);
+			table_Contrat.getColumnModel().getColumn(3).setPreferredWidth(60);
+			table_Contrat.getColumnModel().getColumn(4).setPreferredWidth(60);
+			table_Contrat.getColumnModel().getColumn(5).setPreferredWidth(90);
+			table_Contrat.getColumnModel().getColumn(6).setPreferredWidth(70);
+			table_Contrat.getColumnModel().getColumn(7).setPreferredWidth(90);
+			table_Contrat.getColumnModel().getColumn(8).setPreferredWidth(65);
+			table_Contrat.getColumnModel().getColumn(9).setPreferredWidth(65);
+			table_Contrat.getColumnModel().getColumn(10).setPreferredWidth(95);
+			table_Contrat.getColumnModel().getColumn(11).setPreferredWidth(65);
+			table_Contrat.getColumnModel().getColumn(12).setPreferredWidth(65);
+			table_Contrat.getColumnModel().getColumn(13).setPreferredWidth(85);
+			table_Contrat.getColumnModel().getColumn(14).setPreferredWidth(65);
 			int i = 0;
 			for (Contrat c : lesContrats) {
 				if (c == null)

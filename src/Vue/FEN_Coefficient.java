@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -11,10 +12,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-import Controlleur.GestionCaution;
 import Controlleur.GestionCoef;
 import Controlleur.Table.GestionCautionTable;
-import javax.swing.JComboBox;
 
 public class FEN_Coefficient extends JInternalFrame {
 	private JTable table_Coefficient;
@@ -74,7 +73,12 @@ public class FEN_Coefficient extends JInternalFrame {
 				},
 				new String[] {
 						"N\u00B0 logement", "Type de facture", "Coefficient"
-				}));
+				}) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		});
 		sp_Coefficient.setViewportView(table_Coefficient);
 
 		btnModifier = new JButton("Modifier");
@@ -120,5 +124,21 @@ public class FEN_Coefficient extends JInternalFrame {
 		result.add(btnModifier);
 		result.add(btnSupprimer);
 		return result;
+	}
+
+	public GestionCoef getControlleur() {
+		return controlleur;
+	}
+
+	public JButton getBtnModifier() {
+		return btnModifier;
+	}
+
+	public JButton getBtnSupprimer() {
+		return btnSupprimer;
+	}
+
+	public GestionCautionTable getGestionTable() {
+		return gestionTable;
 	}
 }

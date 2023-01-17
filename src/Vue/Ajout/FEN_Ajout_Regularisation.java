@@ -1,14 +1,11 @@
 package Vue.Ajout;
 
-import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import Controlleur.Ajout.GestionAjoutRegularisation;
 import Modele.Regularisation;
 
 public class FEN_Ajout_Regularisation extends JInternalFrame {
@@ -17,12 +14,12 @@ public class FEN_Ajout_Regularisation extends JInternalFrame {
 	 * Launch the application.
 	 */
 
-	private GestionAjoutRegularisation controlleur;
+	// private GestionAjoutRegularisation controlleur;
 	private JTextField text_Date_Regu;
 	private JTextField text_Montant;
 	private JLabel lbl_Type_Fac;
-	private JComboBox comboBox_Type_Fac;
-	private JComboBox comboBox_ID_Contrat;
+	private JComboBox<String> comboBox_Type_Fac;
+	private JComboBox<String> comboBox_ID_Contrat;
 
 	public FEN_Ajout_Regularisation(Regularisation toEdit) {
 		init();
@@ -77,11 +74,11 @@ public class FEN_Ajout_Regularisation extends JInternalFrame {
 		lbl_Type_Fac.setBounds(330, 20, 190, 13);
 		getContentPane().add(lbl_Type_Fac);
 
-		comboBox_Type_Fac = new JComboBox();
+		comboBox_Type_Fac = new JComboBox<String>();
 		comboBox_Type_Fac.setBounds(330, 34, 121, 19);
 		getContentPane().add(comboBox_Type_Fac);
 
-		comboBox_ID_Contrat = new JComboBox();
+		comboBox_ID_Contrat = new JComboBox<String>();
 		comboBox_ID_Contrat.setBounds(35, 34, 121, 19);
 		getContentPane().add(comboBox_ID_Contrat);
 	}

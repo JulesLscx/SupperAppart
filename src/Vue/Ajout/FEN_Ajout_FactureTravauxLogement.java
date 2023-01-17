@@ -1,6 +1,5 @@
 package Vue.Ajout;
 
-import java.awt.EventQueue;
 import java.sql.SQLException;
 import java.util.Collection;
 

@@ -1,9 +1,7 @@
 package Vue.Ajout;
 
-import java.awt.EventQueue;
 import java.sql.SQLException;
 import java.util.Collection;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;

@@ -8,12 +8,12 @@ import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import Modele.Contrat;
 import Modele.Paiements;
 import Modele.DAO.DaoContrat;
 import Modele.DAO.DaoPaiement;
+import Other.MyDefaultTableModel;
 import Vue.FEN_Accueil;
 import Vue.FEN_Erreurs;
 import Vue.FEN_Paiements;
@@ -109,7 +109,7 @@ public class GestionPaiements implements ActionListener {
 		Collection<Paiements> lesCautions;
 		try {
 			lesCautions = daoCaution.findAll();
-			ai.getTable_Paiement().setModel(new DefaultTableModel(
+			ai.getTable_Paiement().setModel(new MyDefaultTableModel(
 					new String[] { "Id", "Montant", "Date", "Moyen Paiement",
 							"id_contrat" },
 					lesCautions.size()));

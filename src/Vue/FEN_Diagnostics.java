@@ -4,12 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionDiagnostics;
@@ -69,15 +66,15 @@ public class FEN_Diagnostics extends JInternalFrame {
 				new String[] {
 						"Reference", "Date Diagnostic", "Diagnostic", "Type", "Logement", }));
 		spFactureExistante.setViewportView(table_Diagnostic);
-		
+
 		JButton Ajout_1 = new JButton("Ajouter");
 		Ajout_1.setBounds(75, 400, 119, 23);
 		getContentPane().add(Ajout_1);
-		
+
 		JButton btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.setBounds(375, 400, 119, 23);
 		getContentPane().add(btnSupprimer);
-		
+
 		JButton btnCharger = new JButton("Charger");
 		btnCharger.setBounds(525, 400, 119, 23);
 		getContentPane().add(btnCharger);

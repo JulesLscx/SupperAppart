@@ -1,21 +1,14 @@
 package Vue;
 
-import java.awt.Component;
-import java.awt.EventQueue;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionPaiements;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import Other.MyDefaultTableModel;
 
 public class FEN_Paiements extends JInternalFrame {
 	private JTable table_Paiement;
@@ -45,33 +38,32 @@ public class FEN_Paiements extends JInternalFrame {
 		getContentPane().add(spPaiement);
 
 		table_Paiement = new JTable();
-		table_Paiement.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-			},
-			new String[] {
-				"Identifiant", "Montant", "Date", "Moyen Paiement", "Identifiant contrat"
-			}
-		));
+		table_Paiement.setModel(new MyDefaultTableModel(
+				new Object[][] {
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+				},
+				new String[] {
+						"Identifiant", "Montant", "Date", "Moyen Paiement", "Identifiant contrat"
+				}));
 		spPaiement.setViewportView(table_Paiement);
 
 		JScrollPane spContrat = new JScrollPane();

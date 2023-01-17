@@ -1,23 +1,16 @@
 package Vue;
 
-import java.awt.EventQueue;
-
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionTypeFacture;
 import Controlleur.Table.GestionTable_TypeF;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import Other.MyDefaultTableModel;
 
 public class FEN_TypeFacture extends JInternalFrame {
 	private JTable table_TypeFacture;
@@ -61,25 +54,24 @@ public class FEN_TypeFacture extends JInternalFrame {
 		getContentPane().add(spTypeFactureExistante);
 
 		table_TypeFacture = new JTable();
-		table_TypeFacture.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"P\u00E9riodicit\u00E9", "Type", "Unit\u00E9"
-			}
-		));
+		table_TypeFacture.setModel(new MyDefaultTableModel(
+				new Object[][] {
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+				},
+				new String[] {
+						"P\u00E9riodicit\u00E9", "Type", "Unit\u00E9"
+				}));
 		spTypeFactureExistante.setViewportView(table_TypeFacture);
-		
+
 		JScrollPane spFactureExistante = new JScrollPane();
 		spFactureExistante.setEnabled(false);
 		spFactureExistante.setBounds(24, 31, 637, 136);
@@ -112,8 +104,7 @@ public class FEN_TypeFacture extends JInternalFrame {
 						"N° facture", "Montant", "Prix", "Date", "Cout fixe", "Prix constatée", "Total"
 				}));
 		spFactureExistante.setViewportView(table_Facture);
-		
-		
+
 		this.controlleur = new GestionTypeFacture(this);
 		btn_ajouter.addActionListener(controlleur);
 		annuler.addActionListener(controlleur);
@@ -123,11 +114,11 @@ public class FEN_TypeFacture extends JInternalFrame {
 
 		this.controlleurTable = new GestionTable_TypeF(controlleur);
 		this.getTable_TypeFacture().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+
 		JLabel lblTypeFacture = new JLabel("Type de facture");
 		lblTypeFacture.setBounds(22, 178, 107, 13);
 		getContentPane().add(lblTypeFacture);
-		
+
 		JLabel lblFacture = new JLabel("Facture");
 		lblFacture.setBounds(23, 10, 107, 13);
 		getContentPane().add(lblFacture);

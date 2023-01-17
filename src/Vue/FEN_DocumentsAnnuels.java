@@ -1,12 +1,9 @@
 package Vue;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionDocumentsAnnuels;
@@ -65,15 +62,15 @@ public class FEN_DocumentsAnnuels extends JInternalFrame {
 		btnSupprimer.addActionListener(controlleur);
 		annuler.addActionListener(controlleur);
 		spFactureExistante.setViewportView(table_DocumentsAnnuels);
-		
+
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.setBounds(225, 400, 119, 23);
 		getContentPane().add(btnModifier);
-		
+
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.setBounds(75, 400, 119, 23);
 		getContentPane().add(btnAjouter);
-		
+
 		btnCharger = new JButton("Charger");
 		btnCharger.setBounds(525, 400, 119, 23);
 		getContentPane().add(btnCharger);

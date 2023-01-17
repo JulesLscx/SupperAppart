@@ -7,12 +7,12 @@ import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import Modele.Immeuble;
 import Modele.Logement;
 import Modele.DAO.DaoImmeuble;
 import Modele.DAO.DaoLogement;
+import Other.MyDefaultTableModel;
 import Vue.FEN_Accueil;
 import Vue.FEN_Erreurs;
 import Vue.FEN_Logement;
@@ -108,7 +108,7 @@ public class GestionLogement implements ActionListener {
 		Collection<Logement> lesLogements;
 		try {
 			lesLogements = daoLogement.findAll();
-			ai.getTable_Logement().setModel(new DefaultTableModel(
+			ai.getTable_Logement().setModel(new MyDefaultTableModel(
 					new String[] {
 							"Num\u00E9ro", "Type Habitation", "Surface", "nbPiece", "Immeuble"
 					},

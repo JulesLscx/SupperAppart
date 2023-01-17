@@ -7,10 +7,10 @@ import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import Modele.Immeuble;
 import Modele.DAO.DaoImmeuble;
+import Other.MyDefaultTableModel;
 import Vue.FEN_Accueil;
 import Vue.FEN_Erreurs;
 import Vue.FEN_Immeuble;
@@ -109,7 +109,7 @@ public class GestionImmeuble implements ActionListener {
 		Collection<Immeuble> lesImmeubles;
 		try {
 			lesImmeubles = daoImmeuble.findAll();
-			ai.getTable_Immeuble().setModel(new DefaultTableModel(
+			ai.getTable_Immeuble().setModel(new MyDefaultTableModel(
 					new String[] {
 							"Id_immeuble", "Adresse", "Pde de construction", "N°", "Code Postal", "Ville", "Copro",
 							"Accessoire communs"

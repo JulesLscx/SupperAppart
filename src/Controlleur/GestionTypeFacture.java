@@ -7,10 +7,10 @@ import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import Modele.Type_Fac;
 import Modele.DAO.DaoType_Fac;
+import Other.MyDefaultTableModel;
 import Vue.FEN_Accueil;
 import Vue.FEN_Erreurs;
 import Vue.FEN_TypeFacture;
@@ -97,7 +97,7 @@ public class GestionTypeFacture implements ActionListener {
 		Collection<Type_Fac> lesCautions;
 		try {
 			lesCautions = DaoType_Fac.findAll();
-			ai.getTable_TypeFacture().setModel(new DefaultTableModel(
+			ai.getTable_TypeFacture().setModel(new MyDefaultTableModel(
 					new String[] { "Type Facture", "Périodicité", "Unité" },
 					lesCautions.size()));
 			int i = 0;

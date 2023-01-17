@@ -1,7 +1,5 @@
 package Vue.Ajout;
 
-import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;

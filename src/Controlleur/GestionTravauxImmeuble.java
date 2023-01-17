@@ -7,10 +7,10 @@ import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import Modele.Facture_Travaux_Immeuble;
 import Modele.DAO.DaoFacture_Travaux_Immeuble;
+import Other.MyDefaultTableModel;
 import Vue.FEN_Accueil;
 import Vue.FEN_Erreurs;
 import Vue.FEN_Facture_Travaux_Immeuble;
@@ -104,7 +104,7 @@ public class GestionTravauxImmeuble implements ActionListener {
 		Collection<Facture_Travaux_Immeuble> lesFacs;
 		try {
 			lesFacs = dao.findAll();
-			ai.getTable_TravauxImmeuble().setModel(new DefaultTableModel(
+			ai.getTable_TravauxImmeuble().setModel(new MyDefaultTableModel(
 					new String[] { "N° facture", "Nature", "Prix", "Montant indéductible", "Réduction",
 							"Ordre du chèque", "N° chèque", "Date de paiement", "N° siren", "Immeuble" },
 					lesFacs.size()));

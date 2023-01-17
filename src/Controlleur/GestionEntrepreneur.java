@@ -7,10 +7,10 @@ import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import Modele.Entrepreneur;
 import Modele.DAO.DaoEntrepreuneur;
+import Other.MyDefaultTableModel;
 import Vue.FEN_Accueil;
 import Vue.FEN_Entrepreneur;
 import Vue.FEN_Erreurs;
@@ -101,7 +101,7 @@ public class GestionEntrepreneur implements ActionListener {
 		Collection<Entrepreneur> lesEntrepreuneurs;
 		try {
 			lesEntrepreuneurs = daoEntrepreuneur.findAll();
-			ai.getTable_entrepreuneur().setModel(new DefaultTableModel(
+			ai.getTable_entrepreuneur().setModel(new MyDefaultTableModel(
 					new String[] {
 							"numeroSiren", "adresse", "nom", "iBan", "secteurActivite",
 					},

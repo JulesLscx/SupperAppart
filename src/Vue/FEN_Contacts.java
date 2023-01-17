@@ -7,19 +7,17 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
-import Controlleur.GestionContacts;
-
 @SuppressWarnings("serial")
 public class FEN_Contacts extends JInternalFrame {
-	private Boolean ouverte;
-	private JTable table;
-	private GestionContacts controlleur;
+	// private Boolean ouverte;
+	// private JTable table;
+	// private GestionContacts controlleur;
 
 	public FEN_Contacts() {
-		ouverte = false;
-		this.controlleur = new GestionContacts(this);
-		setBounds(0, 0, 1280, 720);
-		getContentPane().setLayout(null);
+		// ouverte = false;
+		// this.controlleur = new GestionContacts(this);
+		// setBounds(0, 0, 1280, 720);
+		// getContentPane().setLayout(null);
 
 		// JMenuBar menuBar = new JMenuBar();
 		// setJMenuBar(menuBar);
