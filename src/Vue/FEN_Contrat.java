@@ -136,13 +136,9 @@ public class FEN_Contrat extends JInternalFrame {
 
 		table_Caution = new JTable();
 		table_Caution.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-				},
 				new String[] {
-						"N° caution", "Nom ", "Pr\u00E9nom", "Adresse", "T\u00E9l\u00E9phone", "Profession"
-				}));
+						"N° caution", "Nom ", "Pr\u00E9nom", "Adresse", "Email", "T\u00E9l\u00E9phone", "Profession"
+				}, 1));
 		table_Caution.getColumnModel().getColumn(0).setPreferredWidth(86);
 		table_Caution.getColumnModel().getColumn(1).setPreferredWidth(66);
 		spCaution.setViewportView(table_Caution);
