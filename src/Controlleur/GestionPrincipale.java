@@ -8,6 +8,7 @@ import javax.swing.JMenuItem;
 import Vue.FEN_Accueil;
 import Vue.FEN_AssuranceImmeuble;
 import Vue.FEN_Caution;
+import Vue.FEN_Coefficient;
 import Vue.FEN_Connexion;
 import Vue.FEN_Contacts;
 import Vue.FEN_Contrat;
@@ -184,6 +185,15 @@ public class GestionPrincipale implements ActionListener {
 				if (!this.pr.getOuverte()) {
 					this.pr.switchOuverte();
 					FEN_TypeFacture tf = new FEN_TypeFacture();
+					this.pr.getLayeredPane().add(tf);
+					tf.setLocation(80, 127);
+					tf.setVisible(true);
+				}
+				break;
+			case "Répartition charges":
+				if (!this.pr.getOuverte()) {
+					this.pr.switchOuverte();
+					FEN_Coefficient tf = new FEN_Coefficient();
 					this.pr.getLayeredPane().add(tf);
 					tf.setLocation(80, 127);
 					tf.setVisible(true);

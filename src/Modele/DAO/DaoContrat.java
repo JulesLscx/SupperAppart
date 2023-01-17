@@ -237,4 +237,15 @@ public class DaoContrat extends DaoModele<Contrat> {
         prSt.close();
         return lesLocataires;
     }
+
+    public Contrat findByLogement(String num) throws SQLException {
+        String sql = "{? = call get_contrat_logement(?) }";
+        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+        prSt.registerOutParameter(1, OracleTypes.VARCHAR);
+        prSt.setString(2, num);
+        prSt.execute();
+        String id_contrat = prSt.getString(1);
+        prSt.close();
+        return this.findById(null, id_contrat);
+    }
 }

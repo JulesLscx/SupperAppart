@@ -6,7 +6,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controlleur.Ajout.GestionAjoutCaution;
+import Controlleur.Ajout.GestionAjoutCoef;
 import Modele.Caution;
+import Modele.Coef;
 
 public class FEN_Ajout_Coefficient extends JInternalFrame {
 
@@ -14,11 +16,11 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 	 * Launch the application.
 	 */
 
-	private GestionAjoutCaution controlleur;
+	private GestionAjoutCoef controlleur;
 	private JTextField text_Type_Fac;
 	private JLabel lbl_Type_Fac;
 	private JTextField text_Num_Logement;
-	private Caution caution;
+	private Coef caution;
 	private JTextField text_Coefficient;
 
 	/**
@@ -28,12 +30,12 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 		init();
 	}
 
-	public FEN_Ajout_Coefficient(Caution toEdit) {
+	public FEN_Ajout_Coefficient(Coef toEdit) {
 		init();
 		this.caution = toEdit;
-		this.text_Num_Logement.setText(toEdit.getNum());
-		this.text_Type_Fac.setText(toEdit.getTypeF());
-		this.text_Coefficient.setText(toEdit.getCoeff());
+		this.text_Num_Logement.setText(toEdit.getNum().getNum());
+		this.text_Type_Fac.setText(toEdit.getTf().getTypeF());
+		this.text_Coefficient.setText(toEdit.getCoefficient().toString());
 	}
 
 	private void init() {
@@ -69,22 +71,22 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 		text_Num_Logement.setColumns(10);
 		text_Num_Logement.setBounds(35, 34, 190, 19);
 		getContentPane().add(text_Num_Logement);
-		
+
 		text_Coefficient = new JTextField();
 		text_Coefficient.setColumns(10);
 		text_Coefficient.setBounds(35, 76, 190, 19);
 		getContentPane().add(text_Coefficient);
 
-		controlleur = new GestionAjoutCaution(this);
+		controlleur = new GestionAjoutCoef(this);
 		btn_Valider.addActionListener(controlleur);
 		btn_Annuler.addActionListener(controlleur);
 	}
 
-	public GestionAjoutCaution getControlleur() {
+	public GestionAjoutCoef getControlleur() {
 		return controlleur;
 	}
 
-	public void setControlleur(GestionAjoutCaution controlleur) {
+	public void setControlleur(GestionAjoutCoef controlleur) {
 		this.controlleur = controlleur;
 	}
 
@@ -120,7 +122,7 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 		this.text_Num_Logement = text_Num_Logement;
 	}
 
-	public boolean isCautionSet() {
+	public boolean isCoefSet() {
 		return this.caution != null;
 	}
 }

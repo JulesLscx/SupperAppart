@@ -80,6 +80,7 @@ public class DaoType_Fac extends DaoModele<Type_Fac> {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
                 .prepareStatement("Select * from Type_fac where typeF = ?");
         prSt.setNString(1, id[0]);
+        prSt.execute();
         ResultSet rs = prSt.getResultSet();
         rs.next();
         Type_Fac result = creerInstance(rs);
