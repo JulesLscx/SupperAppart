@@ -21,6 +21,7 @@ import Vue.FEN_Immeuble;
 import Vue.FEN_Locataire;
 import Vue.FEN_Logement;
 import Vue.FEN_Paiements;
+import Vue.FEN_Recap;
 import Vue.FEN_Regularisation;
 import Vue.FEN_TypeFacture;
 import Vue.FEN_Type_diagnostic;
@@ -58,6 +59,15 @@ public class GestionPrincipale implements ActionListener {
 				if (!this.pr.getOuverte()) {
 					this.pr.switchOuverte();
 					FEN_Contrat co = new FEN_Contrat();
+					this.pr.getLayeredPane().add(co);
+					co.setLocation(80, 127);
+					co.setVisible(true);
+				}
+				break;
+			case "Récapitulatif par année":
+				if (!this.pr.getOuverte()) {
+					this.pr.switchOuverte();
+					FEN_Recap co = new FEN_Recap();
 					this.pr.getLayeredPane().add(co);
 					co.setLocation(80, 127);
 					co.setVisible(true);

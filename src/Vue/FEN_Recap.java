@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionRecap;
+import Other.MyDefaultTableModel;
 
 public class FEN_Recap extends JInternalFrame {
 	private JTable table_Factures;
@@ -38,7 +39,7 @@ public class FEN_Recap extends JInternalFrame {
 		getContentPane().add(sp_Factures);
 
 		table_Factures = new JTable();
-		table_Factures.setModel(new DefaultTableModel(
+		table_Factures.setModel(new MyDefaultTableModel(
 				new Object[][] {
 						{ null, null, null, null, null, null, null, null, null, null },
 						{ null, null, null, null, null, null, null, null, null, null },
@@ -84,7 +85,7 @@ public class FEN_Recap extends JInternalFrame {
 		getContentPane().add(sp_Paiements);
 
 		table_Paiements = new JTable();
-		table_Paiements.setModel(new DefaultTableModel(
+		table_Paiements.setModel(new MyDefaultTableModel(
 				new Object[][] {
 						{ null, null, null, null, null },
 						{ null, null, null, null, null },

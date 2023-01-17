@@ -13,14 +13,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionCoef;
-import Controlleur.Table.GestionCautionTable;
 
 public class FEN_Coefficient extends JInternalFrame {
 	private JTable table_Coefficient;
 	private GestionCoef controlleur;
 	private JButton btnModifier;
 	private JButton btnSupprimer;
-	private GestionCautionTable gestionTable;
 	private JComboBox<String> comboBox_logement;
 
 	public JComboBox<String> getComboBox_logement() {
@@ -97,14 +95,6 @@ public class FEN_Coefficient extends JInternalFrame {
 		lbl_Coefficient.setBounds(45, 40, 119, 13);
 		getContentPane().add(lbl_Coefficient);
 
-		this.controlleur = new GestionCoef(this);
-		btnAjouter.addActionListener(controlleur);
-		annuler.addActionListener(controlleur);
-		btnCharger.addActionListener(controlleur);
-		btnModifier.addActionListener(controlleur);
-		btnAjouter.addActionListener(controlleur);
-		btnSupprimer.addActionListener(controlleur);
-
 		// this.gestionTable = new GestionCautionTable(table_Coefficient, controlleur);
 		this.table_Coefficient.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -113,9 +103,15 @@ public class FEN_Coefficient extends JInternalFrame {
 		getContentPane().add(comboBox_logement);
 
 		JLabel lbl_combobox_Logement = new JLabel("Selectionner Logement");
-		lbl_combobox_Logement.setBounds(675, 145, 49, 14);
+		lbl_combobox_Logement.setBounds(675, 145, 150, 14);
 		getContentPane().add(lbl_combobox_Logement);
-		this.table_Coefficient.getSelectionModel().addListSelectionListener(this.gestionTable);
+
+		this.controlleur = new GestionCoef(this);
+		btnAjouter.addActionListener(controlleur);
+		annuler.addActionListener(controlleur);
+		btnCharger.addActionListener(controlleur);
+		btnModifier.addActionListener(controlleur);
+		btnSupprimer.addActionListener(controlleur);
 
 	}
 
@@ -138,7 +134,4 @@ public class FEN_Coefficient extends JInternalFrame {
 		return btnSupprimer;
 	}
 
-	public GestionCautionTable getGestionTable() {
-		return gestionTable;
-	}
 }

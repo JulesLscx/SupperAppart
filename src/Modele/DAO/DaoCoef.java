@@ -17,22 +17,30 @@ public class DaoCoef extends DaoModele<Coef> {
     @Override
     public void create(Coef tupple) throws SQLException {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
-                .prepareCall("insert into coef values(?,?,?)");
+                .prepareCall("""
+                        INSERT INTO COEF(
+                                        NUM,
+                                        TYPEF,
+                                        COEFFICIENT
+                                                )
+                                        VALUES
+                                        (?,?,?)
+                        """);
         prSt.setNString(1, tupple.getNum().getNum());
         prSt.setNString(2, tupple.getTf().getTypeF());
-        prSt.setFloat(4, tupple.getCoefficient());
+        prSt.setFloat(3, tupple.getCoefficient());
         prSt.execute();
         prSt.close();
     }
 
     @Override
     public void update(Coef tupple) throws SQLException {
-        String req = "Update Coef set coefficient = ? set where num = ?, typeF = ?, ";
+        String req = "Update Coef set coefficient = ? where num = ? and typeF = ? ";
         PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(req);
 
-        prSt.setNString(3, tupple.getNum().getNum());
-        prSt.setNString(1, tupple.getTf().getTypeF());
-        prSt.setFloat(2, tupple.getCoefficient());
+        prSt.setNString(2, tupple.getNum().getNum());
+        prSt.setNString(3, tupple.getTf().getTypeF());
+        prSt.setFloat(1, tupple.getCoefficient());
         prSt.execute();
         prSt.close();
 
@@ -43,7 +51,7 @@ public class DaoCoef extends DaoModele<Coef> {
         PreparedStatement st = CictOracleDataSource.getLaConnection()
                 .prepareStatement("DELETE FROM Coef WHERE num = ? and typef = ?");
         st.setString(1, tupple.getNum().getNum());
-        st.setString(1, tupple.getTf().getTypeF());
+        st.setString(2, tupple.getTf().getTypeF());
         st.executeUpdate();
         st.close();
     }

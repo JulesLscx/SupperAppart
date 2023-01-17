@@ -21,7 +21,8 @@ public class FEN_Accueil extends JFrame {
 	private JMenu mnDiagnostics;
 	private JMenu mnHabitat;
 	private JMenu mnFactures;
-	private JMenu mnPages;
+	private JMenu mnRecap;
+	// private JMenu mnPages;
 	private JMenuItem mtm_deconnecter;
 	private JMenuItem mtm_connecter;
 	private JMenuItem mntmEntrepreneurs;
@@ -55,21 +56,21 @@ public class FEN_Accueil extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		mnPages = new JMenu("Pages");
-		menuBar.add(mnPages);
+		// mnPages = new JMenu("Pages");
+		// menuBar.add(mnPages);
 
-		JMenuItem mntmDashBoard = new JMenuItem("Accueil");
-		mntmDashBoard.addActionListener(controlleur);
-		mnPages.add(mntmDashBoard);
+		// JMenuItem mntmDashBoard = new JMenuItem("Accueil");
+		// mntmDashBoard.addActionListener(controlleur);
+		// mnPages.add(mntmDashBoard);
 
-		JMenuItem mntmModifier = new JMenuItem("Modifier la base");
-		mntmModifier.addActionListener(controlleur);
-		mnPages.add(mntmModifier);
-		mntmModifier.setEnabled(false);
+		// JMenuItem mntmModifier = new JMenuItem("Modifier la base");
+		// mntmModifier.addActionListener(controlleur);
+		// mnPages.add(mntmModifier);
+		// mntmModifier.setEnabled(false);
 
-		JMenuItem mntmContacts = new JMenuItem("Contacts");
-		mntmContacts.addActionListener(controlleur);
-		mnPages.add(mntmContacts);
+		// JMenuItem mntmContacts = new JMenuItem("Contacts");
+		// mntmContacts.addActionListener(controlleur);
+		// mnPages.add(mntmContacts);
 
 		mnFactures = new JMenu("Factures");
 		mnFactures.addActionListener(controlleur);
@@ -94,6 +95,13 @@ public class FEN_Accueil extends JFrame {
 		JMenuItem mntmCoef = new JMenuItem("Répartition charges");
 		mntmCoef.addActionListener(controlleur);
 		mnFactures.add(mntmCoef);
+
+		mnRecap = new JMenu("Déclaration");
+		menuBar.add(mnRecap);
+
+		JMenuItem mntmRecap = new JMenuItem("Récapitulatif par année");
+		mntmRecap.addActionListener(controlleur);
+		mnRecap.add(mntmRecap);
 
 		mnHabitat = new JMenu("Habitat");
 		mnHabitat.addActionListener(controlleur);
@@ -191,7 +199,7 @@ public class FEN_Accueil extends JFrame {
 		this.mnContrats.setEnabled(estConnecte);
 		this.mnFactures.setEnabled(estConnecte);
 		this.mnHabitat.setEnabled(estConnecte);
-		this.mnPages.setEnabled(estConnecte);
+		this.mnRecap.setEnabled(estConnecte);
 		this.mnLocataires.setEnabled(estConnecte);
 		this.mntmEntrepreneurs.setEnabled(estConnecte);
 		System.out.println("test");

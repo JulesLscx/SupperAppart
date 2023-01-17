@@ -26,6 +26,8 @@ public class GestionCoef implements ActionListener {
 
     public GestionCoef(FEN_Coefficient ai) {
         this.ai = ai;
+        this.fillComboLogement();
+        this.ai.getComboBox_logement().setSelectedItem(null);
     }
 
     @Override
@@ -37,7 +39,11 @@ public class GestionCoef implements ActionListener {
                 this.ai.dispose();
                 break;
             case "Charger":
-                this.displayAll();
+                if (this.ai.getComboBox_logement().getSelectedItem() == null) {
+                    this.displayAll();
+                } else {
+                    this.displayByLogement((String) this.ai.getComboBox_logement().getSelectedItem());
+                }
                 break;
             case "Ajouter":
                 FEN_Ajout_Coefficient new_fen = new FEN_Ajout_Coefficient();
@@ -90,7 +96,6 @@ public class GestionCoef implements ActionListener {
             coefficient = Float.valueOf((String) ai.getTable_Coefficient().getValueAt(index, 2));
         }
         return new Coef(id_logement, typeF, coefficient);
-
     }
 
     public void ecrireLigneTable(int index, Coef value) {
@@ -130,6 +135,42 @@ public class GestionCoef implements ActionListener {
             new FEN_Erreurs(e.getMessage(), ai);
             e.printStackTrace();
         }
+    }
+
+    private void displayByLogement(String num) {
+        this.viderTable(this.ai.getTable_Coefficient());
+        DaoCoef daoCoef = new DaoCoef();
+        Collection<Coef> lesCoefs;
+        try {
+            lesCoefs = daoCoef.findByLogement(num);
+            ai.getTable_Coefficient().setModel(new MyDefaultTableModel(
+                    new String[] { "Contrat", "Type Facture", "Coefficient" },
+                    lesCoefs.size()));
+            int i = 0;
+            for (Coef c : lesCoefs) {
+                if (c == null)
+                    break;
+                this.ecrireLigneTable(i, c);
+                i++;
+            }
+        } catch (SQLException e) {
+            new FEN_Erreurs(e.getMessage(), ai);
+            e.printStackTrace();
+        }
+    }
+
+    private void fillComboLogement() {
+        Collection<Logement> c = null;
+        try {
+            c = new DaoLogement().findAll();
+        } catch (SQLException e) {
+            new FEN_Erreurs("Impossible de charger le sélecteur de logement", ai);
+            return;
+        }
+        for (Logement l : c) {
+            this.ai.getComboBox_logement().addItem(l.getNum());
+        }
+        this.ai.getComboBox_logement().addItem(null);
     }
 
     public void enableButtons(boolean b) {

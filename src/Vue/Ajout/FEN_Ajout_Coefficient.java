@@ -1,6 +1,7 @@
 package Vue.Ajout;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -15,10 +16,10 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 	 */
 
 	private GestionAjoutCoef controlleur;
-	private JTextField text_Type_Fac;
+	private JComboBox<String> text_Type_Fac;
 	private JLabel lbl_Type_Fac;
-	private JTextField text_Num_Logement;
-	private Coef caution;
+	private JComboBox<String> text_Num_Logement;
+	private Coef coeff;
 	private JTextField text_Coefficient;
 
 	/**
@@ -30,10 +31,11 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 
 	public FEN_Ajout_Coefficient(Coef toEdit) {
 		init();
-		this.caution = toEdit;
-		this.text_Num_Logement.setText(toEdit.getNum().getNum());
-		this.text_Type_Fac.setText(toEdit.getTf().getTypeF());
+		this.coeff = toEdit;
+		this.text_Num_Logement.setSelectedItem(toEdit.getNum().getNum());
+		this.text_Type_Fac.setSelectedItem(toEdit.getTf().getTypeF());
 		this.text_Coefficient.setText(toEdit.getCoefficient().toString());
+		this.coeff = toEdit;
 	}
 
 	private void init() {
@@ -44,8 +46,7 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 		lbl_Num_Logement.setBounds(35, 20, 190, 13);
 		getContentPane().add(lbl_Num_Logement);
 
-		text_Type_Fac = new JTextField();
-		text_Type_Fac.setColumns(10);
+		text_Type_Fac = new JComboBox<String>();
 		text_Type_Fac.setBounds(330, 34, 190, 19);
 		getContentPane().add(text_Type_Fac);
 
@@ -65,8 +66,7 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 		lbl_Type_Fac.setBounds(330, 20, 190, 13);
 		getContentPane().add(lbl_Type_Fac);
 
-		text_Num_Logement = new JTextField();
-		text_Num_Logement.setColumns(10);
+		text_Num_Logement = new JComboBox<String>();
 		text_Num_Logement.setBounds(35, 34, 190, 19);
 		getContentPane().add(text_Num_Logement);
 
@@ -96,11 +96,11 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 		this.text_Coefficient = text_Coefficient;
 	}
 
-	public JTextField getText_Type_Fac() {
+	public JComboBox<String> getText_Type_Fac() {
 		return text_Type_Fac;
 	}
 
-	public void setText_Type_Fac(JTextField text_Type_Fac) {
+	public void setText_Type_Fac(JComboBox<String> text_Type_Fac) {
 		this.text_Type_Fac = text_Type_Fac;
 	}
 
@@ -112,15 +112,15 @@ public class FEN_Ajout_Coefficient extends JInternalFrame {
 		this.lbl_Type_Fac = lbl_Nom;
 	}
 
-	public JTextField getText_Num_Logement() {
+	public JComboBox<String> getText_Num_Logement() {
 		return text_Num_Logement;
 	}
 
-	public void setText_Num_Logement(JTextField text_Num_Logement) {
+	public void setText_Num_Logement(JComboBox<String> text_Num_Logement) {
 		this.text_Num_Logement = text_Num_Logement;
 	}
 
 	public boolean isCoefSet() {
-		return this.caution != null;
+		return this.coeff != null;
 	}
 }
