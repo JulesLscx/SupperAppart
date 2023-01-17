@@ -1,97 +1,43 @@
 package Modele;
 
-import java.sql.Date;
-
 public class Coef {
-    private Contrat contrat;
-    private Type_Fac type;
-    private Date date;
-    private float montant;
+    private Logement num;
+    private Type_Fac tf;
+    private Float coefficient;
 
-    public Coef(Contrat contrat, Type_Fac type, Date date, float montant) {
-        if (contrat == null)
-            throw new IllegalArgumentException("Le contrat est null");
-        if (type == null)
-            throw new IllegalArgumentException("Le type est null");
-        if (date == null)
-            throw new IllegalArgumentException("La date est null");
-        this.contrat = contrat;
-        this.type = type;
-        this.date = date;
-        this.montant = montant;
+    public Coef(Logement num, Type_Fac tf, Float coefficient) {
+        if (num == null)
+            throw new IllegalArgumentException("Le logement est nul");
+        if (tf == null)
+            throw new IllegalArgumentException("Le type de la facture est null");
+        if (coefficient < 0)
+            throw new IllegalArgumentException("Le coefficient est un pourcentage il doit être supérieur à 0");
+        this.num = num;
+        this.tf = tf;
+        this.coefficient = coefficient;
     }
 
-    public Contrat getContrat() {
-        return contrat;
+    public Logement getNum() {
+        return num;
     }
 
-    public void setContrat(Contrat contrat) {
-        this.contrat = contrat;
+    public void setNum(Logement num) {
+        this.num = num;
     }
 
-    public Type_Fac getType() {
-        return type;
+    public Type_Fac getTf() {
+        return tf;
     }
 
-    public void setType(Type_Fac type) {
-        this.type = type;
+    public void setTf(Type_Fac tf) {
+        this.tf = tf;
     }
 
-    public Date getDate() {
-        return date;
+    public Float getCoefficient() {
+        return coefficient;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public float getMontant() {
-        return montant;
-    }
-
-    public void setMontant(float montant) {
-        this.montant = montant;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((contrat == null) ? 0 : contrat.hashCode());
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
-        result = prime * result + ((date == null) ? 0 : date.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Coef other = (Coef) obj;
-        if (contrat == null) {
-            if (other.contrat != null)
-                return false;
-        } else if (!contrat.equals(other.contrat))
-            return false;
-        if (type == null) {
-            if (other.type != null)
-                return false;
-        } else if (!type.equals(other.type))
-            return false;
-        if (date == null) {
-            if (other.date != null)
-                return false;
-        } else if (!date.equals(other.date))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Coef [contrat=" + contrat + ", type=" + type + ", date=" + date + ", montant=" + montant + "]";
+    public void setCoefficient(Float coefficient) {
+        this.coefficient = coefficient;
     }
 }
