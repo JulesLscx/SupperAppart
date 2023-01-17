@@ -47,16 +47,20 @@ public class FEN_Type_diagnostic extends JInternalFrame {
 		getContentPane().add(lblid_type);
 
 		JButton valider = new JButton("Valider");
-		valider.setBounds(567, 409, 119, 23);
+		valider.setBounds(400, 405, 119, 23);
 		getContentPane().add(valider);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(698, 409, 119, 23);
+		annuler.setBounds(700, 405, 119, 23);
 		getContentPane().add(annuler);
+		
+		JButton btnCharger = new JButton("Charger");
+		btnCharger.setBounds(550, 405, 119, 23);
+		getContentPane().add(btnCharger);
 
 		JScrollPane spFactureExistante = new JScrollPane();
 		spFactureExistante.setEnabled(false);
-		spFactureExistante.setBounds(514, 31, 340, 358);
+		spFactureExistante.setBounds(450, 35, 340, 358);
 		getContentPane().add(spFactureExistante);
 
 		table_TypeFacture = new JTable();

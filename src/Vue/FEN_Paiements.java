@@ -32,11 +32,11 @@ public class FEN_Paiements extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(90, 400, 119, 23);
+		btnAjouter.setBounds(75, 400, 119, 23);
 		getContentPane().add(btnAjouter);
 
 		btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(601, 400, 119, 23);
+		btnAnnuler.setBounds(525, 400, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spPaiement = new JScrollPane();
@@ -46,31 +46,32 @@ public class FEN_Paiements extends JInternalFrame {
 
 		table_Paiement = new JTable();
 		table_Paiement.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-						{ null, null, null, null, null, null },
-				},
-				new String[] {
-						"Id", "Montant", "Date", "Moyen Paiement", "id_contrat"
-				}));
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"Identifiant", "Montant", "Date", "Moyen Paiement", "Identifiant contrat"
+			}
+		));
 		spPaiement.setViewportView(table_Paiement);
 
 		JScrollPane spContrat = new JScrollPane();
@@ -111,15 +112,15 @@ public class FEN_Paiements extends JInternalFrame {
 		getContentPane().add(lblContrat);
 
 		btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(250, 400, 119, 23);
+		btnModifier.setBounds(225, 400, 119, 23);
 		getContentPane().add(btnModifier);
 
 		btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(422, 400, 119, 23);
+		btnSupprimer.setBounds(375, 400, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		btnCharger = new JButton("Charger");
-		btnCharger.setBounds(722, 400, 119, 23);
+		btnCharger.setBounds(675, 400, 119, 23);
 		getContentPane().add(btnCharger);
 
 		this.controlleur = new GestionPaiements(this);

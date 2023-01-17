@@ -14,6 +14,7 @@ import Controlleur.GestionDocumentsAnnuels;
 public class FEN_DocumentsAnnuels extends JInternalFrame {
 	private JTable table_DocumentsAnnuels;
 	private GestionDocumentsAnnuels controlleur;
+	private JButton btnCharger;
 
 	public FEN_DocumentsAnnuels() {
 
@@ -21,11 +22,11 @@ public class FEN_DocumentsAnnuels extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(469, 395, 119, 23);
+		btnSupprimer.setBounds(375, 400, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(681, 395, 119, 23);
+		annuler.setBounds(675, 400, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane spFactureExistante = new JScrollPane();
@@ -66,12 +67,16 @@ public class FEN_DocumentsAnnuels extends JInternalFrame {
 		spFactureExistante.setViewportView(table_DocumentsAnnuels);
 		
 		JButton btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(272, 395, 119, 23);
+		btnModifier.setBounds(225, 400, 119, 23);
 		getContentPane().add(btnModifier);
 		
 		JButton btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(76, 396, 119, 23);
+		btnAjouter.setBounds(75, 400, 119, 23);
 		getContentPane().add(btnAjouter);
+		
+		btnCharger = new JButton("Charger");
+		btnCharger.setBounds(525, 400, 119, 23);
+		getContentPane().add(btnCharger);
 
 	}
 

@@ -27,11 +27,11 @@ public class FEN_Facture_Travaux_Immeuble extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(129, 409, 119, 23);
+		btnAjouter.setBounds(110, 409, 119, 23);
 		getContentPane().add(btnAjouter);
 
 		JButton annuler = new JButton("Annuler");
-		annuler.setBounds(659, 409, 119, 23);
+		annuler.setBounds(750, 409, 119, 23);
 		getContentPane().add(annuler);
 
 		JScrollPane spFactureImmeuble = new JScrollPane();
@@ -78,26 +78,27 @@ public class FEN_Facture_Travaux_Immeuble extends JInternalFrame {
 
 		table_Entrepreneur = new JTable();
 		table_Entrepreneur.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null, null },
-						{ null, null, null, null, null },
-				},
-				new String[] {
-						"n\u00B0 siret", "Adresse", "Nom", "IBAN", "Secteur d'activit\u00E9"
-				}));
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"N\u00B0SIREN", "Adresse", "Nom", "IBAN", "Secteur d'activit\u00E9"
+			}
+		));
 		table_Entrepreneur.getColumnModel().getColumn(4).setPreferredWidth(95);
 		spEntrepreneur.setViewportView(table_Entrepreneur);
 
 		JLabel lblFactureImmeuble = new JLabel("Facture immeuble");
-		lblFactureImmeuble.setBounds(22, 10, 95, 13);
+		lblFactureImmeuble.setBounds(22, 10, 110, 13);
 		getContentPane().add(lblFactureImmeuble);
 
 		btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(310, 409, 119, 23);
+		btnModifier.setBounds(270, 409, 119, 23);
 		getContentPane().add(btnModifier);
 
 		btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(490, 410, 119, 23);
+		btnSupprimer.setBounds(430, 410, 119, 23);
 		getContentPane().add(btnSupprimer);
 
 		btnCharger = new JButton("Charger");

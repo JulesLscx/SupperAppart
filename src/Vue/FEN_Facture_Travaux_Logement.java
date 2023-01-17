@@ -114,7 +114,7 @@ public class FEN_Facture_Travaux_Logement extends JInternalFrame {
 		getContentPane().add(btnCharger);
 
 		JLabel lblFactureLogement = new JLabel("Facture Travaux Logement");
-		lblFactureLogement.setBounds(22, 15, 110, 13);
+		lblFactureLogement.setBounds(22, 15, 180, 13);
 		getContentPane().add(lblFactureLogement);
 
 		JLabel lblEntrepreneur = new JLabel("Entrepreneur");

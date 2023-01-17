@@ -30,11 +30,11 @@ public class FEN_AssuranceImmeuble extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(133, 423, 119, 23);
+		btnValider.setBounds(120, 425, 119, 23);
 		getContentPane().add(btnValider);
 
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(682, 423, 119, 23);
+		btnAnnuler.setBounds(720, 425, 119, 23);
 		getContentPane().add(btnAnnuler);
 
 		JScrollPane spAssuranceImmeuble = new JScrollPane();
@@ -81,43 +81,47 @@ public class FEN_AssuranceImmeuble extends JInternalFrame {
 
 		table_Immeuble = new JTable();
 		table_Immeuble.setModel(new DefaultTableModel(
-				new Object[][] {
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null },
-				},
-				new String[] {
-						"Identifiant", "Adresse", "P\u00E9riode de construction", "Num\u00E9ro", "CP", "Ville",
-						"Copropri\u00E9taire", "Accessoire commun"
-				}));
+			new Object[][] {
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Identifiant", "Adresse", "P\u00E9riode de construction", "Num\u00E9ro", "CP", "Ville", "Copropri\u00E9taire", "Accessoires communs"
+			}
+		));
 		table_Immeuble.getColumnModel().getColumn(2).setPreferredWidth(131);
 		table_Immeuble.getColumnModel().getColumn(7).setPreferredWidth(151);
 		spImmeuble.setViewportView(table_Immeuble);
 
 		JButton btn_Supprimer = new JButton("Supprimer");
-		btn_Supprimer.setBounds(500, 423, 119, 23);
+		btn_Supprimer.setBounds(420, 425, 119, 23);
 		getContentPane().add(btn_Supprimer);
 
 		JButton btnVal = new JButton("Modifier");
-		btnVal.setBounds(320, 423, 119, 23);
+		btnVal.setBounds(270, 425, 119, 23);
 		getContentPane().add(btnVal);
+		
+		JButton btnCharger = new JButton("Charger");
+		btnCharger.setBounds(570, 425, 119, 23);
+		getContentPane().add(btnCharger);
 
 		JLabel lblNewLabel = new JLabel("Assurance immeuble");
 		lblNewLabel.setBounds(29, 11, 140, 13);
