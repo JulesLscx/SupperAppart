@@ -106,17 +106,18 @@ public class FEN_PaiementEtFactureTravaux extends JInternalFrame {
 		lbl_Paiements.setBounds(22, 250, 95, 13);
 		getContentPane().add(lbl_Paiements);
 		
-		JComboBox comboBox_Annee = new JComboBox();
-		comboBox_Annee.setBounds(681, 285, 147, 22);
-		getContentPane().add(comboBox_Annee);
-		
 		JComboBox comboBox_Immeuble = new JComboBox();
-		comboBox_Immeuble.setBounds(681, 334, 147, 22);
+		comboBox_Immeuble.setBounds(681, 334, 86, 22);
 		getContentPane().add(comboBox_Immeuble);
 		
 		JLabel lbl_Filtre_Annee = new JLabel("Annee :");
 		lbl_Filtre_Annee.setBounds(681, 269, 95, 13);
 		getContentPane().add(lbl_Filtre_Annee);
+
+        JTextField textField_Annee = new JTextField();
+		textField_Annee.setBounds(681, 284, 86, 20);
+		getContentPane().add(textField_Annee);
+		textField_Annee.setColumns(10);
 		
 		JLabel lbl_Filtre_Immeuble = new JLabel("Immeuble");
 		lbl_Filtre_Immeuble.setBounds(681, 318, 95, 13);
