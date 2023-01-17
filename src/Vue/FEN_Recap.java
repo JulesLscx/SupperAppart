@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionRecap;
 import Other.MyDefaultTableModel;
@@ -47,32 +46,31 @@ public class FEN_Recap extends JInternalFrame {
 		table_Factures = new JTable();
 		table_Factures.setModel(new MyDefaultTableModel(
 				new Object[][] {
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null },
 				},
 				new String[] {
 						"N\u00B0facture", "Nature", "Prix", "Montant ind\u00E9ductible", "R\u00E9duction",
 						"Ordre ch\u00E8que", "N\u00B0 ch\u00E8que", "Date de paiement", "N\u00B0 SIREN",
-						"N\u00B0 logement"
 				}));
 		table_Factures.getColumnModel().getColumn(0).setPreferredWidth(65);
 		table_Factures.getColumnModel().getColumn(1).setPreferredWidth(65);

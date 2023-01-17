@@ -14,18 +14,27 @@ public class FEN_Facture extends JInternalFrame {
 	private JTable table_Immeuble;
 	private GestionFacture controlleur;
 	private JTable table_TypeFacture;
+	private JButton btnCharger;
+	private JButton btnAnnuler;
+	private JButton btnValider;
+	private JButton btnSupprimer;
+	private JButton btnModifier;
 
 	public FEN_Facture() {
 		setBounds(0, 0, 880, 473);
 		getContentPane().setLayout(null);
 
-		JButton btnValider = new JButton("Valider");
+		btnValider = new JButton("Valider");
 		btnValider.setBounds(84, 395, 119, 23);
 		getContentPane().add(btnValider);
 
-		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setBounds(481, 395, 119, 23);
 		getContentPane().add(btnAnnuler);
+
+		btnCharger = new JButton("Charger");
+		btnCharger.setBounds(611, 395, 119, 23);
+		getContentPane().add(btnCharger);
 
 		JScrollPane spFactureExistante = new JScrollPane();
 		spFactureExistante.setEnabled(false);
@@ -35,28 +44,29 @@ public class FEN_Facture extends JInternalFrame {
 		table_Facture = new JTable();
 		table_Facture.setModel(new DefaultTableModel(
 				new Object[][] {
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
-						{ null, null, null, null, null, null, null, },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null },
 				},
 				new String[] {
-						"NFacture", "Montant", "Prix", "Date", "CoutFixe", "PrixConstate", "Total",
+						"NFacture", "Date", "Total", "Cout fixe", "Prix U. Releve", "Prix U. Constate", "Type Facture",
+						"Immeuble"
 				}));
 		spFactureExistante.setViewportView(table_Facture);
 
@@ -94,11 +104,11 @@ public class FEN_Facture extends JInternalFrame {
 		table_Immeuble.getColumnModel().getColumn(7).setPreferredWidth(151);
 		spImmeuble.setViewportView(table_Immeuble);
 
-		JButton btnModifier = new JButton("Modifier");
+		btnModifier = new JButton("Modifier");
 		btnModifier.setBounds(214, 396, 119, 23);
 		getContentPane().add(btnModifier);
 
-		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.setBounds(345, 396, 119, 23);
 		getContentPane().add(btnSupprimer);
 
@@ -117,7 +127,50 @@ public class FEN_Facture extends JInternalFrame {
 		this.controlleur = new GestionFacture(this);
 		btnValider.addActionListener(controlleur);
 		btnAnnuler.addActionListener(controlleur);
+		btnCharger.addActionListener(controlleur);
+		btnSupprimer.addActionListener(controlleur);
+		btnModifier.addActionListener(controlleur);
 
+	}
+
+	public JTable getTable_Facture() {
+		return table_Facture;
+	}
+
+	public JTable getTable_Immeuble() {
+		return table_Immeuble;
+	}
+
+	public GestionFacture getControlleur() {
+		return controlleur;
+	}
+
+	public JTable getTable_TypeFacture() {
+		return table_TypeFacture;
+	}
+
+	public JButton getBtnCharger() {
+		return btnCharger;
+	}
+
+	public JButton getBtnAnnuler() {
+		return btnAnnuler;
+	}
+
+	public JButton getBtnValider() {
+		return btnValider;
+	}
+
+	public JButton getBtnSupprimer() {
+		return btnSupprimer;
+	}
+
+	public JButton getBtnModifier() {
+		return btnModifier;
+	}
+
+	public JButton[] getChangeableButtons() {
+		return null;
 	}
 
 }
