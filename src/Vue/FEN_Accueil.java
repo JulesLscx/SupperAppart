@@ -89,6 +89,10 @@ public class FEN_Accueil extends JFrame {
 		mntmType_Facture.addActionListener(controlleur);
 		mnFactures.add(mntmType_Facture);
 
+		JMenuItem mntmCoef = new JMenuItem("Répartition charges");
+		mntmCoef.addActionListener(controlleur);
+		mnFactures.add(mntmCoef);
+
 		mnHabitat = new JMenu("Habitat");
 		mnHabitat.addActionListener(controlleur);
 		menuBar.add(mnHabitat);

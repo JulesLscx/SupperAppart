@@ -5,12 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Instant;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
-
-import org.apache.poi.hssf.record.chart.DatRecord;
 
 import Controlleur.CictOracleDataSource;
 import Modele.Contrat;
@@ -23,17 +20,14 @@ public class DaoRegularisation extends DaoModele<Regularisation> {
 
     @Override
     public void create(Regularisation tupple) throws SQLException {
-        // PreparedStatement prSt = CictOracleDataSource.getLaConnection()
-        // .prepareCall("call INSERTRegularisation(?,?,?,?,?,?,?)");
-        // prSt.setNString(1, tupple.getId_Regularisation());
-        // prSt.setNString(2, tupple.getPrenom());
-        // prSt.setNString(3, tupple.getNom());
-        // prSt.setNString(4, tupple.getAdresse());
-        // prSt.setNString(5, tupple.getEmail());
-        // prSt.setNString(6, tupple.getTelephone());
-        // prSt.setNString(7, tupple.getProfession());
-        // prSt.execute();
-        // prSt.close();
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection()
+                .prepareCall("insert into regularisation values (?,?,?,?) ");
+        prSt.setNString(1, tupple.getContrat().getId_contrat());
+        prSt.setNString(2, tupple.getTypeF().getTypeF());
+        prSt.setDate(3, tupple.getDateR());
+        prSt.setFloat(4, tupple.getMontant());
+        prSt.execute();
+        prSt.close();
     }
 
     @Override
@@ -46,7 +40,6 @@ public class DaoRegularisation extends DaoModele<Regularisation> {
         prSt.setDate(4, tupple.getDateR());
         prSt.execute();
         prSt.close();
-
     }
 
     @Override
@@ -135,5 +128,12 @@ public class DaoRegularisation extends DaoModele<Regularisation> {
         montant = prSt.getFloat(1);
 
         return new Regularisation(c, type, forInstert, montant);
+    }
+
+    public List<Regularisation> findByContrat(String id_contrat) throws SQLException {
+        String sql = "select * from regularisation where id_contrat = ?";
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(sql);
+        prSt.setString(1, id_contrat);
+        return select(prSt);
     }
 }

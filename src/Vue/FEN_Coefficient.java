@@ -12,15 +12,21 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionCaution;
+import Controlleur.GestionCoef;
 import Controlleur.Table.GestionCautionTable;
 import javax.swing.JComboBox;
 
 public class FEN_Coefficient extends JInternalFrame {
 	private JTable table_Coefficient;
-	private GestionCaution controlleur;
+	private GestionCoef controlleur;
 	private JButton btnModifier;
 	private JButton btnSupprimer;
 	private GestionCautionTable gestionTable;
+	private JComboBox<String> comboBox_logement;
+
+	public JComboBox<String> getComboBox_logement() {
+		return comboBox_logement;
+	}
 
 	public JTable getTable_Coefficient() {
 		return table_Coefficient;
@@ -45,37 +51,36 @@ public class FEN_Coefficient extends JInternalFrame {
 
 		table_Coefficient = new JTable();
 		table_Coefficient.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"N\u00B0 logement", "Type de facture", "Coefficient"
-			}
-		));
+				new Object[][] {
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+						{ null, null, null },
+				},
+				new String[] {
+						"N\u00B0 logement", "Type de facture", "Coefficient"
+				}));
 		sp_Coefficient.setViewportView(table_Coefficient);
 
 		btnModifier = new JButton("Modifier");
 		btnModifier.setBounds(225, 380, 119, 23);
 		getContentPane().add(btnModifier);
-		
+
 		JButton btnCharger = new JButton("Charger");
 		btnCharger.setBounds(525, 380, 119, 23);
 		getContentPane().add(btnCharger);
@@ -88,7 +93,7 @@ public class FEN_Coefficient extends JInternalFrame {
 		lbl_Coefficient.setBounds(45, 40, 119, 13);
 		getContentPane().add(lbl_Coefficient);
 
-		this.controlleur = new GestionCaution(this);
+		this.controlleur = new GestionCoef(this);
 		btnAjouter.addActionListener(controlleur);
 		annuler.addActionListener(controlleur);
 		btnCharger.addActionListener(controlleur);
@@ -96,14 +101,14 @@ public class FEN_Coefficient extends JInternalFrame {
 		btnAjouter.addActionListener(controlleur);
 		btnSupprimer.addActionListener(controlleur);
 
-		this.gestionTable = new GestionCautionTable(table_Coefficient, controlleur);
+		// this.gestionTable = new GestionCautionTable(table_Coefficient, controlleur);
 		this.table_Coefficient.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
-		JComboBox comboBox_logement = new JComboBox();
+
+		comboBox_logement = new JComboBox<String>();
 		comboBox_logement.setBounds(675, 170, 153, 22);
 		getContentPane().add(comboBox_logement);
-		
-		JLabel lbl_combobox_Logement = new JLabel("Filtres");
+
+		JLabel lbl_combobox_Logement = new JLabel("Selectionner Logement");
 		lbl_combobox_Logement.setBounds(675, 145, 49, 14);
 		getContentPane().add(lbl_combobox_Logement);
 		this.table_Coefficient.getSelectionModel().addListSelectionListener(this.gestionTable);

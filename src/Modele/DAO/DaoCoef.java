@@ -93,4 +93,11 @@ public class DaoCoef extends DaoModele<Coef> {
         prSt.close();
         return c;
     }
+
+    public Collection<Coef> findByLogement(String num) throws SQLException {
+        String sql = "select * from coef where num = ?";
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(sql);
+        prSt.setString(1, num);
+        return super.select(prSt);
+    }
 }
