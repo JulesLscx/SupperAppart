@@ -18,7 +18,7 @@ public class FEN_Accueil extends JFrame {
 	private boolean estConnecte;
 	private JMenu mnContrats;
 	private JMenu mnLocataires;
-	private JMenu mnDiagnostics;
+	// private JMenu mnDiagnostics;
 	private JMenu mnHabitat;
 	private JMenu mnFactures;
 	private JMenu mnRecap;
@@ -115,20 +115,20 @@ public class FEN_Accueil extends JFrame {
 		mntmImmeuble.addActionListener(controlleur);
 		mnHabitat.add(mntmImmeuble);
 
-		JMenuItem mntmAssurance_Immeuble = new JMenuItem("Assurance Immeuble");
-		mntmAssurance_Immeuble.addActionListener(controlleur);
-		mnHabitat.add(mntmAssurance_Immeuble);
+		// JMenuItem mntmAssurance_Immeuble = new JMenuItem("Assurance Immeuble");
+		// mntmAssurance_Immeuble.addActionListener(controlleur);
+		// mnHabitat.add(mntmAssurance_Immeuble);
 
-		mnDiagnostics = new JMenu("Diagnostics");
-		mnHabitat.add(mnDiagnostics);
+		// mnDiagnostics = new JMenu("Diagnostics");
+		// mnHabitat.add(mnDiagnostics);
 
-		JMenuItem mntmDiagnostics = new JMenuItem("Diagnostics");
-		mntmDiagnostics.addActionListener(controlleur);
-		mnDiagnostics.add(mntmDiagnostics);
+		// JMenuItem mntmDiagnostics = new JMenuItem("Diagnostics");
+		// mntmDiagnostics.addActionListener(controlleur);
+		// mnDiagnostics.add(mntmDiagnostics);
 
-		JMenuItem mntmType_Diagnostics = new JMenuItem("Type Diagnostics");
-		mntmType_Diagnostics.addActionListener(controlleur);
-		mnDiagnostics.add(mntmType_Diagnostics);
+		// JMenuItem mntmType_Diagnostics = new JMenuItem("Type Diagnostics");
+		// mntmType_Diagnostics.addActionListener(controlleur);
+		// mnDiagnostics.add(mntmType_Diagnostics);
 
 		mnLocataires = new JMenu("Locataires");
 		mnLocataires.addActionListener(controlleur);
@@ -138,9 +138,9 @@ public class FEN_Accueil extends JFrame {
 		mntmLocataires.addActionListener(controlleur);
 		mnLocataires.add(mntmLocataires);
 
-		JMenuItem mntmDocuments = new JMenuItem("Documents Annuels");
-		mntmDocuments.addActionListener(controlleur);
-		mnLocataires.add(mntmDocuments);
+		// JMenuItem mntmDocuments = new JMenuItem("Documents Annuels");
+		// mntmDocuments.addActionListener(controlleur);
+		// mnLocataires.add(mntmDocuments);
 
 		mnContrats = new JMenu("Contrats");
 		mnContrats.addActionListener(controlleur);
@@ -161,6 +161,10 @@ public class FEN_Accueil extends JFrame {
 		JMenuItem mntmRegularisation = new JMenuItem("Regularisation");
 		mntmRegularisation.addActionListener(controlleur);
 		mnContrats.add(mntmRegularisation);
+
+		JMenuItem mtnDu = new JMenuItem("Du Charges");
+		mtnDu.addActionListener(controlleur);
+		mnContrats.add(mtnDu);
 
 		mntmEntrepreneurs = new JMenuItem("Entrepreneurs");
 		mntmEntrepreneurs.addActionListener(controlleur);
@@ -195,7 +199,7 @@ public class FEN_Accueil extends JFrame {
 
 	public void activerItems(boolean b) {
 		this.setEstConnecte(b);
-		this.mnDiagnostics.setEnabled(estConnecte);
+		// this.mnDiagnostics.setEnabled(estConnecte);
 		this.mnContrats.setEnabled(estConnecte);
 		this.mnFactures.setEnabled(estConnecte);
 		this.mnHabitat.setEnabled(estConnecte);

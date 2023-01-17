@@ -27,6 +27,7 @@ public class FEN_Ajout_Facture extends JInternalFrame {
 	private JComboBox<String> comboBox_ID_Immeuble;
 	private JComboBox<String> comboBox_Type_Facture;
 	private JTextField text_Num_Facture;
+	private Factures_Charges fac;
 
 	public FEN_Ajout_Facture(Factures_Charges toEdit) {
 		init();
@@ -35,9 +36,10 @@ public class FEN_Ajout_Facture extends JInternalFrame {
 		this.text_Date_Facture.setText(toEdit.getDateF().toString());
 		this.text_Cout_Fixe.setText(Float.toString(toEdit.getCf()));
 		this.text_Prix_U_C.setText(Float.toString(toEdit.getPrix_unite_constatee()));
-		// this.comboBox_ID_Immeuble.setText(toEdit.getImmeuble());
-		// this.comboBox_Type_Facture.setText(toEdit.getTypeF().getTypeF());
+		this.comboBox_ID_Immeuble.setSelectedItem(toEdit.getImmeuble().getCp());
+		this.comboBox_Type_Facture.setSelectedItem(toEdit.getTypeF().getTypeF());
 		this.text_Num_Facture.setText(toEdit.getNumF());
+		this.fac = toEdit;
 	}
 
 	/**
@@ -45,6 +47,10 @@ public class FEN_Ajout_Facture extends JInternalFrame {
 	 */
 	public FEN_Ajout_Facture() {
 		init();
+	}
+
+	public boolean isFacSet() {
+		return this.fac != null;
 	}
 
 	private void init() {
@@ -132,6 +138,55 @@ public class FEN_Ajout_Facture extends JInternalFrame {
 		this.controlleur = new GestionAjoutFacture(this);
 		btn_Annuler.addActionListener(controlleur);
 		btn_Valider.addActionListener(controlleur);
+
+	}
+
+	public GestionAjoutFacture getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getText_Total() {
+		return text_Total;
+	}
+
+	public JTextField getText_Prix_U_R() {
+		return text_Prix_U_R;
+	}
+
+	public JTextField getText_Date_Facture() {
+		return text_Date_Facture;
+	}
+
+	public JTextField getText_Cout_Fixe() {
+		return text_Cout_Fixe;
+	}
+
+	public JLabel getLbl_Type_Facture() {
+		return lbl_Type_Facture;
+	}
+
+	public JTextField getText_Prix_U_C() {
+		return text_Prix_U_C;
+	}
+
+	public JLabel getLbl_Prix_U_C() {
+		return lbl_Prix_U_C;
+	}
+
+	public JLabel getLbl_Date_Facture() {
+		return lbl_Date_Facture;
+	}
+
+	public JComboBox<String> getComboBox_ID_Immeuble() {
+		return comboBox_ID_Immeuble;
+	}
+
+	public JComboBox<String> getComboBox_Type_Facture() {
+		return comboBox_Type_Facture;
+	}
+
+	public JTextField getText_Num_Facture() {
+		return text_Num_Facture;
 	}
 
 }

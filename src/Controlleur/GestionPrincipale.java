@@ -13,6 +13,7 @@ import Vue.FEN_Connexion;
 import Vue.FEN_Contrat;
 import Vue.FEN_Diagnostics;
 import Vue.FEN_DocumentsAnnuels;
+import Vue.FEN_Du_Regul;
 import Vue.FEN_Entrepreneur;
 import Vue.FEN_Facture;
 import Vue.FEN_Facture_Travaux_Immeuble;
@@ -113,6 +114,15 @@ public class GestionPrincipale implements ActionListener {
 				if (!this.pr.getOuverte()) {
 					this.pr.switchOuverte();
 					FEN_Immeuble im = new FEN_Immeuble();
+					this.pr.getLayeredPane().add(im);
+					im.setLocation(80, 127);
+					im.setVisible(true);
+				}
+				break;
+			case "Du Charges":
+				if (!this.pr.getOuverte()) {
+					this.pr.switchOuverte();
+					FEN_Du_Regul im = new FEN_Du_Regul();
 					this.pr.getLayeredPane().add(im);
 					im.setLocation(80, 127);
 					im.setVisible(true);

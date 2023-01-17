@@ -24,7 +24,7 @@ public class FEN_Facture extends JInternalFrame {
 		setBounds(0, 0, 880, 473);
 		getContentPane().setLayout(null);
 
-		btnValider = new JButton("Valider");
+		btnValider = new JButton("Ajouter");
 		btnValider.setBounds(84, 395, 119, 23);
 		getContentPane().add(btnValider);
 

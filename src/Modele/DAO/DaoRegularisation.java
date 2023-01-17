@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import Controlleur.CictOracleDataSource;
@@ -126,6 +127,7 @@ public class DaoRegularisation extends DaoModele<Regularisation> {
         prSt.setInt(4, annee);
         prSt.execute();
         montant = prSt.getFloat(1);
+        prSt.close();
 
         return new Regularisation(c, type, forInstert, montant);
     }
@@ -135,5 +137,35 @@ public class DaoRegularisation extends DaoModele<Regularisation> {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(sql);
         prSt.setString(1, id_contrat);
         return select(prSt);
+    }
+
+    public Float getDu(int annee, String id_contrat) throws SQLException {
+        String sql = "{? = call get_du(?,?)}";
+        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+        prSt.registerOutParameter(1, OracleTypes.NUMBER);
+        prSt.setInt(2, annee);
+        prSt.setString(3, id_contrat);
+        prSt.execute();
+        Float montant = prSt.getFloat(1);
+        prSt.close();
+        return montant;
+    }
+
+    public Collection<String> getContratsFromRegulByYear(int annee) throws SQLException {
+
+        List<String> result = new LinkedList<String>();
+        String sql = "{? = call getdistinctcontratregul(?)}";
+        CallableStatement prSt = CictOracleDataSource.getLaConnection().prepareCall(sql);
+        prSt.registerOutParameter(1, OracleTypes.CURSOR);
+        prSt.setInt(2, annee);
+        prSt.execute();
+        ResultSet rs = (ResultSet) prSt.getObject(1);
+        while (rs.next()) {
+            result.add(rs.getString(1));
+        }
+        rs.close();
+        prSt.close();
+        return result;
+
     }
 }

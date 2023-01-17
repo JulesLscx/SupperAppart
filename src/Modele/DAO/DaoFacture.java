@@ -18,7 +18,7 @@ public class DaoFacture extends DaoModele<Factures_Charges> {
     @Override
     public void create(Factures_Charges tupple) throws SQLException {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
-                .prepareCall("call INSERTFactures_Charges(?,?,?,?,?,?,?)");
+                .prepareCall("call INSERTFactures(?,?,?,?,?,?,?,?)");
         prSt.setNString(1, tupple.getNumF());
         prSt.setDate(2, tupple.getDateF());
         prSt.setFloat(3, tupple.getTotal());
@@ -33,7 +33,7 @@ public class DaoFacture extends DaoModele<Factures_Charges> {
 
     @Override
     public void update(Factures_Charges tupple) throws SQLException {
-        String req = "Update Factures_Charges set dateF = ?, total = ?, cf = ?, prix_unite_releve = ?, prix_unite_constatee = ?, typeF = ?, id_immeuble = ?  where num_fac = ?";
+        String req = "Update Factures set dateF = ?, total = ?, cf = ?, prix_unite_releve = ?, prix_unite_constatee = ?, typeF = ?, id_immeuble = ?  where numF = ?";
         PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(req);
 
         prSt.setNString(8, tupple.getNumF());
@@ -95,7 +95,7 @@ public class DaoFacture extends DaoModele<Factures_Charges> {
     @Override
     public Factures_Charges findById(Requete<Factures_Charges> req, String... id) throws SQLException {
         PreparedStatement prSt = CictOracleDataSource.getLaConnection()
-                .prepareStatement("Select * from Factures_Charges where num_fac = ?");
+                .prepareStatement("Select * from Factures where num_fac = ?");
         prSt.setNString(1, id[0]);
         prSt.execute();
         ResultSet rs = prSt.getResultSet();
