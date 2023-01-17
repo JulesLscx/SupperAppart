@@ -3,7 +3,6 @@ package Vue;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -11,7 +10,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import Controlleur.GestionPrincipale;
-import Modele.Immeuble;
 
 @SuppressWarnings("serial")
 public class FEN_Accueil extends JFrame {
@@ -76,6 +74,10 @@ public class FEN_Accueil extends JFrame {
 		mnFactures = new JMenu("Factures");
 		mnFactures.addActionListener(controlleur);
 		menuBar.add(mnFactures);
+
+		JMenuItem mtnFac_Charges = new JMenuItem("Factures charges");
+		mtnFac_Charges.addActionListener(controlleur);
+		mnFactures.add(mtnFac_Charges);
 
 		JMenuItem mntmFacture_Immeuble = new JMenuItem("Facture Travaux Immeuble");
 		mntmFacture_Immeuble.addActionListener(controlleur);

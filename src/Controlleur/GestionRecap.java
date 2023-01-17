@@ -3,11 +3,11 @@ package Controlleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Vue.FEN_Coefficient;
+import Vue.FEN_Recap;
 
-public class GestionCoef implements ActionListener {
+public class GestionRecap implements ActionListener {
 
-    public GestionCoef(FEN_Coefficient fen_Coefficient) {
+    public GestionRecap(FEN_Recap fen_Recap) {
     }
 
     @Override

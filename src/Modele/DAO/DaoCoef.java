@@ -100,4 +100,10 @@ public class DaoCoef extends DaoModele<Coef> {
         prSt.setString(1, num);
         return super.select(prSt);
     }
+
+    public Collection<Coef> findAllUsable() throws SQLException {
+        String sql = "select * from coef where enlocation(num) = 1";
+        PreparedStatement prSt = CictOracleDataSource.getLaConnection().prepareStatement(sql);
+        return super.select(prSt);
+    }
 }

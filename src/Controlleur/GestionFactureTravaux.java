@@ -14,7 +14,6 @@ import Modele.DAO.DaoFacture_Travaux_Logement;
 import Vue.FEN_Accueil;
 import Vue.FEN_Erreurs;
 import Vue.FEN_Facture_Travaux_Logement;
-import Vue.Ajout.FEN_Ajout_FactureTravauxImmeuble;
 import Vue.Ajout.FEN_Ajout_FactureTravauxLogement;
 
 public class GestionFactureTravaux implements ActionListener {

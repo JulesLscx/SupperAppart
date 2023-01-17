@@ -1,27 +1,30 @@
 package Vue;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import Controlleur.GestionTravauxImmeuble;
-import javax.swing.JComboBox;
+import Controlleur.GestionRecap;
 
-public class FEN_PaiementEtFactureTravaux extends JInternalFrame {
+public class FEN_Recap extends JInternalFrame {
 	private JTable table_Factures;
 
 	public JTable getTable_TravauxImmeuble() {
 		return table_Factures;
 	}
 
-	private GestionTravauxImmeuble controlleur;
+	private GestionRecap controlleur;
 	private JTable table_Paiements;
 	private JButton btnCharger;
 
-	public FEN_PaiementEtFactureTravaux() {
+	private JComboBox<String> comboBox_Immeuble;
+
+	public FEN_Recap() {
 		setBounds(0, 0, 968, 473);
 		getContentPane().setLayout(null);
 
@@ -36,33 +39,34 @@ public class FEN_PaiementEtFactureTravaux extends JInternalFrame {
 
 		table_Factures = new JTable();
 		table_Factures.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"N\u00B0facture", "Nature", "Prix", "Montant ind\u00E9ductible", "R\u00E9duction", "Ordre ch\u00E8que", "N\u00B0 ch\u00E8que", "Date de paiement", "N\u00B0 SIREN", "N\u00B0 logement"
-			}
-		));
+				new Object[][] {
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+						{ null, null, null, null, null, null, null, null, null, null },
+				},
+				new String[] {
+						"N\u00B0facture", "Nature", "Prix", "Montant ind\u00E9ductible", "R\u00E9duction",
+						"Ordre ch\u00E8que", "N\u00B0 ch\u00E8que", "Date de paiement", "N\u00B0 SIREN",
+						"N\u00B0 logement"
+				}));
 		table_Factures.getColumnModel().getColumn(0).setPreferredWidth(65);
 		table_Factures.getColumnModel().getColumn(1).setPreferredWidth(65);
 		table_Factures.getColumnModel().getColumn(2).setPreferredWidth(65);
@@ -81,16 +85,15 @@ public class FEN_PaiementEtFactureTravaux extends JInternalFrame {
 
 		table_Paiements = new JTable();
 		table_Paiements.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-			},
-			new String[] {
-				"Identifiant", "Montant", "Date", "Moyen paiement", "Identifiant contrat"
-			}
-		));
+				new Object[][] {
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+						{ null, null, null, null, null },
+				},
+				new String[] {
+						"Identifiant", "Montant", "Date", "Moyen paiement", "Identifiant contrat"
+				}));
 		table_Paiements.getColumnModel().getColumn(4).setPreferredWidth(95);
 		sp_Paiements.setViewportView(table_Paiements);
 
@@ -105,29 +108,25 @@ public class FEN_PaiementEtFactureTravaux extends JInternalFrame {
 		JLabel lbl_Paiements = new JLabel("Paiements");
 		lbl_Paiements.setBounds(22, 250, 95, 13);
 		getContentPane().add(lbl_Paiements);
-		
-		JComboBox comboBox_Immeuble = new JComboBox();
+
+		comboBox_Immeuble = new JComboBox<String>();
 		comboBox_Immeuble.setBounds(681, 334, 86, 22);
 		getContentPane().add(comboBox_Immeuble);
-		
+
 		JLabel lbl_Filtre_Annee = new JLabel("Annee :");
 		lbl_Filtre_Annee.setBounds(681, 269, 95, 13);
 		getContentPane().add(lbl_Filtre_Annee);
 
-        JTextField textField_Annee = new JTextField();
+		JTextField textField_Annee = new JTextField();
 		textField_Annee.setBounds(681, 284, 86, 20);
 		getContentPane().add(textField_Annee);
 		textField_Annee.setColumns(10);
-		
+
 		JLabel lbl_Filtre_Immeuble = new JLabel("Immeuble");
 		lbl_Filtre_Immeuble.setBounds(681, 318, 95, 13);
 		getContentPane().add(lbl_Filtre_Immeuble);
-		this.controlleur = new GestionTravauxImmeuble(this);
+		this.controlleur = new GestionRecap(this);
 		annuler.addActionListener(controlleur);
 		btnCharger.addActionListener(controlleur);
-	}
-
-	public JButton[] getChangeableButtons() {
-		return new JButton[] { btnModifier, btnSupprimer };
 	}
 }

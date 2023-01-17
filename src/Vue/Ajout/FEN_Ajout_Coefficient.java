@@ -5,9 +5,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import Controlleur.Ajout.GestionAjoutCaution;
 import Controlleur.Ajout.GestionAjoutCoef;
-import Modele.Caution;
 import Modele.Coef;
 
 public class FEN_Ajout_Coefficient extends JInternalFrame {

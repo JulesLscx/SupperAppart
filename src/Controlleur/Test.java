@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import Modele.Caution;
 import Modele.DAO.DaoCaution;
+import Modele.DAO.DaoCoef;
 import Modele.DAO.DaoContrat;
 import Modele.DAO.DaoImmeuble;
 import Modele.DAO.DaoLocataire;
@@ -20,7 +21,7 @@ public class Test {
         try {
             CictOracleDataSource.creerAcces("hr", "iutinfo");
             System.out
-                    .println(new DaoRegularisation().simulate("01", "Eau", ProjectUtils.conversionDate("20/10/2022")));
+                    .println(new DaoCoef().findAllUsable());
         } catch (SQLException e) {
             e.printStackTrace();
         }

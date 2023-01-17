@@ -45,7 +45,7 @@ public class DaoRegularisation extends DaoModele<Regularisation> {
     @Override
     public void delete(Regularisation tupple) throws SQLException {
         PreparedStatement st = CictOracleDataSource.getLaConnection()
-                .prepareStatement("DELETE FROM Regularisation WHERE id_contrat = ?, typef = ?, dater = ? ");
+                .prepareStatement("DELETE Regularisation WHERE id_contrat = ? and typef = ? and dater = ? ");
         st.setString(1, tupple.getContrat().getId_contrat());
         st.setString(2, tupple.getTypeF().getTypeF());
         st.setDate(3, tupple.getDateR());
@@ -112,7 +112,7 @@ public class DaoRegularisation extends DaoModele<Regularisation> {
             laDate.setTime(date);
         }
         int annee = laDate.get(Calendar.YEAR);
-        int mois = laDate.get(Calendar.MONTH);
+        int mois = laDate.get(Calendar.MONTH) + 1;
         int jour = laDate.get(Calendar.DATE);
         String dateBeforeConversion = annee + "-" + mois + "-" + jour;
         Date forInstert = Date.valueOf(dateBeforeConversion);

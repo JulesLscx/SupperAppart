@@ -10,7 +10,6 @@ import Vue.FEN_AssuranceImmeuble;
 import Vue.FEN_Caution;
 import Vue.FEN_Coefficient;
 import Vue.FEN_Connexion;
-import Vue.FEN_Contacts;
 import Vue.FEN_Contrat;
 import Vue.FEN_Diagnostics;
 import Vue.FEN_DocumentsAnnuels;
@@ -37,15 +36,6 @@ public class GestionPrincipale implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JMenuItem item = (JMenuItem) e.getSource();
 		switch (item.getText()) {
-			case "Contacts":
-				if (!this.pr.getOuverte()) {
-					this.pr.switchOuverte();
-					FEN_Contacts ai = new FEN_Contacts();
-					this.pr.getLayeredPane().add(ai);
-					ai.setLocation(80, 127);
-					ai.setVisible(true);
-				}
-				break;
 			case "Assurance Immeuble":
 				if (!this.pr.getOuverte()) {
 					this.pr.switchOuverte();
@@ -131,6 +121,15 @@ public class GestionPrincipale implements ActionListener {
 				if (!this.pr.getOuverte()) {
 					this.pr.switchOuverte();
 					FEN_Logement lo = new FEN_Logement();
+					this.pr.getLayeredPane().add(lo);
+					lo.setLocation(80, 127);
+					lo.setVisible(true);
+				}
+				break;
+			case "Factures charges":
+				if (!this.pr.getOuverte()) {
+					this.pr.switchOuverte();
+					FEN_Facture lo = new FEN_Facture();
 					this.pr.getLayeredPane().add(lo);
 					lo.setLocation(80, 127);
 					lo.setVisible(true);

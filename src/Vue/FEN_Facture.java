@@ -1,12 +1,10 @@
 package Vue;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Controlleur.GestionFacture;
@@ -61,24 +59,23 @@ public class FEN_Facture extends JInternalFrame {
 						"NFacture", "Montant", "Prix", "Date", "CoutFixe", "PrixConstate", "Total",
 				}));
 		spFactureExistante.setViewportView(table_Facture);
-		
+
 		JScrollPane spAssuranceImmeuble = new JScrollPane();
 		spAssuranceImmeuble.setEnabled(false);
 		spAssuranceImmeuble.setBounds(608, 62, 239, 59);
 		getContentPane().add(spAssuranceImmeuble);
-		
+
 		table_TypeFacture = new JTable();
 		table_TypeFacture.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"P\u00E9riodicit\u00E9", "Type", "Unit\u00E9"
-			}
-		));
+				new Object[][] {
+						{ null, null, null },
+						{ null, null, null },
+				},
+				new String[] {
+						"P\u00E9riodicit\u00E9", "Type", "Unit\u00E9"
+				}));
 		spAssuranceImmeuble.setViewportView(table_TypeFacture);
-		
+
 		JScrollPane spImmeuble = new JScrollPane();
 		spImmeuble.setEnabled(false);
 		spImmeuble.setBounds(26, 221, 818, 128);
@@ -86,52 +83,33 @@ public class FEN_Facture extends JInternalFrame {
 
 		table_Immeuble = new JTable();
 		table_Immeuble.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"Identifiant", "Adresse", "P\u00E9riode de construction", "Num\u00E9ro", "CP", "Ville", "Copropri\u00E9taire", "Accessoire commun"
-			}
-		));
+				new Object[][] {
+						{ null, null, null, null, null, null, null, null }
+				},
+				new String[] {
+						"Identifiant", "Adresse", "P\u00E9riode de construction", "Num\u00E9ro", "CP", "Ville",
+						"Copropri\u00E9taire", "Accessoire commun"
+				}));
 		table_Immeuble.getColumnModel().getColumn(2).setPreferredWidth(131);
 		table_Immeuble.getColumnModel().getColumn(7).setPreferredWidth(151);
 		spImmeuble.setViewportView(table_Immeuble);
-		
+
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.setBounds(214, 396, 119, 23);
 		getContentPane().add(btnModifier);
-		
+
 		JButton btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.setBounds(345, 396, 119, 23);
 		getContentPane().add(btnSupprimer);
-		
+
 		JLabel lblFacture = new JLabel("Facture");
 		lblFacture.setBounds(24, 8, 45, 13);
 		getContentPane().add(lblFacture);
-		
+
 		JLabel lblTypeFacture = new JLabel("Type de facture");
 		lblTypeFacture.setBounds(608, 33, 104, 13);
 		getContentPane().add(lblTypeFacture);
-		
+
 		JLabel lblNewLabel = new JLabel("Immeuble");
 		lblNewLabel.setBounds(24, 198, 110, 13);
 		getContentPane().add(lblNewLabel);

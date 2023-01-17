@@ -1,6 +1,5 @@
 package Vue;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -21,6 +20,7 @@ public class FEN_Regularisation extends JInternalFrame {
 	private JButton generer;
 	private JButton btncharger;
 	private JButton supprimer;
+	private JButton ajouter;
 
 	public FEN_Regularisation() {
 		setBounds(0, 0, 880, 473);
@@ -30,21 +30,25 @@ public class FEN_Regularisation extends JInternalFrame {
 		lbl_Annee_Regu.setBounds(35, 20, 190, 20);
 		getContentPane().add(lbl_Annee_Regu);
 
-		valider = new JButton("Ajouter");
-		valider.setBounds(180, 405, 119, 23);
-		getContentPane().add(valider);
+		ajouter = new JButton("Ajouter");
+		ajouter.setBounds(180, 405, 119, 23);
+		getContentPane().add(ajouter);
 
 		annuler = new JButton("Annuler");
 		annuler.setBounds(35, 405, 119, 23);
 		getContentPane().add(annuler);
 
 		btncharger = new JButton("Charger");
-		btncharger.setBounds(180, 405, 119, 23);
+		btncharger.setBounds(480, 405, 119, 23);
 		getContentPane().add(btncharger);
 
 		supprimer = new JButton("Supprimer");
-		supprimer.setBounds(35, 405, 119, 23);
+		supprimer.setBounds(600, 405, 119, 23);
 		getContentPane().add(supprimer);
+
+		valider = new JButton("Valider");
+		valider.setBounds(740, 405, 119, 23);
+		getContentPane().add(valider);
 
 		JScrollPane Generation_Regu = new JScrollPane();
 		Generation_Regu.setEnabled(false);
@@ -88,7 +92,7 @@ public class FEN_Regularisation extends JInternalFrame {
 		textField_Annee_Regu.setBounds(35, 40, 190, 19);
 		getContentPane().add(textField_Annee_Regu);
 
-		generer = new JButton("Generer");
+		generer = new JButton("Générer");
 		generer.setBounds(325, 405, 119, 23);
 		getContentPane().add(generer);
 
@@ -136,7 +140,47 @@ public class FEN_Regularisation extends JInternalFrame {
 		btncharger.addActionListener(controlleur);
 	}
 
+	public void validationEnable(boolean b) {
+		valider.setEnabled(b);
+	}
+
 	public JButton[] getChangeableButtons() {
-		return null;
+		return new JButton[] { this.supprimer };
+	}
+
+	public JTable getTable_Generation_Regu() {
+		return table_Generation_Regu;
+	}
+
+	public GestionRegularisation getControlleur() {
+		return controlleur;
+	}
+
+	public JTextField getTextField_Annee_Regu() {
+		return textField_Annee_Regu;
+	}
+
+	public JTable getTable_Base_Regu() {
+		return table_Base_Regu;
+	}
+
+	public JButton getValider() {
+		return valider;
+	}
+
+	public JButton getAnnuler() {
+		return annuler;
+	}
+
+	public JButton getGenerer() {
+		return generer;
+	}
+
+	public JButton getBtncharger() {
+		return btncharger;
+	}
+
+	public JButton getSupprimer() {
+		return supprimer;
 	}
 }
