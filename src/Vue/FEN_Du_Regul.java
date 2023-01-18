@@ -8,6 +8,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
+import Controlleur.GestionDuRegul;
 import Other.MyDefaultTableModel;
 
 public class FEN_Du_Regul extends JInternalFrame {

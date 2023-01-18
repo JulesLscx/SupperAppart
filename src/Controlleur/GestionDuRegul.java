@@ -1,4 +1,4 @@
-package Vue;
+package Controlleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,9 +7,12 @@ import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
+import Vue.FEN_Accueil;
 
 import Modele.DAO.DaoRegularisation;
 import Other.MyDefaultTableModel;
+import Vue.FEN_Du_Regul;
+import Vue.FEN_Erreurs;
 
 public class GestionDuRegul implements ActionListener {
 
@@ -24,6 +27,7 @@ public class GestionDuRegul implements ActionListener {
         JButton item = (JButton) e.getSource();
         switch (item.getText()) {
             case "Annuler":
+                ((FEN_Accueil) this.ai.getTopLevelAncestor()).switchOuverte();
                 this.ai.dispose();
                 break;
             case "Charger":

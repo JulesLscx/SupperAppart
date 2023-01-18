@@ -32,6 +32,11 @@ public class GestionPrincipale implements ActionListener {
 
 	public GestionPrincipale(FEN_Accueil pr) {
 		this.pr = pr;
+		this.pr.switchOuverte();
+		FEN_Connexion ai = new FEN_Connexion();
+		this.pr.getLayeredPane().add(ai);
+		ai.setLocation(480, 240);
+		ai.setVisible(true);
 	};
 
 	@Override
